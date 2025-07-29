@@ -24,6 +24,12 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				// Custom herbal colors
+				'herb-green': 'hsl(var(--herb-green))',
+				'herb-light': 'hsl(var(--herb-light))',
+				'earth-brown': 'hsl(var(--earth-brown))',
+				'cream': 'hsl(var(--cream))',
+				'sage': 'hsl(var(--sage))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
