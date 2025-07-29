@@ -38,15 +38,17 @@ const Footer = () => {
             <ul className="space-y-3 text-cream/80">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <span>+1 (234) 567-8900</span>
+                <span>+7 968 414-40-33</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span>info@herbalbliss.com</span>
+                <span>g.n.bangles@gmail.com</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-4 h-4 mt-1">📍</span>
-                <span>123 Herbal Way<br />Wellness City, WC 12345</span>
+                <a target="_blank" href="http://maps.google.com/?q=1200 Pennsylvania Ave SE, Washington, District of Columbia, 20003">
+                  <span className="w-4 h-4 mt-1">📍</span>
+                  <span>123 Herbal Way<br />New Delhi, IN 110044</span>
+                </a>
               </li>
             </ul>
           </div>
