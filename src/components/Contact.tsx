@@ -11,6 +11,10 @@ const Contact = () => {
     window.location.href = "mailto:info@herbalbliss.com?subject=Product Inquiry";
   };
 
+  const handlePhone = () => {
+    window.location.href = "tel:+1234567890";
+  };
+
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-herb-light/10 to-background">
       <div className="container mx-auto px-4">
@@ -24,50 +28,68 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          <Card className="text-center hover:shadow-natural transition-shadow">
+          <Card className="text-center hover:shadow-natural transition-all duration-300 hover:scale-105 group">
             <CardHeader>
-              <MessageCircle className="w-12 h-12 text-herb-green mx-auto mb-4" />
-              <CardTitle className="text-xl">WhatsApp</CardTitle>
+              <div className="bg-herb-green/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-herb-green/20 transition-colors">
+                <MessageCircle className="w-8 h-8 text-herb-green" />
+              </div>
+              <CardTitle className="text-xl text-foreground">WhatsApp Chat</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground mb-4">
-                Chat with us instantly for quick product questions and personalized recommendations.
+              <p className="text-muted-foreground mb-6 min-h-[48px]">
+                Quick responses for instant product questions and recommendations
               </p>
-              <Button variant="herbal" onClick={handleWhatsApp} className="w-full">
+              <div className="space-y-2 mb-6">
+                <p className="text-sm font-medium text-herb-green">+1 (234) 567-890</p>
+                <p className="text-xs text-muted-foreground">Usually replies instantly</p>
+              </div>
+              <Button variant="herbal" onClick={handleWhatsApp} className="w-full hover:scale-105 transition-transform">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                Chat Now
+                Start Chat
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center hover:shadow-natural transition-shadow">
+          <Card className="text-center hover:shadow-natural transition-all duration-300 hover:scale-105 group">
             <CardHeader>
-              <Mail className="w-12 h-12 text-herb-green mx-auto mb-4" />
-              <CardTitle className="text-xl">Email</CardTitle>
+              <div className="bg-herb-green/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-herb-green/20 transition-colors">
+                <Mail className="w-8 h-8 text-herb-green" />
+              </div>
+              <CardTitle className="text-xl text-foreground">Email Support</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground mb-4">
-                Send us detailed inquiries and we'll respond within 24 hours with comprehensive information.
+              <p className="text-muted-foreground mb-6 min-h-[48px]">
+                Detailed inquiries with comprehensive product information
               </p>
-              <Button variant="outline" onClick={handleEmail} className="w-full">
+              <div className="space-y-2 mb-6">
+                <p className="text-sm font-medium text-herb-green">info@herbalbliss.com</p>
+                <p className="text-xs text-muted-foreground">Response within 24 hours</p>
+              </div>
+              <Button variant="herbal" onClick={handleEmail} className="w-full hover:scale-105 transition-transform">
                 <Mail className="w-4 h-4 mr-2" />
                 Send Email
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="text-center hover:shadow-natural transition-shadow">
+          <Card className="text-center hover:shadow-natural transition-all duration-300 hover:scale-105 group">
             <CardHeader>
-              <Phone className="w-12 h-12 text-herb-green mx-auto mb-4" />
-              <CardTitle className="text-xl">Phone</CardTitle>
+              <div className="bg-herb-green/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-herb-green/20 transition-colors">
+                <Phone className="w-8 h-8 text-herb-green" />
+              </div>
+              <CardTitle className="text-xl text-foreground">Phone Consultation</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground mb-4">
-                Speak directly with our herbal experts for detailed product consultations.
+              <p className="text-muted-foreground mb-6 min-h-[48px]">
+                Direct consultation with our herbal wellness experts
               </p>
-              <Button variant="nature" className="w-full">
+              <div className="space-y-2 mb-6">
+                <p className="text-sm font-medium text-herb-green">+1 (234) 567-890</p>
+                <p className="text-xs text-muted-foreground">Mon-Fri 9AM-6PM</p>
+              </div>
+              <Button variant="herbal" onClick={handlePhone} className="w-full hover:scale-105 transition-transform">
                 <Phone className="w-4 h-4 mr-2" />
-                Call Us
+                Call Now
               </Button>
             </CardContent>
           </Card>
