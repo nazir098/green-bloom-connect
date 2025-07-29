@@ -34,7 +34,7 @@ const Hero = () => {
             <Button variant="herbal" size="lg" className="text-lg px-8">
               Explore Products
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 border-cream text-cream hover:bg-cream hover:text-herb-green">
+            <Button variant="hero" size="lg" className="text-lg px-8">
               Learn More
             </Button>
           </div>

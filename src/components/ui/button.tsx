@@ -20,6 +20,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         herbal: "bg-gradient-to-r from-herb-green to-herb-light text-cream hover:scale-105 shadow-natural",
         nature: "bg-earth-brown text-cream hover:bg-earth-brown/90 shadow-soft",
+        hero: "bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm",
       },
       size: {
         default: "h-10 px-4 py-2",
