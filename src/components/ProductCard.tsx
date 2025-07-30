@@ -1,8 +1,9 @@
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Star, Leaf } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import ProductDetailModal from "./ProductDetailModal";
 
 interface ProductCardProps {
   id: string;
@@ -14,20 +15,24 @@ interface ProductCardProps {
   rating: number;
   isOrganic?: boolean;
   benefits: string[];
+  ingredients?: string;
+  usage?: string;
+  origin?: string;
 }
 
-const ProductCard = ({ 
-  id,
-  name, 
-  description, 
-  image, 
-  price, 
-  originalPrice, 
-  rating, 
-  isOrganic = true, 
-  benefits 
-}: ProductCardProps) => {
-  const navigate = useNavigate();
+const ProductCard = (props: ProductCardProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { 
+    id,
+    name, 
+    description, 
+    image, 
+    price, 
+    originalPrice, 
+    rating, 
+    isOrganic = true, 
+    benefits 
+  } = props;
   return (
     <Card className="group hover:shadow-natural transition-all duration-300 hover:-translate-y-1 bg-card border-border">
       <CardHeader className="p-0">
@@ -77,11 +82,21 @@ const ProductCard = ({
         <Button 
           variant="herbal" 
           className="w-full"
-          onClick={() => navigate(`/product/${id}`)}
+          onClick={() => setIsModalOpen(true)}
         >
           View Details
         </Button>
       </CardFooter>
+      
+      <ProductDetailModal 
+        product={{
+          ...props,
+          price: parseFloat(price.replace('₹', '')),
+          originalPrice: originalPrice ? parseFloat(originalPrice.replace('₹', '')) : undefined,
+        }}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </Card>
   );
 };
