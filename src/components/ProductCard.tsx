@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Star, Leaf } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   id: string;
@@ -16,6 +17,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ 
+  id,
   name, 
   description, 
   image, 
@@ -25,6 +27,7 @@ const ProductCard = ({
   isOrganic = true, 
   benefits 
 }: ProductCardProps) => {
+  const navigate = useNavigate();
   return (
     <Card className="group hover:shadow-natural transition-all duration-300 hover:-translate-y-1 bg-card border-border">
       <CardHeader className="p-0">
@@ -71,7 +74,11 @@ const ProductCard = ({
       </CardContent>
       
       <CardFooter className="p-6 pt-0">
-        <Button variant="herbal" className="w-full">
+        <Button 
+          variant="herbal" 
+          className="w-full"
+          onClick={() => navigate(`/product/${id}`)}
+        >
           View Details
         </Button>
       </CardFooter>

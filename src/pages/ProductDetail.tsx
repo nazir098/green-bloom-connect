@@ -1,0 +1,195 @@
+import { useParams, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowLeft, Star, Leaf, ShoppingCart, Heart } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import turmericImage from "@/assets/turmeric.jpg";
+import ashwagandhaImage from "@/assets/ashwagandha.jpg";
+import greenTeaImage from "@/assets/green-tea.jpg";
+
+const ProductDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const products = [
+    {
+      id: "1",
+      name: "Organic Turmeric Powder",
+      description: "Premium quality turmeric powder with high curcumin content for natural anti-inflammatory support.",
+      fullDescription: "Our organic turmeric powder is sourced from the finest turmeric roots grown in certified organic farms. Rich in curcumin, this golden spice has been used for thousands of years in traditional medicine for its powerful anti-inflammatory and antioxidant properties. Each batch is carefully tested for purity and potency to ensure you receive the highest quality product.",
+      image: turmericImage,
+      price: "$24.99",
+      originalPrice: "$29.99",
+      rating: 4.8,
+      reviews: 156,
+      isOrganic: true,
+      benefits: ["Anti-inflammatory", "Antioxidant", "Joint Health", "Digestive Support", "Immune Boost"],
+      ingredients: ["100% Organic Turmeric Root Powder", "No additives", "No preservatives"],
+      usage: "Mix 1/2 teaspoon with warm milk or water daily. Can be added to cooking or smoothies.",
+      origin: "Sourced from organic farms in India"
+    },
+    {
+      id: "2", 
+      name: "Ashwagandha Root Extract",
+      description: "Pure ashwagandha root extract to help manage stress and support overall wellness naturally.",
+      fullDescription: "Our premium ashwagandha root extract is standardized to contain high levels of withanolides, the active compounds responsible for ashwagandha's adaptogenic properties. This ancient herb has been used in Ayurvedic medicine for over 3,000 years to help the body manage stress, boost energy levels, and support overall vitality.",
+      image: ashwagandhaImage,
+      price: "$32.99",
+      rating: 4.9,
+      reviews: 203,
+      isOrganic: true,
+      benefits: ["Stress Relief", "Energy", "Adaptogen", "Sleep Quality", "Mental Clarity"],
+      ingredients: ["Ashwagandha Root Extract (5% Withanolides)", "Vegetable Capsule", "No fillers"],
+      usage: "Take 1-2 capsules daily with meals or as directed by your healthcare provider.",
+      origin: "Wildcrafted from the foothills of the Himalayas"
+    },
+    {
+      id: "3",
+      name: "Premium Green Tea Blend",
+      description: "Hand-picked organic green tea leaves rich in antioxidants for daily wellness support.",
+      fullDescription: "Our premium green tea blend features hand-picked leaves from high-altitude organic tea gardens. Rich in EGCG and other powerful antioxidants, this delicate blend offers a smooth, refreshing taste while providing numerous health benefits. Each leaf is carefully selected and processed to preserve maximum nutritional value.",
+      image: greenTeaImage,
+      price: "$18.99",
+      originalPrice: "$22.99",
+      rating: 4.7,
+      reviews: 89,
+      isOrganic: true,
+      benefits: ["Antioxidants", "Metabolism", "Focus", "Heart Health", "Weight Management"],
+      ingredients: ["100% Organic Green Tea Leaves", "Natural flavoring", "No artificial additives"],
+      usage: "Steep 1 tea bag in hot water (175°F) for 2-3 minutes. Enjoy 2-3 cups daily.",
+      origin: "Grown in certified organic tea gardens in China"
+    }
+  ];
+
+  const product = products.find(p => p.id === id);
+
+  if (!product) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="container mx-auto px-4 py-20 text-center">
+          <h1 className="text-2xl font-bold text-foreground mb-4">Product Not Found</h1>
+          <Button onClick={() => navigate("/")} variant="herbal">
+            Back to Home
+          </Button>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      <div className="container mx-auto px-4 py-8">
+        <Button 
+          variant="outline" 
+          onClick={() => navigate("/")}
+          className="mb-8 flex items-center gap-2"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Products
+        </Button>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Product Image */}
+          <div className="space-y-4">
+            <div className="relative overflow-hidden rounded-lg">
+              <img 
+                src={product.image} 
+                alt={product.name}
+                className="w-full h-96 object-cover rounded-lg"
+              />
+              {product.isOrganic && (
+                <Badge className="absolute top-4 left-4 bg-herb-green text-cream">
+                  <Leaf className="w-3 h-3 mr-1" />
+                  Organic
+                </Badge>
+              )}
+            </div>
+          </div>
+
+          {/* Product Info */}
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl font-bold text-foreground mb-2">{product.name}</h1>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-1">
+                  <Star className="w-5 h-5 fill-current text-herb-light" />
+                  <span className="font-medium">{product.rating}</span>
+                </div>
+                <span className="text-muted-foreground">({product.reviews} reviews)</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <span className="text-3xl font-bold text-herb-green">{product.price}</span>
+              {product.originalPrice && (
+                <span className="text-lg text-muted-foreground line-through">{product.originalPrice}</span>
+              )}
+            </div>
+
+            <p className="text-muted-foreground leading-relaxed">{product.fullDescription}</p>
+
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">Key Benefits</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.benefits.map((benefit) => (
+                  <Badge key={benefit} variant="secondary">
+                    {benefit}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <Button variant="herbal" className="flex-1 flex items-center gap-2">
+                <ShoppingCart className="w-4 h-4" />
+                Add to Cart
+              </Button>
+              <Button variant="outline" className="flex items-center gap-2">
+                <Heart className="w-4 h-4" />
+                Save
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Additional Details */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Card>
+            <CardContent className="p-6">
+              <h3 className="font-semibold text-foreground mb-4">Ingredients</h3>
+              <ul className="space-y-2 text-muted-foreground">
+                {product.ingredients.map((ingredient, index) => (
+                  <li key={index} className="text-sm">• {ingredient}</li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <h3 className="font-semibold text-foreground mb-4">Usage Instructions</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{product.usage}</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6">
+              <h3 className="font-semibold text-foreground mb-4">Origin</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{product.origin}</p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default ProductDetail;
