@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Star, Leaf, ShoppingCart, Heart } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useCart } from "@/hooks/useCart";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Cart from "@/components/Cart";
 import turmericImage from "@/assets/turmeric.jpg";
 import ashwagandhaImage from "@/assets/ashwagandha.jpg";
 import greenTeaImage from "@/assets/green-tea.jpg";
@@ -12,6 +15,8 @@ import greenTeaImage from "@/assets/green-tea.jpg";
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const { addToCart } = useCart();
 
   const products = [
     {
@@ -64,6 +69,21 @@ const ProductDetail = () => {
   ];
 
   const product = products.find(p => p.id === id);
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image
+      });
+      toast({
+        title: "Added to cart",
+        description: `${product.name} has been added to your cart.`,
+      });
+    }
+  };
 
   if (!product) {
     return (
@@ -146,7 +166,11 @@ const ProductDetail = () => {
             </div>
 
             <div className="flex gap-4">
-              <Button variant="herbal" className="flex-1 flex items-center gap-2">
+              <Button 
+                variant="herbal" 
+                className="flex-1 flex items-center gap-2"
+                onClick={handleAddToCart}
+              >
                 <ShoppingCart className="w-4 h-4" />
                 Add to Cart
               </Button>
@@ -156,6 +180,11 @@ const ProductDetail = () => {
               </Button>
             </div>
           </div>
+        </div>
+
+        {/* Cart Section */}
+        <div className="mt-16">
+          <Cart />
         </div>
 
         {/* Additional Details */}
