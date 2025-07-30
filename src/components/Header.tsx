@@ -5,6 +5,12 @@ import axios from "axios";
 import { set } from "date-fns";
 
 const Header = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
@@ -22,11 +28,20 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Button variant="outline" size="sm" className="hidden sm:flex">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="hidden sm:flex"
+              onClick={() => scrollToSection('contact')}
+            >
               <Phone className="w-4 h-4" />
               Contact
             </Button>
-            <Button variant="herbal" size="sm">
+            <Button 
+              variant="herbal" 
+              size="sm"
+              onClick={() => scrollToSection('products')}
+            >
               Shop Now
             </Button>
           </div>

@@ -3,6 +3,12 @@ import { Leaf, Star, Award } from "lucide-react";
 import heroImage from "@/assets/hero-herbs.jpg";
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <section id="home" className="relative min-h-screen flex items-center">
       <div className="absolute inset-0">
@@ -31,10 +37,20 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button variant="herbal" size="lg" className="text-lg px-8">
+            <Button 
+              variant="herbal" 
+              size="lg" 
+              className="text-lg px-8"
+              onClick={() => scrollToSection('products')}
+            >
               Explore Products
             </Button>
-            <Button variant="hero" size="lg" className="text-lg px-8 hover:scale-105 transition-all duration-300 hover:shadow-lg">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="text-lg px-8 hover:scale-105 transition-all duration-300 hover:shadow-lg"
+              onClick={() => scrollToSection('about')}
+            >
               Learn More
             </Button>
           </div>
