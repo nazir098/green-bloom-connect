@@ -99,10 +99,11 @@ const Contact = () => {
           <div className="flex flex-col items-center">
             <MapPin className="w-8 h-8 text-herb-green mb-3" />
             <h3 className="font-semibold text-lg text-foreground mb-2">Location</h3>
-            <p className="text-muted-foreground">
-              123 Herbal Way<br />
-              Wellness City, WC 12345
-            </p>
+            <a target="_blank" href="https://www.google.com/maps/place/Aamna+Global/@28.5201312,77.2663101,19.03z/data=!4m6!3m5!1s0x390ce1e1870e7f6b:0x8b8311b226a07495!8m2!3d28.5198534!4d77.2665338!16s%2Fg%2F11rmt8cdmd?entry=ttu&g_ep=EgoyMDI1MDcyNy4wIKXMDSoASAFQAw%3D%3D">
+               <p className="text-muted-foreground">Aamna Global<br />
+                    New Delhi, IN 110044
+              </p>
+            </a>
           </div>
 
           <div className="flex flex-col items-center">
