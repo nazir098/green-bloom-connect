@@ -12,42 +12,59 @@ const Header = () => {
     }
   };
   return (
-    <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Leaf className="h-8 w-8 text-herb-green" />
-            <span className="text-2xl font-bold text-foreground">HerbalBliss</span>
-          </div>
-          
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#home" className="text-foreground hover:text-herb-green transition-colors">Home</a>
-            <a href="#products" className="text-foreground hover:text-herb-green transition-colors">Products</a>
-            <a href="#about" className="text-foreground hover:text-herb-green transition-colors">About</a>
-            <a href="#contact" className="text-foreground hover:text-herb-green transition-colors">Contact</a>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="hidden sm:flex"
-              onClick={() => scrollToSection('contact')}
-            >
-              <Phone className="w-4 h-4" />
-              Contact
-            </Button>
-            <Button 
-              variant="herbal" 
-              size="sm"
-              onClick={() => scrollToSection('products')}
-            >
-              Shop Now
-            </Button>
-          </div>
-        </div>
+<header className="bg-background/95 backdrop-blur-md border-b border-green-200 sticky top-0 z-50 shadow-sm">
+  <div className="container mx-auto px-4 py-3">
+    <div className="flex items-center justify-between">
+      
+      {/* Logo + Brand Name */}
+      <div className="flex items-center gap-2">
+        <Leaf className="h-9 w-9 text-green-600 drop-shadow-sm" />
+        <span className="text-3xl font-serif font-bold text-green-700 italic tracking-wide drop-shadow-sm">
+          Minnat Herbal
+        </span>
       </div>
-    </header>
+
+      {/* Navigation */}
+      <nav className="hidden md:flex items-center gap-10">
+        <a href="#home" className="text-foreground hover:text-green-600 transition-colors font-medium">
+          Home
+        </a>
+        <a href="#products" className="text-foreground hover:text-green-600 transition-colors font-medium">
+          Products
+        </a>
+        <a href="#about" className="text-foreground hover:text-green-600 transition-colors font-medium">
+          About
+        </a>
+        <a href="#contact" className="text-foreground hover:text-green-600 transition-colors font-medium">
+          Contact
+        </a>
+      </nav>
+
+      {/* Buttons */}
+      <div className="flex items-center gap-3">
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className="hidden sm:flex border-green-600 text-green-700 hover:bg-green-50"
+          onClick={() => scrollToSection('contact')}
+        >
+          <Phone className="w-4 h-4 mr-1" />
+          Contact
+        </Button>
+        <Button 
+          variant="herbal" 
+          size="sm"
+          className="bg-green-600 hover:bg-green-700 text-white shadow-md"
+          onClick={() => scrollToSection('products')}
+        >
+          Shop Now
+        </Button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
   );
 };
 
