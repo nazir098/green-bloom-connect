@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Star, Leaf } from "lucide-react";
+import { Star, Leaf, ShoppingCart } from "lucide-react";
 import ProductDetailModal from "./ProductDetailModal";
+import { useCart } from "@/hooks/useCart";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
   id: string;
@@ -22,6 +24,9 @@ interface ProductCardProps {
 
 const ProductCard = (props: ProductCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { addToCart } = useCart();
+  const { toast } = useToast();
+  
   const { 
     id,
     name, 
@@ -33,6 +38,14 @@ const ProductCard = (props: ProductCardProps) => {
     isOrganic = true, 
     benefits 
   } = props;
+
+  const handleAddToCart = () => {
+    addToCart({ id, name, price, image });
+    toast({
+      title: "Added to cart",
+      description: `${name} has been added to your cart.`,
+    });
+  };
   return (
     <Card className="group hover:shadow-natural transition-all duration-300 hover:-translate-y-1 bg-card border-border">
       <CardHeader className="p-0">
@@ -79,13 +92,23 @@ const ProductCard = (props: ProductCardProps) => {
       </CardContent>
       
       <CardFooter className="p-6 pt-0">
-        <Button 
-          variant="herbal" 
-          className="w-full"
-          onClick={() => setIsModalOpen(true)}
-        >
-          View Details
-        </Button>
+        <div className="space-y-3">
+          <Button 
+            onClick={handleAddToCart}
+            variant="herbal" 
+            className="w-full flex items-center gap-2"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            Add to Cart
+          </Button>
+          <Button 
+            onClick={() => setIsModalOpen(true)}
+            variant="outline" 
+            className="w-full"
+          >
+            View Details
+          </Button>
+        </div>
       </CardFooter>
       
       <ProductDetailModal 
