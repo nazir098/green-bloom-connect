@@ -1,9 +1,12 @@
+import { useState } from "react";
 import ProductCard from "./ProductCard";
+import AllProducts from "./AllProducts";
 import turmericImage from "@/assets/turmeric.jpg";
 import ashwagandhaImage from "@/assets/ashwagandha.jpg";
 import greenTeaImage from "@/assets/green-tea.jpg";
 
 const ProductGrid = () => {
+  const [showAllProducts, setShowAllProducts] = useState(false);
   const products = [
     {
       id: "1",
@@ -58,10 +61,18 @@ const ProductGrid = () => {
         </div>
         
         <div className="text-center mt-12">
-          <button className="bg-gradient-to-r from-herb-green to-herb-light text-cream px-8 py-3 rounded-lg font-medium hover:scale-105 transition-transform shadow-natural">
+          <button 
+            onClick={() => setShowAllProducts(true)}
+            className="bg-gradient-to-r from-herb-green to-herb-light text-cream px-8 py-3 rounded-lg font-medium hover:scale-105 transition-transform shadow-natural"
+          >
             View All Products
           </button>
         </div>
+        
+        <AllProducts 
+          isOpen={showAllProducts} 
+          onClose={() => setShowAllProducts(false)} 
+        />
       </div>
     </section>
   );
