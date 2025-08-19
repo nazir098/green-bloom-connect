@@ -3,6 +3,7 @@ import { Leaf, Phone, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { set } from "date-fns";
+import ProductSearch from "./ProductSearch";
 
 const Header = () => {
   const scrollToSection = (sectionId: string) => {
@@ -24,21 +25,28 @@ const Header = () => {
         </span>
       </div>
 
-      {/* Navigation */}
-      <nav className="hidden md:flex items-center gap-10">
-        <a href="#home" className="text-foreground hover:text-green-600 transition-colors font-medium">
-          Home
-        </a>
-        <a href="#products" className="text-foreground hover:text-green-600 transition-colors font-medium">
-          Products
-        </a>
-        <a href="#about" className="text-foreground hover:text-green-600 transition-colors font-medium">
-          About
-        </a>
-        <a href="#contact" className="text-foreground hover:text-green-600 transition-colors font-medium">
-          Contact
-        </a>
-      </nav>
+      {/* Navigation & Search */}
+      <div className="flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-8">
+          <a href="#home" className="text-foreground hover:text-green-600 transition-colors font-medium">
+            Home
+          </a>
+          <a href="#products" className="text-foreground hover:text-green-600 transition-colors font-medium">
+            Products
+          </a>
+          <a href="#about" className="text-foreground hover:text-green-600 transition-colors font-medium">
+            About
+          </a>
+          <a href="#contact" className="text-foreground hover:text-green-600 transition-colors font-medium">
+            Contact
+          </a>
+        </nav>
+        
+        {/* Search Component */}
+        <div className="hidden md:block">
+          <ProductSearch />
+        </div>
+      </div>
 
       {/* Buttons */}
       <div className="flex items-center gap-3">
