@@ -63,7 +63,7 @@ const Hero = () => {
         <div className="text-center max-w-4xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Leaf className="h-7 w-7 text-herb-light animate-pulse" />
-            <span className="text-herb-light font-semibold text-xl tracking-wide">आयुर्वेदिक हर्बल कैटलॉग</span>
+            <span className="text-herb-light font-semibold text-xl tracking-wide">Healing the world, naturallyl</span>
             <Leaf className="h-7 w-7 text-herb-light animate-pulse" />
           </div>
           
