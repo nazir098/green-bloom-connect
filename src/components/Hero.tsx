@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Leaf, Star, Award, Sparkles } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import heroImage from "@/assets/hero-herbs.jpg";
 import turmericImage from "@/assets/turmeric.jpg";
 import gingerImage from "@/assets/ginger.jpg";
@@ -9,12 +9,12 @@ import ashwagandhaImage from "@/assets/ashwagandha.jpg";
 import moringaImage from "@/assets/moringa.jpg";
 
 const Hero = () => {
-  const carouselRef = useRef<any>(null);
+  const [api, setApi] = useState<any>(null);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -26,18 +26,16 @@ const Hero = () => {
     { src: moringaImage, alt: "Moringa leaves", title: "Superfood Moringa Leaves" }
   ];
 
-  // Auto-advance carousel
+  // Auto-advance carousel every 4 seconds
   useEffect(() => {
-    if (!carouselRef.current) return;
+    if (!api) return;
 
     const interval = setInterval(() => {
-      if (carouselRef.current?.scrollNext) {
-        carouselRef.current.scrollNext();
-      }
-    }, 500);
+      api.scrollNext();
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [api]);
 
   return (
     <section id="home" className="py-12 md:py-16 bg-gradient-to-br from-herb-green via-herb-green/95 to-herb-light/30 overflow-hidden">
@@ -103,7 +101,7 @@ const Hero = () => {
               </div>
               
               <Carousel 
-                ref={carouselRef}
+                setApi={setApi}
                 className="w-full"
                 opts={{ loop: true }}
               >
