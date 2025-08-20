@@ -34,7 +34,7 @@ const Hero = () => {
       if (carouselRef.current?.scrollNext) {
         carouselRef.current.scrollNext();
       }
-    }, 4000);
+    }, 500);
 
     return () => clearInterval(interval);
   }, []);
