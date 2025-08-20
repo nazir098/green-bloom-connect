@@ -32,7 +32,7 @@ const Hero = () => {
 
     const interval = setInterval(() => {
       api.scrollNext();
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [api]);
