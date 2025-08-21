@@ -1,9 +1,20 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from '@/contexts/CartContext';
+import Index from '@/pages/Index';
+import ProductDetail from '@/pages/ProductDetail';
+import NotFound from '@/pages/NotFound';
+
 const App = () => {
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold">Herbal Products Store</h1>
-      <p>Application loading...</p>
-    </div>
+    <CartProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 };
 
