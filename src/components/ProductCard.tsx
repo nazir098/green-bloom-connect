@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Star, Leaf, ShoppingCart } from "lucide-react";
 import ProductDetailModal from "./ProductDetailModal";
+import { CartPopup } from "./CartPopup";
 import { useCart } from "@/contexts/CartContext";
-import { useToast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
   id: string;
@@ -24,8 +24,8 @@ interface ProductCardProps {
 
 const ProductCard = (props: ProductCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
   const { addToCart } = useCart();
-  const { toast } = useToast();
   
   const { 
     id,
@@ -41,10 +41,7 @@ const ProductCard = (props: ProductCardProps) => {
 
   const handleAddToCart = () => {
     addToCart({ id, name, price, image });
-    toast({
-      title: "Added to cart",
-      description: `${name} has been added to your cart.`,
-    });
+    setIsCartPopupOpen(true);
   };
   return (
     <Card className="group hover:shadow-natural transition-all duration-300 hover:-translate-y-1 bg-card border-border">
@@ -119,6 +116,16 @@ const ProductCard = (props: ProductCardProps) => {
         }}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+      />
+      
+      <CartPopup
+        isOpen={isCartPopupOpen}
+        onClose={() => setIsCartPopupOpen(false)}
+        addedItem={{
+          name,
+          image,
+          price
+        }}
       />
     </Card>
   );
