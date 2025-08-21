@@ -114,8 +114,8 @@ const ProductCard = (props: ProductCardProps) => {
       <ProductDetailModal 
         product={{
           ...props,
-          price: parseFloat(price.replace('₹', '').replace(',', '')),
-          originalPrice: originalPrice ? parseFloat(originalPrice.replace('₹', '').replace(',', '')) : undefined,
+          price: price,
+          originalPrice: originalPrice,
         }}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

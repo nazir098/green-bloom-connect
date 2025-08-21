@@ -12,8 +12,8 @@ interface Product {
   name: string;
   description: string;
   image: string;
-  price: number;
-  originalPrice?: number;
+  price: string;
+  originalPrice?: string;
   rating: number;
   isOrganic?: boolean;
   benefits: string[];
@@ -36,7 +36,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen
     addToCart({
       id: product.id,
       name: product.name,
-      price: `₹${product.price}`,
+      price: product.price,
       image: product.image,
     });
     toast({
@@ -87,10 +87,10 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen
 
             <div className="space-y-2">
               <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold text-primary">₹{product.price}</span>
+                <span className="text-3xl font-bold text-primary">{product.price}</span>
                 {product.originalPrice && (
                   <span className="text-xl text-muted-foreground line-through">
-                    ₹{product.originalPrice}
+                    {product.originalPrice}
                   </span>
                 )}
               </div>
