@@ -28,7 +28,7 @@ Please let me know the next steps for placing this order. Thank you!`);
 
   if (cartItems.length === 0) {
     return (
-      <Card>
+      <Card data-cart-section className="transition-all duration-200">
         <CardContent className="p-6 text-center">
           <p className="text-muted-foreground">Your cart is empty</p>
         </CardContent>
@@ -37,7 +37,7 @@ Please let me know the next steps for placing this order. Thank you!`);
   }
 
   return (
-    <Card>
+    <Card data-cart-section className="transition-all duration-200">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           Your Cart
