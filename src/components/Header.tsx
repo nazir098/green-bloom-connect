@@ -1,15 +1,31 @@
 import { Button } from "@/components/ui/button";
-import { Leaf, Phone, Mail } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Leaf, Phone, Mail, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { set } from "date-fns";
 import ProductSearch from "./ProductSearch";
+import { useCart } from "@/contexts/CartContext";
 
 const Header = () => {
+  const { cartCount } = useCart();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToCart = () => {
+    const cartElement = document.querySelector('[data-cart-section]');
+    if (cartElement) {
+      cartElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Add a subtle highlight effect
+      cartElement.classList.add('ring-2', 'ring-primary', 'ring-opacity-50');
+      setTimeout(() => {
+        cartElement.classList.remove('ring-2', 'ring-primary', 'ring-opacity-50');
+      }, 2000);
     }
   };
   return (
@@ -62,10 +78,16 @@ const Header = () => {
         <Button 
           variant="herbal" 
           size="sm"
-          className="bg-green-600 hover:bg-green-700 text-white shadow-md"
-          onClick={() => scrollToSection('products')}
+          className="bg-green-600 hover:bg-green-700 text-white shadow-md relative"
+          onClick={scrollToCart}
         >
-          Shop Now
+          <ShoppingCart className="w-4 h-4 mr-1" />
+          Cart
+          {cartCount > 0 && (
+            <Badge className="absolute -top-2 -right-2 h-5 w-5 p-0 text-xs bg-red-500 hover:bg-red-600 flex items-center justify-center">
+              {cartCount}
+            </Badge>
+          )}
         </Button>
       </div>
 
