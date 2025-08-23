@@ -73,7 +73,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     ).join('\n')}Total: $${getCartTotal().toFixed(2)}\n\nPlease let me know the next steps. Thank you!`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/79684144033?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/919667568842?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
   }, [cartItems, getCartTotal]);
 

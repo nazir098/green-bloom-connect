@@ -43,11 +43,11 @@ return (
           <ul className="space-y-3 text-cream/80">
             <li className="flex items-center gap-2">
               <Phone className="w-4 h-4" />
-              <span>+7 968 414-40-33</span>
+              <span>+91 9667568842</span>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
-              <span>g.n.bangles@gmail.com</span>
+              <span>aamnaglobal@gmail.com</span>
             </li>
             <li className="flex items-start gap-2">
               <a
@@ -55,7 +55,7 @@ return (
                 href="https://www.google.com/maps/place/Aamna+Global/@28.5201312,77.2663101,19.03z/data=!4m6!3m5!1s0x390ce1e1870e7f6b:0x8b8311b226a07495!8m2!3d28.5198534!4d77.2665338!16s%2Fg%2F11rmt8cdmd?entry=ttu"
               >
                 <span className="w-4 h-4 mt-1">📍</span>
-                <span>Aamna Bangles<br />New Delhi, IN 110044</span>
+                <span>Aamna Global<br />New Delhi, IN 110044</span>
               </a>
             </li>
           </ul>

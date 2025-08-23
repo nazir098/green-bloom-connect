@@ -4,15 +4,15 @@ import { Phone, Mail, MessageCircle, MapPin, Clock, Leaf } from "lucide-react";
 
 const Contact = () => {
   const handleWhatsApp = () => {
-  window.open("https://wa.me/79684144033?text=Hi! I'm interested in your herbal products.", "_blank");
+  window.open("https://wa.me/919667568842?text=Hi! I'm interested in your herbal products.", "_blank");
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:g.n.bangles@gmail.com?subject=Product Inquiry";
+    window.location.href = "mailto:aamnaglobal@gmail.com?subject=Product Inquiry";
   };
 
   const handlePhone = () => {
-    window.location.href = "tel:+7 9684144033";
+    window.location.href = "tel:+91 9667568842";
   };
 
   return (
@@ -40,7 +40,7 @@ const Contact = () => {
                 Quick responses for instant product questions and recommendations
               </p>
               <div className="space-y-2 mb-6">
-                {/* <p className="text-sm font-medium text-herb-green">+7 968 414-40-33</p> */}
+                {/* <p className="text-sm font-medium text-herb-green">+91 9667568842</p> */}
                 <p className="text-xs text-muted-foreground">Usually replies instantly</p>
               </div>
               <Button variant="herbal" onClick={handleWhatsApp} className="w-full hover:scale-105 transition-transform">
@@ -62,7 +62,7 @@ const Contact = () => {
                 Detailed inquiries with comprehensive product information
               </p>
               <div className="space-y-2 mb-6">
-                <p className="text-sm font-medium text-herb-green">g.n.bangles@gmail.com</p>
+                <p className="text-sm font-medium text-herb-green">aamnaglobal@gmail.com</p>
                 <p className="text-xs text-muted-foreground">Response within 24 hours</p>
               </div>
               <Button variant="herbal" onClick={handleEmail} className="w-full hover:scale-105 transition-transform">
@@ -84,7 +84,7 @@ const Contact = () => {
                 Direct consultation with our herbal wellness experts
               </p>
               <div className="space-y-2 mb-6">
-                <p className="text-sm font-medium text-herb-green">+7 968 414-40-33</p>
+                <p className="text-sm font-medium text-herb-green">+91 9667568842</p>
                 <p className="text-xs text-muted-foreground">Mon-Fri 9AM-6PM</p>
               </div>
               <Button variant="herbal" onClick={handlePhone} className="w-full hover:scale-105 transition-transform">

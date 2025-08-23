@@ -22,7 +22,7 @@ Price: ${item.price} each
 
 Please let me know the next steps for placing this order. Thank you!`);
 
-    const emailUrl = `mailto:g.n.bangles@gmail.com?subject=${subject}&body=${body}`;
+    const emailUrl = `mailto:aamnaglobal@gmail.com?subject=${subject}&body=${body}`;
     window.open(emailUrl, '_blank');
   };
 
