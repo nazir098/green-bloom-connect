@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Star, ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
-import { useToast } from "@/hooks/use-toast";
+import { CartPopup } from "./CartPopup";
 
 interface Product {
   id: string;
@@ -30,19 +30,19 @@ interface ProductDetailModalProps {
 
 const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen, onClose }) => {
   const { addToCart } = useCart();
-  const { toast } = useToast();
+  const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
+  const [addedItem, setAddedItem] = useState<{ name: string; image: string; price: string } | null>(null);
 
   const handleAddToCart = () => {
-    addToCart({
+    const item = {
       id: product.id,
       name: product.name,
       price: product.price,
       image: product.image,
-    });
-    toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
-    });
+    };
+    addToCart(item);
+    setAddedItem(item);
+    setIsCartPopupOpen(true);
   };
 
   return (
@@ -144,6 +144,12 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen
           )}
         </div>
       </DialogContent>
+      
+      <CartPopup
+        isOpen={isCartPopupOpen}
+        onClose={() => setIsCartPopupOpen(false)}
+        addedItem={addedItem}
+      />
     </Dialog>
   );
 };
