@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Leaf, Phone, Mail, ShoppingCart } from "lucide-react";
+import { Phone, Mail, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { set } from "date-fns";
@@ -35,7 +35,11 @@ const Header = () => {
       
       {/* Logo + Brand Name */}
       <div className="flex items-center gap-2">
-        <Leaf className="h-9 w-9 text-green-600 drop-shadow-sm" />
+        <img 
+          src="/lovable-uploads/3bda1951-e127-4971-8585-37f1e595cbf4.png" 
+          alt="Minnat Herbal Logo" 
+          className="h-9 w-9 drop-shadow-sm" 
+        />
         <span className="text-3xl font-serif font-bold text-green-700 italic tracking-wide drop-shadow-sm">
           Minnat Herbal
         </span>
