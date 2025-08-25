@@ -44,6 +44,18 @@ const Hero = () => {
           
           {/* Content Section */}
           <div className="text-left">
+            {/* Brand Logo - Prominent placement for brand recognition */}
+            <div className="flex justify-center lg:justify-start mb-8 animate-fade-in">
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/e5b20330-587d-421f-889d-efa0d47aa01f.png" 
+                  alt="Minnat Herbal - Premium Ayurvedic Herbs" 
+                  className="h-20 w-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-herb-light/10 rounded-full blur-xl -z-10"></div>
+              </div>
+            </div>
+            
             <div className="flex items-center gap-3 mb-6 animate-fade-in">
               <Leaf className="h-7 w-7 text-herb-light animate-pulse" />
               <span className="text-herb-light font-semibold text-xl italic tracking-widest">
