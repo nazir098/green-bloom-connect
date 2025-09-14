@@ -35,11 +35,11 @@ const Header = () => {
       
       {/* Logo + Brand Name */}
       <div className="flex items-center gap-2">
-        <img 
+{/*         <img 
           src="/lovable-uploads/3bda1951-e127-4971-8585-37f1e595cbf4.png" 
           alt="Minnat Herbal Logo" 
           className="h-9 w-9 drop-shadow-sm" 
-        />
+        /> */}
         <span className="text-3xl font-serif font-bold text-green-700 italic tracking-wide drop-shadow-sm">
           Minnat Herbal
         </span>
