@@ -1,0 +1,18 @@
+# Product Images Directory
+
+Place your product images here with recommended specifications:
+- **Dimensions:** 400x400 pixels (1:1 aspect ratio)
+- **Format:** PNG (with transparency) or JPG
+- **Size:** Under 500KB each
+- **Background:** Clean, preferably white or transparent
+- **Naming:** Use descriptive names (e.g., turmeric-powder.jpg)
+
+## Usage Instructions
+
+1. Add your product images to this folder
+2. Import them in `/src/data/products.ts`
+3. Update the product entries to use your images
+4. Your images will automatically appear throughout the website
+
+## Current Images
+All current product images are imported from the parent `/src/assets/` folder and can be moved here for better organization.

@@ -1,73 +1,110 @@
-# Welcome to your Lovable project
+# Minnat - Herbal Wellness Products
 
-## Project info
+A modern, responsive e-commerce website for herbal wellness products built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/f52b9959-5ab9-4f07-ad13-27dc3bf1d4bf
+## 🌿 Features
 
-## How can I edit this code?
+- **Product Showcase**: Beautiful product grid with detailed information
+- **Shopping Cart**: Add/remove items with real-time cart updates
+- **Product Search**: Search products by name, description, or benefits
+- **Product Details**: Comprehensive product pages with ingredients, usage, and origin
+- **Responsive Design**: Works perfectly on all devices
+- **Organic Certification**: Clear organic product indicators
 
-There are several ways of editing your application.
+## 📁 Project Structure
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/f52b9959-5ab9-4f07-ad13-27dc3bf1d4bf) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/          # Reusable UI components
+├── data/               # Product data (EDIT HERE!)
+│   └── products.ts     # Central product management file
+├── assets/            # Images and media files
+│   └── products/      # Product images directory
+└── pages/             # Application pages
 ```
 
-**Edit a file directly in GitHub**
+## 🛠️ Managing Your Products
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Quick Start - Edit Products
+1. Open `src/data/products.ts`
+2. Modify the products array to update:
+   - Product names and descriptions
+   - Prices and ratings
+   - Benefits and ingredients
+   - Usage instructions
 
-**Use GitHub Codespaces**
+### Adding Product Images
+1. Place images in `src/assets/products/` (recommended: 400x400px, under 500KB)
+2. Import them in `src/data/products.ts`
+3. Update the image property in your product entries
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Image Specifications
+- **Dimensions**: 400x400 pixels (1:1 aspect ratio)
+- **Format**: PNG (with transparency) or JPG  
+- **Size**: Under 500KB for fast loading
+- **Background**: Clean, preferably white or transparent
 
-## What technologies are used for this project?
+## 🚀 Development
 
-This project is built with:
+```bash
+# Install dependencies
+npm install
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Start development server
+npm run dev
 
-## How can I deploy this project?
+# Build for production
+npm run build
+```
 
-Simply open [Lovable](https://lovable.dev/projects/f52b9959-5ab9-4f07-ad13-27dc3bf1d4bf) and click on Share -> Publish.
+## 📝 Customization
 
-## Can I connect a custom domain to my Lovable project?
+### Adding New Products
+Edit `src/data/products.ts` and add new entries to the products array:
 
-Yes, you can!
+```typescript
+{
+  id: "10",
+  name: "Your Product Name",
+  description: "Product description",
+  image: yourProductImage,
+  price: "$29.99",
+  rating: 4.8,
+  isOrganic: true,
+  benefits: ["Benefit 1", "Benefit 2"],
+  ingredients: ["Ingredient 1", "Ingredient 2"],
+  usage: "How to use instructions",
+  origin: "Where it comes from"
+}
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Updating Existing Products
+Simply modify the existing entries in the products array - changes will appear throughout the entire website automatically.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🎨 Design System
+
+The project uses a consistent design system with:
+- Semantic color tokens (herb-green, herb-light, etc.)
+- Responsive typography
+- Consistent spacing and shadows
+- Dark/light mode support
+
+## 📦 Technologies Used
+
+- **React** - Frontend framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Vite** - Build tool
+- **Radix UI** - Accessible components
+- **Lucide React** - Icons
+
+## 💡 Tips
+
+- All product data is centralized in one file for easy management
+- The website automatically updates when you modify product data
+- Use the recommended image specifications for best results
+- The design system ensures consistency across all components
+
+---
+
+**Happy selling! 🌱**

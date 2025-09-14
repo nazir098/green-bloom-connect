@@ -11,13 +11,15 @@ interface Product {
   id: string;
   name: string;
   description: string;
+  fullDescription?: string;
   image: string;
   price: string;
   originalPrice?: string;
   rating: number;
+  reviews?: number;
   isOrganic?: boolean;
   benefits: string[];
-  ingredients?: string;
+  ingredients?: string[];
   usage?: string;
   origin?: string;
 }
@@ -125,7 +127,11 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen
           {product.ingredients && (
             <Card className="p-6">
               <h3 className="font-semibold mb-3">Ingredients</h3>
-              <p className="text-sm text-muted-foreground">{product.ingredients}</p>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                {product.ingredients.map((ingredient, index) => (
+                  <li key={index}>• {ingredient}</li>
+                ))}
+              </ul>
             </Card>
           )}
           

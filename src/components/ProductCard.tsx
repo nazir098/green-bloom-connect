@@ -17,7 +17,7 @@ interface ProductCardProps {
   rating: number;
   isOrganic?: boolean;
   benefits: string[];
-  ingredients?: string;
+  ingredients?: string[];
   usage?: string;
   origin?: string;
 }
