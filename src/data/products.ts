@@ -44,21 +44,21 @@ export const products: Product[] = [
     usage: "Take 1-2 teaspoons daily with meals or as directed by your healthcare provider.",
     origin: "Sourced from organic farms in India"
   },
-  {
-    id: "2", 
-    name: "Ashwagandha Root Extract",
-    description: "Pure ashwagandha root extract to help manage stress and support overall wellness naturally.",
-    fullDescription: "Our premium ashwagandha root extract is standardized to contain high levels of withanolides, the active compounds responsible for ashwagandha's adaptogenic properties. This ancient herb has been used in Ayurvedic medicine for over 3,000 years.",
-    image: ashwagandhaImage,
-    price: "$32.99",
-    rating: 4.9,
-    reviews: 203,
-    isOrganic: true,
-    benefits: ["Stress Relief", "Energy", "Adaptogen"],
-    ingredients: ["Organic Ashwagandha Root Extract (Withania somnifera)", "Standardized to 5% Withanolides"],
-    usage: "Take 300-500mg daily, preferably with meals or as recommended by your healthcare professional.",
-    origin: "Premium quality roots from traditional Ayurvedic farms"
-  },
+  // {
+  //   id: "2", 
+  //   name: "Ashwagandha Root Extract",
+  //   description: "Pure ashwagandha root extract to help manage stress and support overall wellness naturally.",
+  //   fullDescription: "Our premium ashwagandha root extract is standardized to contain high levels of withanolides, the active compounds responsible for ashwagandha's adaptogenic properties. This ancient herb has been used in Ayurvedic medicine for over 3,000 years.",
+  //   image: ashwagandhaImage,
+  //   price: "$32.99",
+  //   rating: 4.9,
+  //   reviews: 203,
+  //   isOrganic: true,
+  //   benefits: ["Stress Relief", "Energy", "Adaptogen"],
+  //   ingredients: ["Organic Ashwagandha Root Extract (Withania somnifera)", "Standardized to 5% Withanolides"],
+  //   usage: "Take 300-500mg daily, preferably with meals or as recommended by your healthcare professional.",
+  //   origin: "Premium quality roots from traditional Ayurvedic farms"
+  // },
   {
     id: "3",
     name: "Premium Green Tea Blend",
