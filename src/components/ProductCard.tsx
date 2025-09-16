@@ -50,7 +50,7 @@ const ProductCard = (props: ProductCardProps) => {
           <img 
             src={image} 
             alt={name}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300 bg-white"
           />
           {isOrganic && (
             <Badge className="absolute top-3 left-3 bg-herb-green text-cream">
