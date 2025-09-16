@@ -2,11 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Leaf, Star, Award, Sparkles } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
+import { products } from "@/data/products";
 import heroImage from "@/assets/hero-herbs.jpg";
-import turmericImage from "@/assets/turmeric.jpg";
-import gingerImage from "@/assets/ginger.jpg";
-import ashwagandhaImage from "@/assets/ashwagandha.jpg";
-import moringaImage from "@/assets/moringa.jpg";
 
 const Hero = () => {
   const [api, setApi] = useState<any>(null);
@@ -20,10 +17,11 @@ const Hero = () => {
 
   const herbalImages = [
     { src: heroImage, alt: "Premium herbal collection", title: "Ancient Wisdom, Modern Wellness" },
-    { src: turmericImage, alt: "Golden turmeric root", title: "Golden Turmeric Excellence" },
-    { src: gingerImage, alt: "Fresh ginger root", title: "Energizing Ginger Power" },
-    { src: ashwagandhaImage, alt: "Ashwagandha herbs", title: "Adaptogenic Ashwagandha" },
-    { src: moringaImage, alt: "Moringa leaves", title: "Superfood Moringa Leaves" }
+    ...products.slice(0, 4).map(product => ({
+      src: product.image,
+      alt: product.name,
+      title: product.name
+    }))
   ];
 
   // Auto-advance carousel every 4 seconds
