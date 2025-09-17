@@ -58,11 +58,13 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen
           {/* Product Image */}
           <div className="space-y-4">
             <div className="relative">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-96 object-cover rounded-lg"
-              />
+              <div className="aspect-square bg-white rounded-lg p-8 flex items-center justify-center">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
               {product.isOrganic && (
                 <Badge className="absolute top-4 left-4 bg-green-600 hover:bg-green-700">
                   Organic

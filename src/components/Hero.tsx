@@ -118,7 +118,7 @@ const Hero = () => {
                 <CarouselContent>
                   {herbalImages.map((image, index) => (
                     <CarouselItem key={index}>
-                      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-herb-light/20 hover-scale transition-all duration-500">
+                      <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl border border-herb-light/20 hover-scale transition-all duration-500">
                         <img 
                           src={image.src} 
                           alt={image.alt}

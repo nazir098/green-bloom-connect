@@ -47,11 +47,13 @@ const ProductCard = (props: ProductCardProps) => {
     <Card className="group hover:shadow-natural transition-all duration-300 hover:-translate-y-1 bg-card border-border">
       <CardHeader className="p-0">
         <div className="relative overflow-hidden rounded-t-lg">
-          <img 
-            src={image} 
-            alt={name}
-            className="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300 bg-white"
-          />
+          <div className="aspect-square bg-white flex items-center justify-center p-4">
+            <img 
+              src={image} 
+              alt={name}
+              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
           {isOrganic && (
             <Badge className="absolute top-3 left-3 bg-herb-green text-cream">
               <Leaf className="w-3 h-3 mr-1" />
