@@ -238,8 +238,8 @@ export const products: Product[] = [
 
 ];
 
-// Featured products (first 3 products) - used in ProductGrid component
-export const featuredProducts = products.slice(0, 3);
+// Featured products (first 4 products) - used in ProductGrid component
+export const featuredProducts = products.slice(0, 4);
 
 // Get product by ID
 export const getProductById = (id: string): Product | undefined => {
