@@ -34,22 +34,7 @@ export interface Product {
 //600*600px image to be uploaded and import is needed
 // JPG format is suitable
 export const products: Product[] = [
-  {
-    id: "1",
-    name: "Organic Turmeric Powder",
-    description: "Premium quality turmeric powder with high curcumin content for natural anti-inflammatory support.",
-    fullDescription: "Our organic turmeric powder is sourced from the finest turmeric roots grown in certified organic farms. Rich in curcumin, this golden spice has been used for thousands of years in traditional medicine for its powerful anti-inflammatory and antioxidant properties.",
-    image: turmericImage,
-    price: "$24.99",
-    originalPrice: "$29.99",
-    rating: 4.8,
-    reviews: 156,
-    isOrganic: true,
-    benefits: ["Anti-inflammatory", "Antioxidant", "Joint Health"],
-    ingredients: ["100% Organic Turmeric Root Powder", "Standardized to 95% Curcumin"],
-    usage: "Take 1-2 teaspoons daily with meals or as directed by your healthcare provider.",
-    origin: "Sourced from organic farms in India"
-  },
+
   // {
   //   id: "2", 
   //   name: "Ashwagandha Root Extract",
@@ -80,6 +65,85 @@ export const products: Product[] = [
   ingredients: ["Organic Green Tea Leaves", "Organic Mint Leaves"],
   usage: "Steep one teaspoon in hot water for 2–3 minutes. Best enjoyed without milk.",
   origin: "Sourced from organic farms in Himachal Pradesh, India"
+  },
+  {
+  id: "10",
+  name: "Organic Ginger Tea",
+  description: "Soothing herbal tea with natural ginger for digestion and immunity support.",
+  fullDescription: "Our organic ginger tea is crafted from pure, sun-dried ginger roots, offering a naturally spicy and warming flavor. Known for aiding digestion, reducing nausea, and boosting immunity, this tea is perfect for daily wellness.",
+  image: gingerTeaImage,
+  price: "$14.99",
+  originalPrice: "$18.99",
+  rating: 4.7,
+  reviews: 132,
+  isOrganic: true,
+  benefits: ["Supports Digestion", "Boosts Immunity", "Relieves Nausea"],
+  ingredients: ["100% Organic Ginger Root"],
+  usage: "Steep one teaspoon in hot water for 3–5 minutes. Enjoy hot or iced.",
+  origin: "Sourced from organic farms in India"
+},
+{
+  id: "11",
+  name: "Organic Jasmine Green Tea",
+  description: "Refreshing green tea infused with jasmine blossoms for relaxation and antioxidants.",
+  fullDescription: "Our organic jasmine green tea is delicately scented with fresh jasmine flowers, creating a calming aroma and smooth taste. Rich in antioxidants, this tea promotes relaxation, skin health, and overall vitality.",
+  image: jasmineGreenTeaImage,
+  price: "$16.99",
+  originalPrice: "$20.99",
+  rating: 4.9,
+  reviews: 178,
+  isOrganic: true,
+  benefits: ["Rich in Antioxidants", "Promotes Relaxation", "Supports Skin Health"],
+  ingredients: ["Organic Green Tea Leaves", "Organic Jasmine Blossoms"],
+  usage: "Steep one teaspoon in hot water for 2–3 minutes. Best enjoyed without milk.",
+  origin: "Sourced from certified organic farms in Assam, India"
+},
+{
+  id: "12",
+  name: "Organic Lemon Tea",
+  description: "Zesty lemon-flavored tea to refresh, detox, and boost energy.",
+  fullDescription: "Our organic lemon tea blends premium tea leaves with natural lemon essence for a tangy, refreshing cup. It helps detoxify the body, boost energy, and improve digestion, making it an ideal daily drink.",
+  image: lemonTeaImage,
+  price: "$13.99",
+  originalPrice: "$17.99",
+  rating: 4.6,
+  reviews: 98,
+  isOrganic: true,
+  benefits: ["Detoxifying", "Energy Boost", "Aids Digestion"],
+  ingredients: ["Organic Tea Leaves", "Natural Lemon Extract"],
+  usage: "Steep one teaspoon in hot water for 3–5 minutes. Add honey for extra flavor.",
+  origin: "Sourced from organic farms in Darjeeling, India"
+},
+{
+  id: "13",
+  name: "Organic Mango Herbal Blend",
+  description: "Fruity herbal infusion with natural mango flavor for a tropical wellness experience.",
+  fullDescription: "Our organic mango herbal blend is a delightful infusion of dried herbs and mango essence. With its tropical sweetness and refreshing aroma, it’s rich in antioxidants and promotes hydration and overall wellness.",
+  image: mangoImage,
+  price: "$15.99",
+  originalPrice: "$19.99",
+  rating: 4.7,
+  reviews: 121,
+  isOrganic: true,
+  benefits: ["Rich in Antioxidants", "Supports Hydration", "Tropical Flavor"],
+  ingredients: ["Organic Herbal Blend", "Natural Mango Extract"],
+  usage: "Steep one teaspoon in hot or cold water for 3–5 minutes. Serve chilled for a refreshing iced tea.",
+  origin: "Sourced from organic farms in India"
+} , {
+    id: "1",
+    name: "Organic Turmeric Powder",
+    description: "Premium quality turmeric powder with high curcumin content for natural anti-inflammatory support.",
+    fullDescription: "Our organic turmeric powder is sourced from the finest turmeric roots grown in certified organic farms. Rich in curcumin, this golden spice has been used for thousands of years in traditional medicine for its powerful anti-inflammatory and antioxidant properties.",
+    image: turmericImage,
+    price: "$24.99",
+    originalPrice: "$29.99",
+    rating: 4.8,
+    reviews: 156,
+    isOrganic: true,
+    benefits: ["Anti-inflammatory", "Antioxidant", "Joint Health"],
+    ingredients: ["100% Organic Turmeric Root Powder", "Standardized to 95% Curcumin"],
+    usage: "Take 1-2 teaspoons daily with meals or as directed by your healthcare provider.",
+    origin: "Sourced from organic farms in India"
   },
   {
     id: "4",
@@ -170,71 +234,7 @@ export const products: Product[] = [
     ingredients: ["100% Pure Spirulina Powder (Arthrospira platensis)", "Naturally cultivated blue-green algae"],
     usage: "Start with 1/2 teaspoon daily, gradually increase to 1-2 teaspoons. Mix into smoothies or water.",
     origin: "Cultivated in pristine alkaline lakes using sustainable methods"
-  },
-  {
-  id: "10",
-  name: "Organic Ginger Tea",
-  description: "Soothing herbal tea with natural ginger for digestion and immunity support.",
-  fullDescription: "Our organic ginger tea is crafted from pure, sun-dried ginger roots, offering a naturally spicy and warming flavor. Known for aiding digestion, reducing nausea, and boosting immunity, this tea is perfect for daily wellness.",
-  image: gingerTeaImage,
-  price: "$14.99",
-  originalPrice: "$18.99",
-  rating: 4.7,
-  reviews: 132,
-  isOrganic: true,
-  benefits: ["Supports Digestion", "Boosts Immunity", "Relieves Nausea"],
-  ingredients: ["100% Organic Ginger Root"],
-  usage: "Steep one teaspoon in hot water for 3–5 minutes. Enjoy hot or iced.",
-  origin: "Sourced from organic farms in India"
-},
-{
-  id: "11",
-  name: "Organic Jasmine Green Tea",
-  description: "Refreshing green tea infused with jasmine blossoms for relaxation and antioxidants.",
-  fullDescription: "Our organic jasmine green tea is delicately scented with fresh jasmine flowers, creating a calming aroma and smooth taste. Rich in antioxidants, this tea promotes relaxation, skin health, and overall vitality.",
-  image: jasmineGreenTeaImage,
-  price: "$16.99",
-  originalPrice: "$20.99",
-  rating: 4.9,
-  reviews: 178,
-  isOrganic: true,
-  benefits: ["Rich in Antioxidants", "Promotes Relaxation", "Supports Skin Health"],
-  ingredients: ["Organic Green Tea Leaves", "Organic Jasmine Blossoms"],
-  usage: "Steep one teaspoon in hot water for 2–3 minutes. Best enjoyed without milk.",
-  origin: "Sourced from certified organic farms in Assam, India"
-},
-{
-  id: "12",
-  name: "Organic Lemon Tea",
-  description: "Zesty lemon-flavored tea to refresh, detox, and boost energy.",
-  fullDescription: "Our organic lemon tea blends premium tea leaves with natural lemon essence for a tangy, refreshing cup. It helps detoxify the body, boost energy, and improve digestion, making it an ideal daily drink.",
-  image: lemonTeaImage,
-  price: "$13.99",
-  originalPrice: "$17.99",
-  rating: 4.6,
-  reviews: 98,
-  isOrganic: true,
-  benefits: ["Detoxifying", "Energy Boost", "Aids Digestion"],
-  ingredients: ["Organic Tea Leaves", "Natural Lemon Extract"],
-  usage: "Steep one teaspoon in hot water for 3–5 minutes. Add honey for extra flavor.",
-  origin: "Sourced from organic farms in Darjeeling, India"
-},
-{
-  id: "13",
-  name: "Organic Mango Herbal Blend",
-  description: "Fruity herbal infusion with natural mango flavor for a tropical wellness experience.",
-  fullDescription: "Our organic mango herbal blend is a delightful infusion of dried herbs and mango essence. With its tropical sweetness and refreshing aroma, it’s rich in antioxidants and promotes hydration and overall wellness.",
-  image: mangoImage,
-  price: "$15.99",
-  originalPrice: "$19.99",
-  rating: 4.7,
-  reviews: 121,
-  isOrganic: true,
-  benefits: ["Rich in Antioxidants", "Supports Hydration", "Tropical Flavor"],
-  ingredients: ["Organic Herbal Blend", "Natural Mango Extract"],
-  usage: "Steep one teaspoon in hot or cold water for 3–5 minutes. Serve chilled for a refreshing iced tea.",
-  origin: "Sourced from organic farms in India"
-}
+  }
 
 ];
 
