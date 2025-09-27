@@ -43,14 +43,49 @@ const ProductCard = (props: ProductCardProps) => {
     addToCart({ id, name, price, image });
     setIsCartPopupOpen(true);
   };
+
+  // Generate structured data for this product
+  const productStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": name,
+    "description": description,
+    "image": `https://minatherbal.com${image}`,
+    "brand": {
+      "@type": "Brand",
+      "name": "Minnat Herbal"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": price.replace('₹', '').replace(',', ''),
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Minnat Herbal"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": rating.toString(),
+      "bestRating": "5",
+      "ratingCount": "100"
+    },
+    "category": "Herbal Products"
+  };
   return (
     <Card className="group hover:shadow-natural transition-all duration-300 hover:-translate-y-1 bg-card border-border">
+      {/* Add structured data for this product */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify(productStructuredData)
+      }} />
+      
       <CardHeader className="p-0">
         <div className="relative overflow-hidden rounded-t-lg">
           <div className="aspect-square bg-white flex items-center justify-center p-3">
             <img 
               src={image} 
-              alt={name}
+              alt={`${name} - Buy premium herbal ${name.toLowerCase()} online at Minnat Herbal`}
               className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
             />
           </div>

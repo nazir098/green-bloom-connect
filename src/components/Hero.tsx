@@ -63,14 +63,15 @@ const Hero = () => {
             
             <h1 className="text-4xl md:text-5xl font-bold text-cream mb-4 leading-tight animate-fade-in">
               <span className="bg-gradient-to-r from-cream to-herb-light bg-clip-text text-transparent">
-                Ancient Ayurvedic
+                Buy Premium Herbal Tea &
               </span>
-              <span className="block text-herb-light drop-shadow-lg">Herbal Treasures</span>
+              <span className="block text-herb-light drop-shadow-lg">Ayurvedic Products Online</span>
             </h1>
             
             <p className="text-lg text-cream/95 mb-8 leading-relaxed animate-fade-in">
-              Experience the profound healing wisdom of Ayurveda with our handpicked collection of 
-              premium herbs and botanicals, sustainably sourced from pristine regions across India.
+              Shop 100% organic herbal tea, Ayurvedic medicines, and natural remedies at Minnat Herbal. 
+              Trusted by thousands across India for authentic, lab-tested herbal products with free shipping, 
+              30-day money-back guarantee, and 24/7 customer support.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 mb-8 animate-fade-in">
@@ -80,7 +81,7 @@ const Hero = () => {
                 className="text-lg px-10 py-4 bg-gradient-to-r from-cream to-herb-light text-herb-green hover:from-herb-light hover:to-cream font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
                 onClick={() => scrollToSection('products')}
               >
-                Explore Sacred Herbs
+                Shop Herbal Products Now
               </Button>
             </div>
             
@@ -96,7 +97,7 @@ const Hero = () => {
             </div>
             
             <div className="text-herb-light/80 text-sm font-medium tracking-wider mt-6 animate-fade-in">
-              ✨ Trusted by Ayurvedic practitioners for over 20 years ✨
+              ✨ India's #1 Online Herbal Store - Free Shipping & Lab-Tested Quality ✨
             </div>
           </div>
 

@@ -12,3 +12,20 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Important pages for SEO
+Allow: /products
+Allow: /search
+Allow: /about
+Allow: /contact
+
+# Sitemap location
+Sitemap: https://minatherbal.com/sitemap.xml
+
+# Optimize crawl budget
+Crawl-delay: 1
+
+# Block unnecessary files
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /admin/
