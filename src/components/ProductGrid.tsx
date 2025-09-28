@@ -1,10 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import AllProducts from "./AllProducts";
-import { featuredProducts } from "@/data/products";
+import { supabase } from "@/integrations/supabase/client";
+
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  price: number;
+  original_price?: number;
+  rating: number;
+  benefits: string[];
+  ingredients?: string;
+  usage?: string;
+  origin?: string;
+  is_organic: boolean;
+  is_featured: boolean;
+}
 
 const ProductGrid = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchFeaturedProducts();
+  }, []);
+
+  const fetchFeaturedProducts = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('is_featured', true)
+        .limit(4);
+
+      if (error) {
+        console.error('Error fetching featured products:', error);
+        return;
+      }
+
+      setFeaturedProducts(data || []);
+    } catch (error) {
+      console.error('Error fetching featured products:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section id="products" className="py-16 bg-gradient-to-b from-background via-herb-light/5 to-background">
@@ -22,11 +65,37 @@ const ProductGrid = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="animate-pulse">
+                <div className="bg-muted rounded-lg h-64 mb-4"></div>
+                <div className="bg-muted rounded h-4 mb-2"></div>
+                <div className="bg-muted rounded h-4 w-3/4"></div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {featuredProducts.map((product) => (
+              <ProductCard 
+                key={product.id} 
+                id={product.id}
+                name={product.name}
+                description={product.description}
+                image={product.image}
+                price={product.price.toString()}
+                originalPrice={product.original_price?.toString()}
+                rating={product.rating}
+                benefits={product.benefits || []}
+                ingredients={product.ingredients ? [product.ingredients] : undefined}
+                usage={product.usage}
+                origin={product.origin}
+                isOrganic={product.is_organic}
+              />
+            ))}
+          </div>
+        )}
         
         <div className="text-center mt-12">
           <button 
