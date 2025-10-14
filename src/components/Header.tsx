@@ -1,7 +1,5 @@
-import { ShoppingCart, Search, Menu, X, LogOut, User } from "lucide-react";
+import { ShoppingCart, Search, Menu, X, User } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Mail } from "lucide-react";
@@ -11,7 +9,6 @@ import { useCart } from "@/contexts/CartContext";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cartCount } = useCart();
-  const { user, signOut } = useAuth();
   
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -82,35 +79,6 @@ const Header = () => {
           <Phone className="w-4 h-4 mr-1" />
           Contact
         </Button>
-        
-        {user ? (
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-sm">
-              <User className="w-4 h-4" />
-              <span className="hidden sm:inline">Welcome!</span>
-            </div>
-            <Button
-              onClick={signOut}
-              variant="outline"
-              size="sm"
-              className="flex items-center gap-2"
-            >
-              <LogOut className="w-4 h-4" />
-              <span className="hidden sm:inline">Logout</span>
-            </Button>
-          </div>
-        ) : (
-          <Link to="/auth">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="flex items-center gap-2 hover:bg-herb-light/20"
-            >
-              <User className="w-4 h-4" />
-              <span className="hidden sm:inline">Login</span>
-            </Button>
-          </Link>
-        )}
         
         <Button 
           variant="herbal" 

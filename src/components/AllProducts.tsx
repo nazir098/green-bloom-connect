@@ -1,23 +1,6 @@
-import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import ProductCard from "./ProductCard";
-import { supabase } from "@/integrations/supabase/client";
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-  original_price?: number;
-  rating: number;
-  benefits: string[];
-  ingredients?: string;
-  usage?: string;
-  origin?: string;
-  is_organic: boolean;
-  is_featured: boolean;
-}
+import { products } from "@/data/products";
 
 interface AllProductsProps {
   isOpen: boolean;
@@ -25,34 +8,6 @@ interface AllProductsProps {
 }
 
 const AllProducts = ({ isOpen, onClose }: AllProductsProps) => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (isOpen) {
-      fetchAllProducts();
-    }
-  }, [isOpen]);
-
-  const fetchAllProducts = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('products')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching products:', error);
-        return;
-      }
-
-      setProducts(data || []);
-    } catch (error) {
-      console.error('Error fetching products:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (!isOpen) return null;
 
@@ -70,37 +25,25 @@ const AllProducts = ({ isOpen, onClose }: AllProductsProps) => {
         </div>
         
         <div className="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
-          {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {[...Array(8)].map((_, i) => (
-                <div key={i} className="animate-pulse">
-                  <div className="bg-muted rounded-lg h-64 mb-4"></div>
-                  <div className="bg-muted rounded h-4 mb-2"></div>
-                  <div className="bg-muted rounded h-4 w-3/4"></div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {products.map((product) => (
-                <ProductCard 
-                  key={product.id} 
-                  id={product.id}
-                  name={product.name}
-                  description={product.description}
-                  image={product.image}
-                  price={product.price.toString()}
-                  originalPrice={product.original_price?.toString()}
-                  rating={product.rating}
-                  benefits={product.benefits || []}
-                  ingredients={product.ingredients ? [product.ingredients] : undefined}
-                  usage={product.usage}
-                  origin={product.origin}
-                  isOrganic={product.is_organic}
-                />
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {products.map((product) => (
+              <ProductCard 
+                key={product.id} 
+                id={product.id}
+                name={product.name}
+                description={product.description}
+                image={product.image}
+                price={product.price}
+                originalPrice={product.originalPrice}
+                rating={product.rating}
+                benefits={product.benefits}
+                ingredients={product.ingredients}
+                usage={product.usage}
+                origin={product.origin}
+                isOrganic={product.isOrganic}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
