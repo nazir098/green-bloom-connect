@@ -8,6 +8,7 @@ import { useCart } from "@/contexts/CartContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Cart from "@/components/Cart";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import { getProductById } from "@/data/products";
 
 const ProductDetail = () => {
@@ -62,17 +63,17 @@ const ProductDetail = () => {
           Back to Products
         </Button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Product Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+          {/* Product Image - Optimized for mobile */}
           <div className="space-y-4">
             <div className="relative overflow-hidden rounded-lg">
               <img 
                 src={product.image} 
                 alt={product.name}
-                className="w-full h-96 object-cover rounded-lg"
+                className="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-lg"
               />
               {product.isOrganic && (
-                <Badge className="absolute top-4 left-4 bg-herb-green text-cream">
+                <Badge className="absolute top-3 left-3 bg-herb-green text-cream">
                   <Leaf className="w-3 h-3 mr-1" />
                   Organic
                 </Badge>
@@ -81,22 +82,22 @@ const ProductDetail = () => {
           </div>
 
           {/* Product Info */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div>
-              <h1 className="text-3xl font-bold text-foreground mb-2">{product.name}</h1>
-              <div className="flex items-center gap-2 mb-4">
+              <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">{product.name}</h1>
+              <div className="flex items-center gap-2 mb-3 sm:mb-4">
                 <div className="flex items-center gap-1">
-                  <Star className="w-5 h-5 fill-current text-herb-light" />
-                  <span className="font-medium">{product.rating}</span>
+                  <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-herb-light" />
+                  <span className="font-medium text-sm sm:text-base">{product.rating}</span>
                 </div>
-                <span className="text-muted-foreground">({product.reviews || 0} reviews)</span>
+                <span className="text-muted-foreground text-sm sm:text-base">({product.reviews || 0} reviews)</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <span className="text-3xl font-bold text-herb-green">{product.price}</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-2xl sm:text-3xl font-bold text-herb-green">{product.price}</span>
               {product.originalPrice && (
-                <span className="text-lg text-muted-foreground line-through">{product.originalPrice}</span>
+                <span className="text-base sm:text-lg text-muted-foreground line-through">{product.originalPrice}</span>
               )}
             </div>
 
@@ -165,6 +166,21 @@ const ProductDetail = () => {
       </div>
 
       <Footer />
+      
+      {/* Mobile Bottom Navigation */}
+      <MobileBottomNav />
+      
+      {/* Sticky Add to Cart button for mobile */}
+      <div className="md:hidden fixed bottom-16 left-0 right-0 p-3 bg-background/95 backdrop-blur-md border-t border-border z-30">
+        <Button 
+          variant="herbal" 
+          className="w-full flex items-center justify-center gap-2"
+          onClick={handleAddToCart}
+        >
+          <ShoppingCart className="w-4 h-4" />
+          Add to Cart - {product.price}
+        </Button>
+      </div>
     </div>
   );
 };

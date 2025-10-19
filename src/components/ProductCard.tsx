@@ -82,7 +82,8 @@ const ProductCard = (props: ProductCardProps) => {
       
       <CardHeader className="p-0">
         <div className="relative overflow-hidden rounded-t-lg">
-          <div className="aspect-square bg-white flex items-center justify-center p-3">
+          {/* Responsive image sizing: smaller on mobile, larger on desktop */}
+          <div className="aspect-square bg-white flex items-center justify-center p-2 sm:p-3">
             <img 
               src={image} 
               alt={`${name} - Buy premium herbal ${name.toLowerCase()} online at Minnat Herbal`}
@@ -90,48 +91,58 @@ const ProductCard = (props: ProductCardProps) => {
             />
           </div>
           {isOrganic && (
-            <Badge className="absolute top-3 left-3 bg-herb-green text-cream">
-              <Leaf className="w-3 h-3 mr-1" />
+            <Badge className="absolute top-2 left-2 bg-herb-green text-cream text-xs">
+              <Leaf className="w-2.5 h-2.5 mr-1" />
               Organic
             </Badge>
           )}
         </div>
       </CardHeader>
       
-      <CardContent className="p-4">
-        <div className="flex items-start justify-between mb-2">
-          <h3 className="font-semibold text-base text-foreground line-clamp-1">{name}</h3>
-          <div className="flex items-center gap-1">
-            <Star className="w-3 h-3 fill-current text-herb-light" />
+      <CardContent className="p-2 sm:p-3 md:p-4">
+        <div className="flex items-start justify-between mb-1 sm:mb-2">
+          <h3 className="font-semibold text-xs sm:text-sm md:text-base text-foreground line-clamp-1 flex-1">{name}</h3>
+          <div className="flex items-center gap-0.5 ml-1">
+            <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-current text-herb-light flex-shrink-0" />
             <span className="text-xs text-muted-foreground">{rating}</span>
           </div>
         </div>
         
-        <p className="text-muted-foreground text-xs mb-3 line-clamp-2">{description}</p>
+        {/* Hide description on mobile for compactness */}
+        <p className="hidden sm:block text-muted-foreground text-xs mb-2 md:mb-3 line-clamp-2">{description}</p>
         
-        <div className="flex flex-wrap gap-1 mb-3">
-          {benefits.slice(0, 2).map((benefit) => (
+        {/* Show only 1 benefit on mobile, 2 on larger screens */}
+        <div className="flex flex-wrap gap-1 mb-2 sm:mb-3">
+          {benefits.slice(0, 1).map((benefit) => (
             <Badge key={benefit} variant="secondary" className="text-xs">
               {benefit}
             </Badge>
           ))}
+          <span className="hidden sm:inline">
+            {benefits.slice(1, 2).map((benefit) => (
+              <Badge key={benefit} variant="secondary" className="text-xs">
+                {benefit}
+              </Badge>
+            ))}
+          </span>
         </div>
         
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xl font-bold text-herb-green">{price}</span>
+        <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+          <span className="text-base sm:text-lg md:text-xl font-bold text-herb-green">{price}</span>
           {originalPrice && (
             <span className="text-xs text-muted-foreground line-through">{originalPrice}</span>
           )}
         </div>
       </CardContent>
       
-      <CardFooter className="p-4 pt-0">
-        <div className="space-y-2">
+      <CardFooter className="p-2 sm:p-3 md:p-4 pt-0">
+        {/* Mobile: only Add to Cart button, Desktop: both buttons */}
+        <div className="space-y-1.5 sm:space-y-2 w-full">
           <Button 
             onClick={handleAddToCart}
             variant="herbal" 
             size="sm"
-            className="w-full flex items-center gap-2"
+            className="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm h-8 sm:h-9"
           >
             <ShoppingCart className="w-3 h-3" />
             Add to Cart
@@ -140,7 +151,7 @@ const ProductCard = (props: ProductCardProps) => {
             onClick={() => setIsModalOpen(true)}
             variant="outline" 
             size="sm"
-            className="w-full"
+            className="w-full text-xs sm:text-sm h-7 sm:h-8 hidden sm:flex"
           >
             View Details
           </Button>

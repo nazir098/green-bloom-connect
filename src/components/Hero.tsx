@@ -36,73 +36,78 @@ const Hero = () => {
   }, [api]);
 
   return (
-    <section id="home" className="py-12 md:py-16 bg-gradient-to-br from-herb-green via-herb-green/95 to-herb-light/30 overflow-hidden">
+    <section id="home" className="py-6 sm:py-8 md:py-12 lg:py-16 bg-gradient-to-br from-herb-green via-herb-green/95 to-herb-light/30 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
           
           {/* Content Section */}
-          <div className="text-left">
-            {/* Brand Logo - Prominent placement for brand recognition */}
-            <div className="flex justify-center lg:justify-start mb-8 animate-fade-in">
+          <div className="text-center lg:text-left">
+            {/* Brand Logo - Smaller on mobile */}
+            <div className="flex justify-center lg:justify-start mb-4 sm:mb-6 lg:mb-8 animate-fade-in">
               <div className="relative">
                 <img 
                   src="/lovable-uploads/e5b20330-587d-421f-889d-efa0d47aa01f.png" 
                   alt="Minnat Herbal - Premium Ayurvedic Herbs" 
-                  className="h-20 w-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                  className="h-12 sm:h-16 lg:h-20 w-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-herb-light/10 rounded-full blur-xl -z-10"></div>
               </div>
             </div>
             
-            <div className="flex items-center gap-3 mb-6 animate-fade-in">
-              <Leaf className="h-7 w-7 text-herb-light animate-pulse" />
-              <span className="text-herb-light font-semibold text-xl italic tracking-widest">
+            {/* Hide tagline on mobile for compactness */}
+            <div className="hidden sm:flex items-center justify-center lg:justify-start gap-3 mb-4 lg:mb-6 animate-fade-in">
+              <Leaf className="h-5 w-5 lg:h-7 lg:w-7 text-herb-light animate-pulse" />
+              <span className="text-herb-light font-semibold text-sm lg:text-xl italic tracking-widest">
                 Healing the World, Naturally
               </span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-cream mb-4 leading-tight animate-fade-in">
+            {/* Responsive heading sizes */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-3 sm:mb-4 leading-tight animate-fade-in">
               <span className="bg-gradient-to-r from-cream to-herb-light bg-clip-text text-transparent">
                 Buy Premium Herbal Tea &
               </span>
               <span className="block text-herb-light drop-shadow-lg">Ayurvedic Products Online</span>
             </h1>
             
-            <p className="text-lg text-cream/95 mb-8 leading-relaxed animate-fade-in">
+            {/* Shorter description on mobile */}
+            <p className="text-sm sm:text-base lg:text-lg text-cream/95 mb-4 sm:mb-6 lg:mb-8 leading-relaxed animate-fade-in line-clamp-3 sm:line-clamp-none">
               Shop 100% organic herbal tea, Ayurvedic medicines, and natural remedies at Minnat Herbal. 
-              Trusted by thousands across India for authentic, lab-tested herbal products with free shipping, 
-              30-day money-back guarantee, and 24/7 customer support.
+              Trusted by thousands across India for authentic, lab-tested herbal products.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 mb-8 animate-fade-in">
+            {/* Smaller CTA on mobile */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mb-4 sm:mb-6 lg:mb-8 animate-fade-in">
               <Button 
                 variant="herbal" 
                 size="lg" 
-                className="text-lg px-10 py-4 bg-gradient-to-r from-cream to-herb-light text-herb-green hover:from-herb-light hover:to-cream font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
+                className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 bg-gradient-to-r from-cream to-herb-light text-herb-green hover:from-herb-light hover:to-cream font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
                 onClick={() => scrollToSection('products')}
               >
-                Shop Herbal Products Now
+                Shop Now
               </Button>
             </div>
             
-            <div className="flex items-center gap-8 text-cream/90 animate-fade-in">
-              <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm hover-scale">
-                <Star className="w-6 h-6 fill-current text-herb-light" />
-                <span className="font-medium">100% Organic</span>
+            {/* Compact trust badges on mobile */}
+            <div className="flex items-center justify-center lg:justify-start gap-3 sm:gap-6 lg:gap-8 text-cream/90 animate-fade-in">
+              <div className="flex items-center gap-1.5 sm:gap-3 bg-white/10 px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm hover-scale">
+                <Star className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 fill-current text-herb-light" />
+                <span className="font-medium text-xs sm:text-sm lg:text-base">100% Organic</span>
               </div>
-              <div className="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm hover-scale">
-                <Award className="w-6 h-6 text-herb-light" />
-                <span className="font-medium">Lab Tested</span>
+              <div className="flex items-center gap-1.5 sm:gap-3 bg-white/10 px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm hover-scale">
+                <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-herb-light" />
+                <span className="font-medium text-xs sm:text-sm lg:text-base">Lab Tested</span>
               </div>
             </div>
             
-            <div className="text-herb-light/80 text-sm font-medium tracking-wider mt-6 animate-fade-in">
+            {/* Hide on mobile */}
+            <div className="hidden sm:block text-herb-light/80 text-xs sm:text-sm font-medium tracking-wider mt-4 sm:mt-6 animate-fade-in">
               ✨ India's #1 Online Herbal Store - Free Shipping & Lab-Tested Quality ✨
             </div>
           </div>
 
-          {/* Carousel Card Section */}
-          <div className="flex justify-center animate-scale-in">
+          {/* Carousel Card Section - Hidden on mobile for compactness */}
+          <div className="hidden lg:flex justify-center animate-scale-in">
             <div className="relative w-full max-w-md">
               <div className="absolute -top-4 -left-4 opacity-20">
                 <Sparkles className="h-8 w-8 text-herb-light animate-pulse" />

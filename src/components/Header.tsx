@@ -30,24 +30,20 @@ const Header = () => {
   };
   return (
 <header className="bg-background/95 backdrop-blur-md border-b border-green-200 sticky top-0 z-50 shadow-sm">
-  <div className="container mx-auto px-4 py-3">
+  <div className="container mx-auto px-3 sm:px-4 py-2 sm:py-3">
     <div className="flex items-center justify-between">
       
-      {/* Logo + Brand Name */}
-      <div className="flex items-center gap-2">
-{/*         <img 
-          src="/lovable-uploads/3bda1951-e127-4971-8585-37f1e595cbf4.png" 
-          alt="Minnat Herbal Logo" 
-          className="h-9 w-9 drop-shadow-sm" 
-        /> */}
-        <span className="text-3xl font-serif font-bold text-green-700 italic tracking-wide drop-shadow-sm">
+      {/* Logo + Brand Name - Smaller on mobile */}
+      <div className="flex items-center gap-1.5 sm:gap-2">
+        <span className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-green-700 italic tracking-wide drop-shadow-sm">
           Minnat Herbal
         </span>
       </div>
 
       {/* Navigation & Search */}
-      <div className="flex items-center gap-6">
-        <nav className="hidden lg:flex items-center gap-8">
+      <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex items-center gap-6 lg:gap-8">
           <a href="#home" className="text-foreground hover:text-green-600 transition-colors font-medium">
             Home
           </a>
@@ -62,28 +58,30 @@ const Header = () => {
           </a>
         </nav>
         
-        {/* Search Component */}
+        {/* Search Component - Hidden on mobile, icon only on tablet */}
         <div className="hidden md:block">
           <ProductSearch />
         </div>
       </div>
 
-      {/* Buttons */}
-      <div className="flex items-center gap-3">
+      {/* Buttons - Compact on mobile */}
+      <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3">
+        {/* Hide on mobile, keep on desktop */}
         <Button 
           variant="outline" 
           size="sm" 
-          className="hidden sm:flex border-green-600 text-green-700 hover:bg-green-50"
+          className="hidden lg:flex border-green-600 text-green-700 hover:bg-green-50"
           onClick={() => scrollToSection('contact')}
         >
           <Phone className="w-4 h-4 mr-1" />
           Contact
         </Button>
         
+        {/* Cart button - Hide on mobile (bottom nav will handle it) */}
         <Button 
           variant="herbal" 
           size="sm"
-          className="bg-green-600 hover:bg-green-700 text-white shadow-md relative"
+          className="hidden md:flex bg-green-600 hover:bg-green-700 text-white shadow-md relative"
           onClick={scrollToCart}
         >
           <ShoppingCart className="w-4 h-4 mr-1" />

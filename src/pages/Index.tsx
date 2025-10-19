@@ -6,6 +6,7 @@ import SEOContent from "@/components/SEOContent";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Cart from "@/components/Cart";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 const Index = () => {
   return (
@@ -49,6 +50,12 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      
+      {/* Mobile Bottom Navigation */}
+      <MobileBottomNav />
+      
+      {/* Add padding to bottom for mobile nav */}
+      <div className="h-16 md:hidden" />
     </div>
   );
 };
