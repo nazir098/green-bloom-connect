@@ -18,6 +18,7 @@ export interface Product {
   description: string;
   fullDescription?: string;
   image: string;
+  images?: string[]; // Multiple images for carousel
   price: string;
   originalPrice?: string;
   rating: number;
@@ -56,6 +57,7 @@ export const products: Product[] = [
   description: "Refreshing green tea infused with mint leaves for digestion and relaxation.",
   fullDescription: "Our organic mint green tea combines premium green tea leaves with refreshing mint. This blend is excellent for digestion, cooling the body, and promoting mental clarity. A perfect cup after meals or on hot days.",
   image: greenTeaImage,
+  images: [greenTeaImage, jasmineGreenTeaImage, lemonTeaImage, gingerTeaImage],
   price: "$14.49",
   originalPrice: "$18.49",
   rating: 4.8,
@@ -66,12 +68,13 @@ export const products: Product[] = [
   usage: "Steep one teaspoon in hot water for 2–3 minutes. Best enjoyed without milk.",
   origin: "Sourced from organic farms in Himachal Pradesh, India"
   },
-  {
+{
   id: "10",
   name: "Organic Ginger Tea",
   description: "Soothing herbal tea with natural ginger for digestion and immunity support.",
   fullDescription: "Our organic ginger tea is crafted from pure, sun-dried ginger roots, offering a naturally spicy and warming flavor. Known for aiding digestion, reducing nausea, and boosting immunity, this tea is perfect for daily wellness.",
   image: gingerTeaImage,
+  images: [gingerTeaImage, gingerImage, lemonTeaImage, mangoImage],
   price: "$14.99",
   originalPrice: "$18.99",
   rating: 4.7,
@@ -88,6 +91,7 @@ export const products: Product[] = [
   description: "Refreshing green tea infused with jasmine blossoms for relaxation and antioxidants.",
   fullDescription: "Our organic jasmine green tea is delicately scented with fresh jasmine flowers, creating a calming aroma and smooth taste. Rich in antioxidants, this tea promotes relaxation, skin health, and overall vitality.",
   image: jasmineGreenTeaImage,
+  images: [jasmineGreenTeaImage, greenTeaImage, lemonTeaImage, gingerTeaImage],
   price: "$16.99",
   originalPrice: "$20.99",
   rating: 4.9,
@@ -104,6 +108,7 @@ export const products: Product[] = [
   description: "Zesty lemon-flavored tea to refresh, detox, and boost energy.",
   fullDescription: "Our organic lemon tea blends premium tea leaves with natural lemon essence for a tangy, refreshing cup. It helps detoxify the body, boost energy, and improve digestion, making it an ideal daily drink.",
   image: lemonTeaImage,
+  images: [lemonTeaImage, greenTeaImage, mangoImage, gingerTeaImage],
   price: "$13.99",
   originalPrice: "$17.99",
   rating: 4.6,
@@ -135,6 +140,7 @@ export const products: Product[] = [
     description: "Premium quality turmeric powder with high curcumin content for natural anti-inflammatory support.",
     fullDescription: "Our organic turmeric powder is sourced from the finest turmeric roots grown in certified organic farms. Rich in curcumin, this golden spice has been used for thousands of years in traditional medicine for its powerful anti-inflammatory and antioxidant properties.",
     image: turmericImage,
+    images: [turmericImage, gingerImage, cinnamonImage, blackPepperImage],
     price: "$24.99",
     originalPrice: "$29.99",
     rating: 4.8,
@@ -151,6 +157,7 @@ export const products: Product[] = [
     description: "Fresh organic ginger root perfect for teas, cooking, and natural digestive support.",
     fullDescription: "Pure organic ginger root powder to support digestive health and natural immunity. Our ginger is carefully dried and ground to preserve its natural oils and active compounds.",
     image: gingerImage,
+    images: [gingerImage, turmericImage, gingerTeaImage, blackPepperImage],
     price: "$15.99",
     rating: 4.6,
     reviews: 98,
@@ -166,6 +173,7 @@ export const products: Product[] = [
     description: "Aged black garlic with enhanced antioxidant properties and mild, sweet flavor.",
     fullDescription: "Premium garlic powder rich in allicin for cardiovascular health and immune support. Our black garlic undergoes a natural fermentation process that enhances its beneficial properties.",
     image: garlicImage,
+    images: [garlicImage, blackPepperImage, gingerImage, turmericImage],
     price: "$28.99",
     rating: 4.5,
     reviews: 76,
@@ -181,6 +189,7 @@ export const products: Product[] = [
     description: "Premium Ceylon cinnamon sticks with sweet, delicate flavor and natural health benefits.",
     fullDescription: "True Ceylon cinnamon powder for blood sugar support and natural sweetness. Our Ceylon cinnamon is the authentic variety, known for its superior quality and health benefits.",
     image: cinnamonImage,
+    images: [cinnamonImage, turmericImage, blackPepperImage, gingerImage],
     price: "$19.99",
     rating: 4.8,
     reviews: 87,
@@ -196,6 +205,7 @@ export const products: Product[] = [
     description: "Freshly ground organic black pepper to enhance nutrient absorption and add natural flavor.",
     fullDescription: "Premium black pepper powder to enhance nutrient absorption and add natural flavor. Our black pepper is freshly ground to preserve its piperine content.",
     image: blackPepperImage,
+    images: [blackPepperImage, turmericImage, cinnamonImage, garlicImage],
     price: "$12.99",
     rating: 4.4,
     reviews: 52,
@@ -211,6 +221,7 @@ export const products: Product[] = [
     description: "Nutrient-dense moringa leaf powder packed with vitamins, minerals, and antioxidants.",
     fullDescription: "Nutrient-dense moringa leaves packed with vitamins, minerals, and essential amino acids. Known as the 'miracle tree', moringa provides complete nutrition in every serving.",
     image: moringaImage,
+    images: [moringaImage, spirulinaImage, greenTeaImage, turmericImage],
     price: "$26.99",
     rating: 4.7,
     reviews: 134,
@@ -226,6 +237,7 @@ export const products: Product[] = [
     description: "Pure spirulina powder rich in protein, vitamins, and minerals for complete nutrition.",
     fullDescription: "Pure spirulina algae powder packed with protein, vitamins, and essential nutrients. This blue-green superfood is one of the most nutrient-dense foods on Earth.",
     image: spirulinaImage,
+    images: [spirulinaImage, moringaImage, greenTeaImage, ashwagandhaImage],
     price: "$23.99",
     rating: 4.6,
     reviews: 112,

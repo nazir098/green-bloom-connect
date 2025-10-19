@@ -10,14 +10,18 @@ import Footer from "@/components/Footer";
 import Cart from "@/components/Cart";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import { getProductById } from "@/data/products";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useState } from "react";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
   const { addToCart } = useCart();
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const product = getProductById(id || "");
+  const displayImages = product?.images && product.images.length > 0 ? product.images : [product?.image || ""];
 
   const handleAddToCart = () => {
     if (product) {
@@ -64,21 +68,60 @@ const ProductDetail = () => {
         </Button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
-          {/* Product Image - Optimized for mobile */}
+          {/* Product Images Carousel - Optimized for mobile */}
           <div className="space-y-4">
+            {/* Main Image Carousel */}
             <div className="relative overflow-hidden rounded-lg">
-              <img 
-                src={product.image} 
-                alt={product.name}
-                className="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-lg"
-              />
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {displayImages.map((img, index) => (
+                    <CarouselItem key={index}>
+                      <div className="relative">
+                        <img 
+                          src={img} 
+                          alt={`${product.name} - View ${index + 1}`}
+                          className="w-full h-64 sm:h-80 lg:h-[500px] object-cover rounded-lg cursor-zoom-in"
+                          onClick={() => setSelectedImageIndex(index)}
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                {displayImages.length > 1 && (
+                  <>
+                    <CarouselPrevious className="left-2" />
+                    <CarouselNext className="right-2" />
+                  </>
+                )}
+              </Carousel>
               {product.isOrganic && (
-                <Badge className="absolute top-3 left-3 bg-herb-green text-cream">
+                <Badge className="absolute top-3 left-3 bg-herb-green text-cream z-10">
                   <Leaf className="w-3 h-3 mr-1" />
                   Organic
                 </Badge>
               )}
             </div>
+
+            {/* Thumbnail Images */}
+            {displayImages.length > 1 && (
+              <div className="grid grid-cols-4 gap-2 sm:gap-3">
+                {displayImages.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`relative aspect-square rounded-md overflow-hidden border-2 transition-all hover:border-herb-green ${
+                      selectedImageIndex === index ? 'border-herb-green ring-2 ring-herb-green' : 'border-border'
+                    }`}
+                  >
+                    <img 
+                      src={img} 
+                      alt={`${product.name} thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Info */}

@@ -6,6 +6,7 @@ import { Star, Leaf, ShoppingCart } from "lucide-react";
 import ProductDetailModal from "./ProductDetailModal";
 import { CartPopup } from "./CartPopup";
 import { useCart } from "@/contexts/CartContext";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 interface ProductCardProps {
   id: string;
@@ -20,6 +21,7 @@ interface ProductCardProps {
   ingredients?: string[];
   usage?: string;
   origin?: string;
+  images?: string[];
 }
 
 const ProductCard = (props: ProductCardProps) => {
@@ -32,12 +34,15 @@ const ProductCard = (props: ProductCardProps) => {
     name, 
     description, 
     image, 
+    images,
     price, 
     originalPrice, 
     rating, 
     isOrganic = true, 
     benefits 
   } = props;
+
+  const displayImages = images && images.length > 0 ? images : [image];
 
   const handleAddToCart = () => {
     addToCart({ id, name, price, image });
@@ -82,19 +87,40 @@ const ProductCard = (props: ProductCardProps) => {
       
       <CardHeader className="p-0">
         <div className="relative overflow-hidden rounded-t-lg">
-          {/* Responsive image sizing: smaller on mobile, larger on desktop */}
-          <div className="aspect-square bg-white flex items-center justify-center p-2 sm:p-3">
-            <img 
-              src={image} 
-              alt={`${name} - Buy premium herbal ${name.toLowerCase()} online at Minnat Herbal`}
-              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
+          {/* Image Carousel for multiple product images */}
+          <Carousel className="w-full">
+            <CarouselContent>
+              {displayImages.map((img, index) => (
+                <CarouselItem key={index}>
+                  <div className="aspect-square bg-white flex items-center justify-center p-2 sm:p-3">
+                    <img 
+                      src={img} 
+                      alt={`${name} - View ${index + 1}`}
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            {displayImages.length > 1 && (
+              <>
+                <CarouselPrevious className="left-1 h-6 w-6 sm:h-7 sm:w-7" />
+                <CarouselNext className="right-1 h-6 w-6 sm:h-7 sm:w-7" />
+              </>
+            )}
+          </Carousel>
           {isOrganic && (
-            <Badge className="absolute top-2 left-2 bg-herb-green text-cream text-xs">
+            <Badge className="absolute top-2 left-2 bg-herb-green text-cream text-xs z-10">
               <Leaf className="w-2.5 h-2.5 mr-1" />
               Organic
             </Badge>
+          )}
+          {displayImages.length > 1 && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+              {displayImages.map((_, index) => (
+                <div key={index} className="w-1 h-1 rounded-full bg-white/60" />
+              ))}
+            </div>
           )}
         </div>
       </CardHeader>

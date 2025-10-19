@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Star, ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { CartPopup } from "./CartPopup";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 interface Product {
   id: string;
@@ -13,6 +14,7 @@ interface Product {
   description: string;
   fullDescription?: string;
   image: string;
+  images?: string[];
   price: string;
   originalPrice?: string;
   rating: number;
@@ -34,6 +36,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen
   const { addToCart } = useCart();
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
   const [addedItem, setAddedItem] = useState<{ name: string; image: string; price: string } | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const displayImages = product.images && product.images.length > 0 ? product.images : [product.image];
 
   const handleAddToCart = () => {
     const item = {
@@ -55,22 +60,59 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen
         </DialogHeader>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Product Image */}
+          {/* Product Images Carousel */}
           <div className="space-y-4">
+            {/* Main Carousel */}
             <div className="relative">
-              <div className="aspect-square bg-white rounded-lg p-8 flex items-center justify-center">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-contain"
-                />
-              </div>
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {displayImages.map((img, index) => (
+                    <CarouselItem key={index}>
+                      <div className="aspect-square bg-white rounded-lg p-8 flex items-center justify-center">
+                        <img
+                          src={img}
+                          alt={`${product.name} - View ${index + 1}`}
+                          className="w-full h-full object-contain cursor-zoom-in"
+                          onClick={() => setSelectedImageIndex(index)}
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                {displayImages.length > 1 && (
+                  <>
+                    <CarouselPrevious className="left-2" />
+                    <CarouselNext className="right-2" />
+                  </>
+                )}
+              </Carousel>
               {product.isOrganic && (
-                <Badge className="absolute top-4 left-4 bg-green-600 hover:bg-green-700">
+                <Badge className="absolute top-4 left-4 bg-green-600 hover:bg-green-700 z-10">
                   Organic
                 </Badge>
               )}
             </div>
+
+            {/* Thumbnail Images */}
+            {displayImages.length > 1 && (
+              <div className="grid grid-cols-4 gap-2">
+                {displayImages.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`relative aspect-square rounded-md overflow-hidden border-2 transition-all hover:border-herb-green ${
+                      selectedImageIndex === index ? 'border-herb-green ring-2 ring-herb-green' : 'border-border'
+                    }`}
+                  >
+                    <img 
+                      src={img} 
+                      alt={`${product.name} thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Info */}
