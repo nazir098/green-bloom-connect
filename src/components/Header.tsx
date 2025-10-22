@@ -1,30 +1,14 @@
-import { ShoppingCart, Search, Menu, X, User, LogOut } from "lucide-react";
+import { ShoppingCart, Search, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Mail } from "lucide-react";
 import ProductSearch from "./ProductSearch";
 import { useCart } from "@/contexts/CartContext";
-import { useAuth } from "@/contexts/AuthContext";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { toast } from "sonner";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cartCount } = useCart();
-  const { user, signOut } = useAuth();
-  
-  const handleSignOut = async () => {
-    await signOut();
-    toast.success("Signed out successfully");
-  };
   
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -108,25 +92,6 @@ const Header = () => {
             </Badge>
           )}
         </Button>
-
-        {/* User menu */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="sm" className="hidden md:flex">
-              <User className="w-4 h-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>
-              {user?.email}
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleSignOut}>
-              <LogOut className="w-4 h-4 mr-2" />
-              Sign Out
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
 
     </div>
