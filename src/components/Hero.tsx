@@ -65,15 +65,15 @@ const Hero = () => {
             {/* Responsive heading sizes */}
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-3 sm:mb-4 leading-tight animate-fade-in">
               <span className="bg-gradient-to-r from-cream to-herb-light bg-clip-text text-transparent">
-                Buy Premium Herbal Tea &
+                Premium Herbal Tea & Ayurvedic Products
               </span>
-              <span className="block text-herb-light drop-shadow-lg">Ayurvedic Products Online</span>
+              <span className="block text-herb-light drop-shadow-lg">Retail & Bulk Import/Export</span>
             </h1>
             
             {/* Shorter description on mobile */}
             <p className="text-sm sm:text-base lg:text-lg text-cream/95 mb-4 sm:mb-6 lg:mb-8 leading-relaxed animate-fade-in line-clamp-3 sm:line-clamp-none">
               Shop 100% organic herbal tea, Ayurvedic medicines, and natural remedies at Minnat Herbal. 
-              Trusted by thousands across India for authentic, lab-tested herbal products.
+              Serving retail customers and bulk import/export orders. Trusted by thousands across India for authentic, lab-tested herbal products.
             </p>
             
             {/* Smaller CTA on mobile */}
