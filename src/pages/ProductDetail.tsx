@@ -11,7 +11,7 @@ import Cart from "@/components/Cart";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import { getProductById } from "@/data/products";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -21,6 +21,11 @@ const ProductDetail = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const product = getProductById(id || "");
+
+  // Scroll to top when product changes, without auto-scrolling during page interaction
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [id]);
   const displayImages = product?.images && product.images.length > 0 ? product.images : [product?.image || ""];
 
   const handleAddToCart = () => {

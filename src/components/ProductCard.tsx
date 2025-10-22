@@ -129,7 +129,12 @@ const ProductCard = (props: ProductCardProps) => {
       
       <CardContent className="p-2 sm:p-3 md:p-4">
         <div className="flex items-start justify-between mb-1 sm:mb-2">
-          <h3 className="font-semibold text-xs sm:text-sm md:text-base text-foreground line-clamp-1 flex-1">{name}</h3>
+          <h3 
+            className="font-semibold text-xs sm:text-sm md:text-base text-foreground line-clamp-1 flex-1 cursor-pointer hover:text-herb-green transition-colors"
+            onClick={() => navigate(`/product/${id}`)}
+          >
+            {name}
+          </h3>
           <div className="flex items-center gap-0.5 ml-1">
             <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-current text-herb-light flex-shrink-0" />
             <span className="text-xs text-muted-foreground">{rating}</span>
