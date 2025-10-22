@@ -7,6 +7,7 @@ import ProductDetailModal from "./ProductDetailModal";
 import { CartPopup } from "./CartPopup";
 import { useCart } from "@/contexts/CartContext";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   id: string;
@@ -28,6 +29,7 @@ const ProductCard = (props: ProductCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
   const { addToCart } = useCart();
+  const navigate = useNavigate();
   
   const { 
     id,
@@ -86,7 +88,7 @@ const ProductCard = (props: ProductCardProps) => {
       }} />
       
       <CardHeader className="p-0">
-        <div className="relative overflow-hidden rounded-t-lg">
+        <div className="relative overflow-hidden rounded-t-lg cursor-pointer" onClick={() => navigate(`/product/${id}`)}>
           {/* Image Carousel for multiple product images */}
           <Carousel className="w-full">
             <CarouselContent>
@@ -162,26 +164,15 @@ const ProductCard = (props: ProductCardProps) => {
       </CardContent>
       
       <CardFooter className="p-2 sm:p-3 md:p-4 pt-0">
-        {/* Mobile: only Add to Cart button, Desktop: both buttons */}
-        <div className="space-y-1.5 sm:space-y-2 w-full">
-          <Button 
-            onClick={handleAddToCart}
-            variant="herbal" 
-            size="sm"
-            className="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm h-8 sm:h-9"
-          >
-            <ShoppingCart className="w-3 h-3" />
-            Add to Cart
-          </Button>
-          <Button 
-            onClick={() => setIsModalOpen(true)}
-            variant="outline" 
-            size="sm"
-            className="w-full text-xs sm:text-sm h-7 sm:h-8 hidden sm:flex"
-          >
-            View Details
-          </Button>
-        </div>
+        <Button 
+          onClick={handleAddToCart}
+          variant="herbal" 
+          size="sm"
+          className="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm h-8 sm:h-9"
+        >
+          <ShoppingCart className="w-3 h-3" />
+          Add to Cart
+        </Button>
       </CardFooter>
       
       <ProductDetailModal 
