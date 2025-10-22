@@ -65,7 +65,15 @@ const ProductDetail = () => {
       <div className="container mx-auto px-4 py-8">
         <Button 
           variant="outline" 
-          onClick={() => navigate("/")}
+          onClick={() => {
+            navigate("/");
+            setTimeout(() => {
+              const element = document.getElementById('products');
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }, 100);
+          }}
           className="mb-8 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -77,7 +85,7 @@ const ProductDetail = () => {
           <div className="space-y-4">
             {/* Main Image Carousel */}
             <div className="relative overflow-hidden rounded-lg">
-              <Carousel className="w-full">
+              <Carousel className="w-full" opts={{ loop: true }}>
                 <CarouselContent>
                   {displayImages.map((img, index) => (
                     <CarouselItem key={index}>
