@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Leaf, Star, Award, Sparkles } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useEffect, useState } from "react";
 import { products } from "@/data/products";
 import heroImage from "@/assets/hero-herbs.jpg";
+import Autoplay from "embla-carousel-autoplay";
 
 const Hero = () => {
-  const [api, setApi] = useState<any>(null);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -23,21 +21,6 @@ const Hero = () => {
       title: product.name
     }))
   ];
-
-  // Auto-advance carousel every 3 seconds
-  useEffect(() => {
-    if (!api) return;
-
-    const interval = setInterval(() => {
-      if (api.canScrollNext()) {
-        api.scrollNext();
-      } else {
-        api.scrollTo(0);
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [api]);
 
   return (
     <section id="home" className="py-6 sm:py-8 md:py-12 lg:py-16 bg-gradient-to-br from-herb-green via-herb-green/95 to-herb-light/30 overflow-hidden">
@@ -121,9 +104,13 @@ const Hero = () => {
               </div>
               
               <Carousel 
-                setApi={setApi}
                 className="w-full"
                 opts={{ loop: true }}
+                plugins={[
+                  Autoplay({
+                    delay: 3000,
+                  }),
+                ]}
               >
                 <CarouselContent>
                   {herbalImages.map((image, index) => (
