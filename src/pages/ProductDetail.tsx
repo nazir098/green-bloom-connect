@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 import Cart from "@/components/Cart";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import { getProductById } from "@/data/products";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 
 const ProductDetail = () => {
@@ -19,6 +19,7 @@ const ProductDetail = () => {
   const { toast } = useToast();
   const { addToCart } = useCart();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
   const product = getProductById(id || "");
 
@@ -26,6 +27,21 @@ const ProductDetail = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [id]);
+
+  // Sync carousel with selected image index
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const onSelect = () => {
+      setSelectedImageIndex(carouselApi.selectedScrollSnap());
+    };
+
+    carouselApi.on("select", onSelect);
+    return () => {
+      carouselApi.off("select", onSelect);
+    };
+  }, [carouselApi]);
+
   const displayImages = product?.images && product.images.length > 0 ? product.images : [product?.image || ""];
 
   const handleAddToCart = () => {
@@ -85,7 +101,7 @@ const ProductDetail = () => {
           <div className="space-y-4">
             {/* Main Image Carousel */}
             <div className="relative overflow-hidden rounded-lg">
-              <Carousel className="w-full" opts={{ loop: true }}>
+              <Carousel className="w-full" opts={{ loop: true }} setApi={setCarouselApi}>
                 <CarouselContent>
                   {displayImages.map((img, index) => (
                     <CarouselItem key={index}>
@@ -121,7 +137,10 @@ const ProductDetail = () => {
                 {displayImages.map((img, index) => (
                   <button
                     key={index}
-                    onClick={() => setSelectedImageIndex(index)}
+                    onClick={() => {
+                      setSelectedImageIndex(index);
+                      carouselApi?.scrollTo(index);
+                    }}
                     className={`relative aspect-square rounded-md overflow-hidden border-2 transition-all hover:border-herb-green ${
                       selectedImageIndex === index ? 'border-herb-green ring-2 ring-herb-green' : 'border-border'
                     }`}
