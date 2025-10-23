@@ -4,6 +4,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { products } from "@/data/products";
 import heroImage from "@/assets/hero-herbs.jpg";
 import Autoplay from "embla-carousel-autoplay";
+import { OptimizedImage } from "./OptimizedImage";
+import { SIZES } from "@/config/imageConfig";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -116,10 +118,13 @@ const Hero = () => {
                   {herbalImages.map((image, index) => (
                     <CarouselItem key={index}>
                       <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl border border-herb-light/20 hover-scale transition-all duration-500">
-                        <img 
+                        <OptimizedImage
                           src={image.src} 
                           alt={image.alt}
                           className="w-full h-full object-cover object-center transition-transform duration-700"
+                          loading={index === 0 ? "eager" : "lazy"}
+                          priority={index === 0}
+                          sizes={SIZES.hero}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-herb-green/60 via-transparent to-transparent"></div>
                         <div className="absolute bottom-4 left-4 right-4">

@@ -12,6 +12,8 @@ import MobileBottomNav from "@/components/MobileBottomNav";
 import { getProductById } from "@/data/products";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
+import { OptimizedImage } from "@/components/OptimizedImage";
+import { SIZES } from "@/config/imageConfig";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -106,11 +108,13 @@ const ProductDetail = () => {
                   {displayImages.map((img, index) => (
                     <CarouselItem key={index}>
                       <div className="relative">
-                        <img 
+                        <OptimizedImage
                           src={img} 
                           alt={`${product.name} - View ${index + 1}`}
                           className="w-full h-64 sm:h-80 lg:h-[500px] object-cover rounded-lg cursor-zoom-in"
-                          onClick={() => setSelectedImageIndex(index)}
+                          loading="eager"
+                          priority={index === 0}
+                          sizes={SIZES.productDetail}
                         />
                       </div>
                     </CarouselItem>
@@ -145,10 +149,12 @@ const ProductDetail = () => {
                       selectedImageIndex === index ? 'border-herb-green ring-2 ring-herb-green' : 'border-border'
                     }`}
                   >
-                    <img 
+                    <OptimizedImage
                       src={img} 
                       alt={`${product.name} thumbnail ${index + 1}`}
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      sizes={SIZES.thumbnail}
                     />
                   </button>
                 ))}

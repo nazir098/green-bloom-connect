@@ -8,6 +8,8 @@ import { CartPopup } from "./CartPopup";
 import { useCart } from "@/contexts/CartContext";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useNavigate } from "react-router-dom";
+import { OptimizedImage } from "./OptimizedImage";
+import { SIZES } from "@/config/imageConfig";
 
 interface ProductCardProps {
   id: string;
@@ -95,10 +97,12 @@ const ProductCard = (props: ProductCardProps) => {
               {displayImages.map((img, index) => (
                 <CarouselItem key={index}>
                   <div className="aspect-square bg-white flex items-center justify-center p-2 sm:p-3">
-                    <img 
+                    <OptimizedImage
                       src={img} 
                       alt={`${name} - View ${index + 1}`}
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      sizes={SIZES.productCard}
                     />
                   </div>
                 </CarouselItem>

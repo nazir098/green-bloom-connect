@@ -1,18 +1,124 @@
 # Product Images Directory
 
-Place your product images here with recommended specifications:
-- **Dimensions:** 400x400 pixels (1:1 aspect ratio)
-- **Format:** PNG (with transparency) or JPG
-- **Size:** Under 500KB each
-- **Background:** Clean, preferably white or transparent
-- **Naming:** Use descriptive names (e.g., turmeric-powder.jpg)
+## Optimized Image Specifications
+
+Place your product images here following these specifications for best mobile and desktop performance:
+
+### 📱 Product Card Images (Listing Pages)
+- **Dimensions:** 800 × 800 pixels (1:1 aspect ratio)
+- **Format:** JPG (best compression) or PNG (if transparency needed)
+- **File Size:** Under 150KB
+- **Use Case:** Product grid, search results, recommendations
+
+### 🖼️ Product Detail Images (Main View)
+- **Dimensions:** 1200 × 1200 pixels (1:1 aspect ratio)
+- **Format:** JPG or PNG
+- **File Size:** Under 250KB
+- **Use Case:** Product detail page main carousel
+
+### 🔍 Thumbnail Images
+- **Dimensions:** 400 × 400 pixels (1:1 aspect ratio)
+- **Format:** JPG or PNG
+- **File Size:** Under 50KB
+- **Use Case:** Image gallery thumbnails, quick preview
+
+### 🎨 Hero/Banner Images
+- **Dimensions:** 1920 × 1080 pixels (16:9 aspect ratio)
+- **Format:** JPG (preferred for large images)
+- **File Size:** Under 400KB
+- **Use Case:** Homepage hero section, promotional banners
+
+## Image Optimization Tips
+
+### Compression Tools
+- **TinyPNG** (https://tinypng.com) - Best for PNG compression
+- **Squoosh** (https://squoosh.app) - Advanced compression with preview
+- **ImageOptim** - Mac app for batch optimization
+- **JPEG-Optimizer** - Online JPEG compression
+
+### Format Guidelines
+1. **Use JPG for:** Photos, product images with complex colors
+2. **Use PNG for:** Images requiring transparency, simple graphics
+3. **Consider WebP:** Modern format with 30% better compression (auto-handled by site)
+
+### Naming Convention
+Use descriptive, SEO-friendly names:
+```
+✅ turmeric-powder-organic-100g.jpg
+✅ green-tea-leaves-premium.jpg
+❌ IMG_1234.jpg
+❌ photo.jpg
+```
+
+### Quality Settings
+- **Product Cards:** 80-85% quality
+- **Detail Images:** 85-90% quality
+- **Thumbnails:** 75-80% quality
+- **Hero Images:** 80-85% quality
 
 ## Usage Instructions
 
-1. Add your product images to this folder
-2. Import them in `/src/data/products.ts`
-3. Update the product entries to use your images
-4. Your images will automatically appear throughout the website
+1. **Prepare Images:**
+   - Resize to recommended dimensions
+   - Compress using tools above
+   - Use descriptive file names
+   - Test on mobile devices
+
+2. **Add to Project:**
+   ```bash
+   # Place files in this directory
+   src/assets/products/your-image-name.jpg
+   ```
+
+3. **Import in Code:**
+   ```typescript
+   import productImage from '@/assets/products/turmeric-powder.jpg';
+   ```
+
+4. **Update Product Data:**
+   ```typescript
+   // In src/data/products.ts
+   {
+     id: "turmeric",
+     name: "Organic Turmeric",
+     image: productImage,
+     images: [image1, image2, image3], // Multiple angles
+     // ... other properties
+   }
+   ```
+
+## Automated Optimization
+
+The site automatically handles:
+- ✅ Lazy loading for below-fold images
+- ✅ Responsive image sizing based on device
+- ✅ Loading skeletons during image load
+- ✅ WebP format with fallbacks
+- ✅ Proper aspect ratios maintained
+
+## Performance Checklist
+
+Before adding images, verify:
+- [ ] Correct dimensions for use case
+- [ ] File size within recommended limits
+- [ ] Descriptive alt text ready
+- [ ] Compressed using optimization tools
+- [ ] Tested on mobile network (3G simulation)
+- [ ] Multiple angles/views for detail pages
+
+## Mobile-First Guidelines
+
+Priority loading order:
+1. **First:** Above-fold images (hero, first products)
+2. **Second:** Visible product cards in viewport
+3. **Third:** Below-fold images (lazy loaded)
+
+For mobile optimization:
+- Reduce file sizes by 20-30% for mobile-specific images
+- Use 1:1 aspect ratio for consistent grid layout
+- Test on slow network (throttle to 3G in DevTools)
+- Ensure images load within 2-3 seconds on mobile
 
 ## Current Images
-All current product images are imported from the parent `/src/assets/` folder and can be moved here for better organization.
+
+Images from the parent `/src/assets/` folder can be moved here for better organization. All product images should eventually reside in this directory for centralized management.
