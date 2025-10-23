@@ -24,12 +24,16 @@ const Hero = () => {
     }))
   ];
 
-  // Auto-advance carousel every 4 seconds
+  // Auto-advance carousel every 3 seconds
   useEffect(() => {
     if (!api) return;
 
     const interval = setInterval(() => {
-      api.scrollNext();
+      if (api.canScrollNext()) {
+        api.scrollNext();
+      } else {
+        api.scrollTo(0);
+      }
     }, 3000);
 
     return () => clearInterval(interval);
