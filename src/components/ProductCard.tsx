@@ -7,6 +7,7 @@ import ProductDetailModal from "./ProductDetailModal";
 import { CartPopup } from "./CartPopup";
 import { useCart } from "@/contexts/CartContext";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import type { CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useNavigate } from "react-router-dom";
 import { OptimizedImage } from "./OptimizedImage";
@@ -33,12 +34,23 @@ const ProductCard = (props: ProductCardProps) => {
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
   const { addToCart } = useCart();
   const navigate = useNavigate();
   
   const autoplayPlugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })
   );
+  
+  React.useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setCurrentImageIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
   
   const { 
     id,
@@ -114,8 +126,7 @@ const ProductCard = (props: ProductCardProps) => {
               align: "start",
             }}
             plugins={displayImages.length > 1 ? [autoplayPlugin.current] : []}
-            onMouseEnter={() => autoplayPlugin.current.stop()}
-            onMouseLeave={() => autoplayPlugin.current.play()}
+            setApi={setEmblaApi}
           >
             <CarouselContent>
               {displayImages.map((img, index) => (
@@ -138,19 +149,11 @@ const ProductCard = (props: ProductCardProps) => {
                   className={`left-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
                     isHovered ? 'opacity-100' : 'opacity-0 sm:opacity-60'
                   }`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setCurrentImageIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
-                  }}
                 />
                 <CarouselNext 
                   className={`right-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
                     isHovered ? 'opacity-100' : 'opacity-0 sm:opacity-60'
                   }`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setCurrentImageIndex((prev) => (prev + 1) % displayImages.length);
-                  }}
                 />
               </>
             )}
