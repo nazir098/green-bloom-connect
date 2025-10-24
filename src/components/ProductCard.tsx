@@ -83,16 +83,19 @@ const ProductCard = (props: ProductCardProps) => {
     "category": "Herbal Products"
   };
   return (
-    <Card className="group hover:shadow-natural transition-all duration-300 hover:-translate-y-1 bg-card border-border">
+    <Card 
+      className="group hover:shadow-natural transition-all duration-300 hover:-translate-y-1 bg-card border-border cursor-pointer"
+      onClick={() => navigate(`/product/${id}`)}
+    >
       {/* Add structured data for this product */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify(productStructuredData)
       }} />
       
       <CardHeader className="p-0">
-        <div className="relative overflow-hidden rounded-t-lg cursor-pointer" onClick={() => navigate(`/product/${id}`)}>
+        <div className="relative overflow-hidden rounded-t-lg">
           {/* Image Carousel for multiple product images */}
-          <Carousel className="w-full">
+          <Carousel className="w-full" onClick={(e) => e.stopPropagation()}>
             <CarouselContent>
               {displayImages.map((img, index) => (
                 <CarouselItem key={index}>
@@ -133,10 +136,7 @@ const ProductCard = (props: ProductCardProps) => {
       
       <CardContent className="p-2 sm:p-3 md:p-4">
         <div className="flex items-start justify-between mb-1 sm:mb-2">
-          <h3 
-            className="font-semibold text-xs sm:text-sm md:text-base text-foreground line-clamp-1 flex-1 cursor-pointer hover:text-herb-green transition-colors"
-            onClick={() => navigate(`/product/${id}`)}
-          >
+          <h3 className="font-semibold text-xs sm:text-sm md:text-base text-foreground line-clamp-1 flex-1 hover:text-herb-green transition-colors">
             {name}
           </h3>
           <div className="flex items-center gap-0.5 ml-1">
@@ -174,7 +174,10 @@ const ProductCard = (props: ProductCardProps) => {
       
       <CardFooter className="p-2 sm:p-3 md:p-4 pt-0">
         <Button 
-          onClick={handleAddToCart}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleAddToCart();
+          }}
           variant="herbal" 
           size="sm"
           className="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm h-8 sm:h-9"
