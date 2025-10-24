@@ -146,11 +146,13 @@ const ProductCard = (props: ProductCardProps) => {
             {displayImages.length > 1 && (
               <>
                 <CarouselPrevious 
+                  onClick={(e) => e.stopPropagation()}
                   className={`left-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
                     isHovered ? 'opacity-100' : 'opacity-0 sm:opacity-60'
                   }`}
                 />
                 <CarouselNext 
+                  onClick={(e) => e.stopPropagation()}
                   className={`right-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
                     isHovered ? 'opacity-100' : 'opacity-0 sm:opacity-60'
                   }`}

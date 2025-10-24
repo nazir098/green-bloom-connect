@@ -19,18 +19,19 @@ export const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose, addedItem
 
   const handleViewCart = () => {
     onClose();
-    // Scroll to cart section
-    setTimeout(() => {
-      const cartElement = document.querySelector('[data-cart-section]');
-      if (cartElement) {
+    // Immediately scroll to cart section
+    const cartElement = document.querySelector('[data-cart-section]');
+    if (cartElement) {
+      // Use requestAnimationFrame for smoother scroll
+      requestAnimationFrame(() => {
         cartElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         // Add a subtle highlight effect
         cartElement.classList.add('ring-2', 'ring-primary', 'ring-opacity-50');
         setTimeout(() => {
           cartElement.classList.remove('ring-2', 'ring-primary', 'ring-opacity-50');
         }, 2000);
-      }
-    }, 100);
+      });
+    }
   };
 
   return (
