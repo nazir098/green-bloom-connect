@@ -7,6 +7,7 @@ import ProductDetailModal from "./ProductDetailModal";
 import { CartPopup } from "./CartPopup";
 import { useCart } from "@/contexts/CartContext";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { useNavigate } from "react-router-dom";
 import { OptimizedImage } from "./OptimizedImage";
 import { SIZES } from "@/config/imageConfig";
@@ -30,8 +31,14 @@ interface ProductCardProps {
 const ProductCard = (props: ProductCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })
+  );
   
   const { 
     id,
@@ -93,9 +100,23 @@ const ProductCard = (props: ProductCardProps) => {
       }} />
       
       <CardHeader className="p-0">
-        <div className="relative overflow-hidden rounded-t-lg">
+        <div 
+          className="relative overflow-hidden rounded-t-lg"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           {/* Image Carousel for multiple product images */}
-          <Carousel className="w-full" onClick={(e) => e.stopPropagation()}>
+          <Carousel 
+            className="w-full" 
+            onClick={(e) => e.stopPropagation()}
+            opts={{
+              loop: true,
+              align: "start",
+            }}
+            plugins={displayImages.length > 1 ? [autoplayPlugin.current] : []}
+            onMouseEnter={() => autoplayPlugin.current.stop()}
+            onMouseLeave={() => autoplayPlugin.current.play()}
+          >
             <CarouselContent>
               {displayImages.map((img, index) => (
                 <CarouselItem key={index}>
@@ -103,7 +124,7 @@ const ProductCard = (props: ProductCardProps) => {
                     <OptimizedImage
                       src={img} 
                       alt={`${name} - View ${index + 1}`}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain transition-transform duration-300"
                       loading="lazy"
                       sizes={SIZES.productCard}
                     />
@@ -113,8 +134,24 @@ const ProductCard = (props: ProductCardProps) => {
             </CarouselContent>
             {displayImages.length > 1 && (
               <>
-                <CarouselPrevious className="left-1 h-6 w-6 sm:h-7 sm:w-7" />
-                <CarouselNext className="right-1 h-6 w-6 sm:h-7 sm:w-7" />
+                <CarouselPrevious 
+                  className={`left-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
+                    isHovered ? 'opacity-100' : 'opacity-0 sm:opacity-60'
+                  }`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentImageIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
+                  }}
+                />
+                <CarouselNext 
+                  className={`right-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
+                    isHovered ? 'opacity-100' : 'opacity-0 sm:opacity-60'
+                  }`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentImageIndex((prev) => (prev + 1) % displayImages.length);
+                  }}
+                />
               </>
             )}
           </Carousel>
@@ -125,9 +162,14 @@ const ProductCard = (props: ProductCardProps) => {
             </Badge>
           )}
           {displayImages.length > 1 && (
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-black/40 px-2 py-1 rounded-full backdrop-blur-sm">
               {displayImages.map((_, index) => (
-                <div key={index} className="w-1 h-1 rounded-full bg-white/60" />
+                <div 
+                  key={index} 
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex ? 'bg-white w-4' : 'bg-white/60'
+                  }`} 
+                />
               ))}
             </div>
           )}
