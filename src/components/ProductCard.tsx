@@ -131,7 +131,7 @@ const ProductCard = (props: ProductCardProps) => {
             <CarouselContent>
               {displayImages.map((img, index) => (
                 <CarouselItem key={index}>
-                  <div className="aspect-square bg-white flex items-center justify-center p-2 sm:p-3">
+                  <div className="aspect-square bg-gradient-to-br from-cream/40 to-herb-green/5 flex items-center justify-center p-4 border border-border/30 shadow-inner">
                     <OptimizedImage
                       src={img} 
                       alt={`${name} - View ${index + 1}`}

@@ -107,11 +107,11 @@ const ProductDetail = () => {
                 <CarouselContent>
                   {displayImages.map((img, index) => (
                     <CarouselItem key={index}>
-                      <div className="relative">
+                      <div className="aspect-square bg-gradient-to-br from-cream/40 to-herb-green/5 flex items-center justify-center border border-border/30 shadow-inner rounded-lg">
                         <OptimizedImage
                           src={img} 
                           alt={`${product.name} - View ${index + 1}`}
-                          className="w-full h-64 sm:h-80 lg:h-[500px] object-cover rounded-lg cursor-zoom-in"
+                          className="w-full h-full object-contain p-8"
                           loading="eager"
                           priority={index === 0}
                           sizes={SIZES.productDetail}
@@ -145,17 +145,19 @@ const ProductDetail = () => {
                       setSelectedImageIndex(index);
                       carouselApi?.scrollTo(index);
                     }}
-                    className={`relative aspect-square rounded-md overflow-hidden border-2 transition-all hover:border-herb-green ${
+                    className={`relative aspect-square bg-gradient-to-br from-cream/40 to-herb-green/5 rounded-md overflow-hidden border-2 shadow-sm transition-all hover:border-herb-green ${
                       selectedImageIndex === index ? 'border-herb-green ring-2 ring-herb-green' : 'border-border'
                     }`}
                   >
-                    <OptimizedImage
-                      src={img} 
-                      alt={`${product.name} thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      sizes={SIZES.thumbnail}
-                    />
+                    <div className="w-full h-full flex items-center justify-center p-2">
+                      <OptimizedImage
+                        src={img} 
+                        alt={`${product.name} thumbnail ${index + 1}`}
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                        sizes={SIZES.thumbnail}
+                      />
+                    </div>
                   </button>
                 ))}
               </div>
