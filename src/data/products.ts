@@ -12,6 +12,7 @@ import jasmineGreenTeaImage from "@/assets/Jasmin Green Tea.png";
 import lemonTeaImage from "@/assets/Lemon Tea.png";
 import mangoImage from "@/assets/Mango.png";
 import exampleProductImage from "@/assets/example-product-image.jpg";
+import premiumHerbsJar from "@/assets/premium-herbs-jar.jpg";
 
 export interface Product {
   id: string;
@@ -36,6 +37,23 @@ export interface Product {
 //600*600px image to be uploaded and import is needed
 // JPG format is suitable
 export const products: Product[] = [
+  {
+    id: "15",
+    name: "Premium Organic Herb Blend in Glass Jar",
+    description: "Artisan blend of premium dried herbs preserved in an elegant glass jar with cork lid.",
+    fullDescription: "Our exclusive herbal blend features carefully selected organic herbs stored in a beautiful glass jar with natural cork lid. Each herb is hand-picked for quality and potency, creating a harmonious blend perfect for culinary and wellness applications.",
+    image: premiumHerbsJar,
+    images: [premiumHerbsJar, greenTeaImage, moringaImage, spirulinaImage],
+    price: "$34.99",
+    originalPrice: "$42.99",
+    rating: 5.0,
+    reviews: 213,
+    isOrganic: true,
+    benefits: ["Artisan Quality", "Premium Preservation", "Natural Potency"],
+    ingredients: ["Organic Mixed Herbs", "Natural Cork Seal"],
+    usage: "Use in teas, cooking, or aromatherapy. Store in cool, dry place with cork sealed.",
+    origin: "Handcrafted blend from certified organic herb farms"
+  },
   {
     id: "14",
     name: "Premium Turmeric Root in Glass Jar",
