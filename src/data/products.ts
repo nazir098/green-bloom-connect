@@ -11,6 +11,7 @@ import gingerTeaImage from "@/assets/Ginger Tea.png";
 import jasmineGreenTeaImage from "@/assets/Jasmin Green Tea.png";
 import lemonTeaImage from "@/assets/Lemon Tea.png";
 import mangoImage from "@/assets/Mango.png";
+import exampleProductImage from "@/assets/example-product-image.jpg";
 
 export interface Product {
   id: string;
@@ -35,7 +36,23 @@ export interface Product {
 //600*600px image to be uploaded and import is needed
 // JPG format is suitable
 export const products: Product[] = [
-
+  {
+    id: "14",
+    name: "Premium Turmeric Root in Glass Jar",
+    description: "High-quality dried turmeric root pieces preserved in a clear glass jar for maximum freshness.",
+    fullDescription: "Our premium turmeric root pieces are carefully selected and stored in an elegant glass jar to preserve their natural golden color and potent curcumin content. Perfect for grinding fresh or using whole in traditional preparations.",
+    image: exampleProductImage,
+    images: [exampleProductImage, turmericImage, gingerImage, cinnamonImage],
+    price: "$29.99",
+    originalPrice: "$35.99",
+    rating: 4.9,
+    reviews: 187,
+    isOrganic: true,
+    benefits: ["Maximum Freshness", "High Curcumin", "Traditional Quality"],
+    ingredients: ["100% Organic Whole Turmeric Root (Curcuma longa)"],
+    usage: "Grind fresh as needed for maximum potency or use whole in cooking and teas.",
+    origin: "Premium quality roots from certified organic farms in India"
+  },
   // {
   //   id: "2", 
   //   name: "Ashwagandha Root Extract",
