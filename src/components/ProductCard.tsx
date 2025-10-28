@@ -124,6 +124,8 @@ const ProductCard = (props: ProductCardProps) => {
             opts={{
               loop: true,
               align: "start",
+              dragFree: false,
+              containScroll: "trimSnaps",
             }}
             plugins={displayImages.length > 1 ? [autoplayPlugin.current] : []}
             setApi={setEmblaApi}
@@ -148,13 +150,13 @@ const ProductCard = (props: ProductCardProps) => {
                 <CarouselPrevious 
                   onClick={(e) => e.stopPropagation()}
                   className={`left-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
-                    isHovered ? 'opacity-100' : 'opacity-0 sm:opacity-60'
+                    isHovered ? 'opacity-100' : 'opacity-70'
                   }`}
                 />
                 <CarouselNext 
                   onClick={(e) => e.stopPropagation()}
                   className={`right-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
-                    isHovered ? 'opacity-100' : 'opacity-0 sm:opacity-60'
+                    isHovered ? 'opacity-100' : 'opacity-70'
                   }`}
                 />
               </>
