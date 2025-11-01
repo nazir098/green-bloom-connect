@@ -169,7 +169,7 @@ const ProductCard = (props: ProductCardProps) => {
       
       <CardContent className="p-2 sm:p-3 md:p-4">
         <div className="flex items-start justify-between mb-1 sm:mb-2">
-          <h3 className="font-semibold text-xs sm:text-sm md:text-base text-foreground line-clamp-1 flex-1 hover:text-herb-green transition-colors">
+          <h3 className="font-semibold text-xs sm:text-sm md:text-base text-foreground line-clamp-2 flex-1 hover:text-herb-green transition-colors">
             {name}
           </h3>
           <div className="flex items-center gap-0.5 ml-1">
