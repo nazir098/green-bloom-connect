@@ -13,6 +13,16 @@ import lemonTeaImage from "@/assets/Lemon Tea.png";
 import mangoImage from "@/assets/Mango.png";
 import exampleProductImage from "@/assets/example-product-image.jpg";
 import premiumHerbsJar from "@/assets/premium-herbs-jar.jpg";
+import blackTeaPosterImage from "@/assets/blackTea/BLACK TEA ITS POSTER.jpg";
+import mockupPage1Image from "@/assets/blackTea/MOCKOUP_Page_1.jpg";
+import mockupPage2Image from "@/assets/blackTea/MOCKOUP_Page_2.jpg";
+import mockupPage3Image from "@/assets/blackTea/MOCKOUP_Page_3.jpg";
+import mockupPage4Image from "@/assets/blackTea/MOCKOUP_Page_4.jpg";
+import mockupPage6Image from "@/assets/blackTea/MOCKOUP_Page_6.jpg";
+import mockupPage7Image from "@/assets/blackTea/MOCKOUP_Page_7.jpg";
+import mockupMainImage from "@/assets/blackTea/MOCKOUP.jpg";
+
+
 
 export interface Product {
   id: string;
@@ -37,23 +47,39 @@ export interface Product {
 //600*600px image to be uploaded and import is needed
 // JPG format is suitable
 export const products: Product[] = [
-  {
-    id: "15",
-    name: "Premium Organic Herb Blend in Glass Jar",
-    description: "Artisan blend of premium dried herbs preserved in an elegant glass jar with cork lid.",
-    fullDescription: "Our exclusive herbal blend features carefully selected organic herbs stored in a beautiful glass jar with natural cork lid. Each herb is hand-picked for quality and potency, creating a harmonious blend perfect for culinary and wellness applications.",
-    image: premiumHerbsJar,
-    images: [premiumHerbsJar, greenTeaImage, moringaImage, spirulinaImage],
-    price: "$34.99",
-    originalPrice: "$42.99",
-    rating: 5.0,
-    reviews: 213,
-    isOrganic: true,
-    benefits: ["Artisan Quality", "Premium Preservation", "Natural Potency"],
-    ingredients: ["Organic Mixed Herbs", "Natural Cork Seal"],
-    usage: "Use in teas, cooking, or aromatherapy. Store in cool, dry place with cork sealed.",
-    origin: "Handcrafted blend from certified organic herb farms"
-  },
+{
+  id: "15",
+  name: "Premium Black Tea",
+  description: "Aromatic and rich black tea crafted from handpicked tea leaves, offering a bold and refreshing taste.",
+  fullDescription:
+    "Our Premium Black Tea is a classic blend of carefully selected tea leaves from high-altitude gardens. Each batch is processed using traditional methods to preserve its deep aroma and flavor. Perfect for morning refreshment or evening relaxation, this tea provides natural antioxidants and an energizing experience in every sip.",
+  image: blackTeaPosterImage,
+  images: [
+    mockupPage1Image,
+    mockupPage2Image,
+    mockupPage3Image,
+    mockupPage4Image,
+    mockupPage6Image,
+    mockupPage7Image,
+    mockupMainImage, 
+    blackTeaPosterImage
+  ],
+  price: "$19.99",
+  originalPrice: "$24.99",
+  rating: 4.8,
+  reviews: 187,
+  isOrganic: true,
+  benefits: [
+    "Rich in antioxidants",
+    "Boosts energy and focus",
+    "Supports heart health",
+    "Enhances mood and alertness"
+  ],
+  ingredients: ["100% Organic Black Tea Leaves"],
+  usage: "Add one teaspoon of black tea to 200ml hot water, steep for 3–5 minutes, strain, and enjoy plain or with milk.",
+  origin: "Sourced from premium tea estates in Assam, India"
+}
+,
   {
     id: "14",
     name: "Premium Turmeric Root in Glass Jar",
