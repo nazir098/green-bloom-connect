@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Natural Healing from Nature's Garden",
+    "subtitle": "Experience the power of pure, organic herbs and spices",
+    "cta": "Explore Products"
+  },
+  "about": {
+    "title": "About Minnat Herbal",
+    "content": "We are dedicated to bringing you the finest selection of organic herbs and spices, sourced directly from trusted farmers who practice sustainable agriculture."
+  },
+  "products": {
+    "title": "Our Premium Products",
+    "subtitle": "Discover our range of carefully selected organic herbs and spices",
+    "all": "All Products",
+    "search": "Search products...",
+    "addToCart": "Add to Cart",
+    "viewDetails": "View Details",
+    "backToProducts": "Back to Products",
+    "organic": "Organic",
+    "rating": "Rating",
+    "reviews": "reviews"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We'd love to hear from you",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "phone": "Phone",
+    "address": "Address"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "total": "Total",
+    "checkout": "Checkout via WhatsApp",
+    "added": "Added to cart",
+    "addedDescription": "has been added to your cart"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us"
+  },
+  "productDetail": {
+    "benefits": "Key Benefits",
+    "ingredients": "Ingredients",
+    "usage": "Usage Instructions",
+    "origin": "Origin",
+    "save": "Save",
+    "notFound": "Product Not Found"
+  }
+}

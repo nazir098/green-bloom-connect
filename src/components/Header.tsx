@@ -5,10 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { Phone, Mail } from "lucide-react";
 import ProductSearch from "./ProductSearch";
 import { useCart } from "@/contexts/CartContext";
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cartCount } = useCart();
+  const { t } = useTranslation();
   
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -45,16 +48,16 @@ const Header = () => {
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-6 lg:gap-8">
           <a href="#home" className="text-foreground hover:text-green-600 transition-colors font-medium">
-            Home
+            {t('nav.home')}
           </a>
           <a href="#products" className="text-foreground hover:text-green-600 transition-colors font-medium">
-            Products
+            {t('nav.products')}
           </a>
           <a href="#about" className="text-foreground hover:text-green-600 transition-colors font-medium">
-            About
+            {t('nav.about')}
           </a>
           <a href="#contact" className="text-foreground hover:text-green-600 transition-colors font-medium">
-            Contact
+            {t('nav.contact')}
           </a>
         </nav>
         
@@ -66,6 +69,9 @@ const Header = () => {
 
       {/* Buttons - Compact on mobile */}
       <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3">
+        {/* Language Switcher */}
+        <LanguageSwitcher />
+        
         {/* Hide on mobile, keep on desktop */}
         <Button 
           variant="outline" 
@@ -74,7 +80,7 @@ const Header = () => {
           onClick={() => scrollToSection('contact')}
         >
           <Phone className="w-4 h-4 mr-1" />
-          Contact
+          {t('nav.contact')}
         </Button>
         
         {/* Cart button - Hide on mobile (bottom nav will handle it) */}
@@ -85,7 +91,7 @@ const Header = () => {
           onClick={scrollToCart}
         >
           <ShoppingCart className="w-4 h-4 mr-1" />
-          Cart
+          {t('cart.title')}
           {cartCount > 0 && (
             <Badge className="absolute -top-2 -right-2 h-5 w-5 p-0 text-xs bg-red-500 hover:bg-red-600 flex items-center justify-center">
               {cartCount}
