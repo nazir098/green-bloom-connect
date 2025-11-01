@@ -58,6 +58,16 @@ const ProductDetail = () => {
         title: "Added to cart",
         description: `${product.name} has been added to your cart.`,
       });
+      
+      // Scroll to cart section after adding item
+      setTimeout(() => {
+        const cartElement = document.querySelector('[id*="cart"]') || 
+                           document.querySelector('.cart') ||
+                           document.querySelector('section');
+        if (cartElement) {
+          cartElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
     }
   };
 
@@ -197,7 +207,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="hidden md:flex gap-4">
               <Button 
                 variant="herbal" 
                 className="flex-1 flex items-center gap-2"
