@@ -13,7 +13,7 @@ import lemonTeaImage from "@/assets/Lemon Tea.png";
 import mangoImage from "@/assets/Mango.png";
 import exampleProductImage from "@/assets/example-product-image.jpg";
 import premiumHerbsJar from "@/assets/premium-herbs-jar.jpg";
-import blackTeaPosterImage from "@assets/blackTea/BLACK TEA INGREDIENTS POSTER.jpg";
+import blackTeaPosterImage from "@assets/blackTea/ingredients.jpg";
 import mockupPage1Image from "@/assets/blackTea/MOCKOUP_Page_1.jpg";
 import mockupPage2Image from "@/assets/blackTea/MOCKOUP_Page_2.jpg";
 import mockupPage3Image from "@/assets/blackTea/MOCKOUP_Page_3.jpg";
