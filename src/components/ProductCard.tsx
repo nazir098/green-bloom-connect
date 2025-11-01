@@ -145,22 +145,6 @@ const ProductCard = (props: ProductCardProps) => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            {displayImages.length > 1 && (
-              <>
-                <CarouselPrevious 
-                  onClick={(e) => e.stopPropagation()}
-                  className={`left-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
-                    isHovered ? 'opacity-100' : 'opacity-70'
-                  }`}
-                />
-                <CarouselNext 
-                  onClick={(e) => e.stopPropagation()}
-                  className={`right-2 h-7 w-7 sm:h-8 sm:w-8 transition-opacity duration-300 bg-white/90 hover:bg-white border-herb-green/20 ${
-                    isHovered ? 'opacity-100' : 'opacity-70'
-                  }`}
-                />
-              </>
-            )}
           </Carousel>
           {isOrganic && (
             <Badge className="absolute top-2 left-2 bg-herb-green text-cream text-xs z-10">
