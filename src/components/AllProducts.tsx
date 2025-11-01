@@ -33,6 +33,7 @@ const AllProducts = ({ isOpen, onClose }: AllProductsProps) => {
                 name={product.name}
                 description={product.description}
                 image={product.image}
+                images={product.images}
                 price={product.price}
                 originalPrice={product.originalPrice}
                 rating={product.rating}
