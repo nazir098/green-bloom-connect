@@ -60,14 +60,10 @@ const ProductDetail = () => {
       });
       
       // Scroll to cart section after adding item
-      setTimeout(() => {
-        const cartElement = document.querySelector('[id*="cart"]') || 
-                           document.querySelector('.cart') ||
-                           document.querySelector('section');
-        if (cartElement) {
-          cartElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 300);
+      const cartElement = document.getElementById('cart-section');
+      if (cartElement) {
+        cartElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 
@@ -225,7 +221,7 @@ const ProductDetail = () => {
         </div>
 
         {/* Cart Section */}
-        <div className="mt-16">
+        <div id="cart-section" className="mt-16">
           <Cart />
         </div>
 
