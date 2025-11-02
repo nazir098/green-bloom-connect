@@ -3,8 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Minus, Plus, Trash2, MessageCircle, Mail } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useTranslation } from 'react-i18next';
 
 const Cart = () => {
+  const { t } = useTranslation();
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, sendToWhatsApp, clearCart } = useCart();
 
   const sendToEmail = () => {
@@ -30,7 +32,7 @@ Please let me know the next steps for placing this order. Thank you!`);
     return (
       <Card data-cart-section className="transition-all duration-200">
         <CardContent className="p-6 text-center">
-          <p className="text-muted-foreground">Your cart is empty</p>
+          <p className="text-muted-foreground">{t('cart.empty')}</p>
         </CardContent>
       </Card>
     );
@@ -40,8 +42,8 @@ Please let me know the next steps for placing this order. Thank you!`);
     <Card data-cart-section className="transition-all duration-200">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          Your Cart
-          <Badge variant="secondary">{cartItems.length} items</Badge>
+          {t('cart.yourCart')}
+          <Badge variant="secondary">{cartItems.length} {t('cart.items')}</Badge>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -90,7 +92,7 @@ Please let me know the next steps for placing this order. Thank you!`);
         
         <div className="border-t border-border pt-4">
           <div className="flex justify-between items-center mb-4">
-            <span className="text-lg font-semibold">Total: </span>
+            <span className="text-lg font-semibold">{t('cart.total')}: </span>
             <span className="text-2xl font-bold text-herb-green">${getCartTotal().toFixed(2)}</span>
           </div>
           
@@ -101,7 +103,7 @@ Please let me know the next steps for placing this order. Thank you!`);
               onClick={sendToWhatsApp}
             >
               <MessageCircle className="w-4 h-4" />
-              Order via WhatsApp
+              {t('cart.checkout')}
             </Button>
             <Button 
               variant="outline" 
@@ -109,14 +111,14 @@ Please let me know the next steps for placing this order. Thank you!`);
               onClick={sendToEmail}
             >
               <Mail className="w-4 h-4" />
-              Order via Email
+              {t('cart.email')}
             </Button>
             <Button 
               variant="outline" 
               onClick={clearCart}
               className="w-full"
             >
-              Clear Cart
+              {t('cart.clear')}
             </Button>
           </div>
         </div>

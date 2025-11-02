@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Mail, MessageCircle, MapPin, Clock, Leaf } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const handleWhatsApp = () => {
-  window.open("https://wa.me/919667568842?text=Hi! I'm interested in your herbal products.", "_blank");
+    window.open("https://wa.me/919667568842?text=Hi! I'm interested in your herbal products.", "_blank");
   };
 
   const handleEmail = () => {
@@ -20,10 +22,10 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Get in Touch
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Have questions about our products? We're here to help you find the perfect herbal solution for your wellness needs.
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -33,19 +35,18 @@ const Contact = () => {
               <div className="bg-herb-green/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-herb-green/20 transition-colors">
                 <MessageCircle className="w-8 h-8 text-herb-green" />
               </div>
-              <CardTitle className="text-xl text-foreground">WhatsApp Chat</CardTitle>
+              <CardTitle className="text-xl text-foreground">{t('contact.whatsapp.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-6 min-h-[48px]">
-                Quick responses for instant product questions and recommendations
+                {t('contact.whatsapp.description')}
               </p>
               <div className="space-y-2 mb-6">
-                {/* <p className="text-sm font-medium text-herb-green">+91 9667568842</p> */}
-                <p className="text-xs text-muted-foreground">Usually replies instantly</p>
+                <p className="text-xs text-muted-foreground">{t('contact.whatsapp.response')}</p>
               </div>
               <Button variant="herbal" onClick={handleWhatsApp} className="w-full hover:scale-105 transition-transform">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                Start Chat
+                {t('contact.whatsapp.button')}
               </Button>
             </CardContent>
           </Card>
@@ -55,19 +56,19 @@ const Contact = () => {
               <div className="bg-herb-green/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-herb-green/20 transition-colors">
                 <Mail className="w-8 h-8 text-herb-green" />
               </div>
-              <CardTitle className="text-xl text-foreground">Email Support</CardTitle>
+              <CardTitle className="text-xl text-foreground">{t('contact.email.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-6 min-h-[48px]"> 
-                Detailed inquiries with comprehensive product information
+                {t('contact.email.description')}
               </p>
               <div className="space-y-2 mb-6">
-                <p className="text-sm font-medium text-herb-green">aamnaglobal@gmail.com</p>
-                <p className="text-xs text-muted-foreground">Response within 24 hours</p>
+                <p className="text-sm font-medium text-herb-green">{t('contact.email.address')}</p>
+                <p className="text-xs text-muted-foreground">{t('contact.email.response')}</p>
               </div>
               <Button variant="herbal" onClick={handleEmail} className="w-full hover:scale-105 transition-transform">
                 <Mail className="w-4 h-4 mr-2" />
-                Send Email
+                {t('contact.email.button')}
               </Button>
             </CardContent>
           </Card>
@@ -77,19 +78,19 @@ const Contact = () => {
               <div className="bg-herb-green/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-herb-green/20 transition-colors">
                 <Phone className="w-8 h-8 text-herb-green" />
               </div>
-              <CardTitle className="text-xl text-foreground">Phone Consultation</CardTitle>
+              <CardTitle className="text-xl text-foreground">{t('contact.phone.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-6 min-h-[48px]">
-                Direct consultation with our herbal wellness experts
+                {t('contact.phone.description')}
               </p>
               <div className="space-y-2 mb-6">
-                <p className="text-sm font-medium text-herb-green">+91 9667568842</p>
-                <p className="text-xs text-muted-foreground">Mon-Fri 9AM-6PM</p>
+                <p className="text-sm font-medium text-herb-green">{t('contact.phone.number')}</p>
+                <p className="text-xs text-muted-foreground">{t('contact.phone.hours')}</p>
               </div>
               <Button variant="herbal" onClick={handlePhone} className="w-full hover:scale-105 transition-transform">
                 <Phone className="w-4 h-4 mr-2" />
-                Call Now
+                {t('contact.phone.button')}
               </Button>
             </CardContent>
           </Card>
@@ -98,29 +99,26 @@ const Contact = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="flex flex-col items-center">
             <MapPin className="w-8 h-8 text-herb-green mb-3" />
-            <h3 className="font-semibold text-lg text-foreground mb-2">Location</h3>
+            <h3 className="font-semibold text-lg text-foreground mb-2">{t('contact.location.title')}</h3>
             <a target="_blank" href="https://www.google.com/maps/place/Aamna+Global/@28.5201312,77.2663101,19.03z/data=!4m6!3m5!1s0x390ce1e1870e7f6b:0x8b8311b226a07495!8m2!3d28.5198534!4d77.2665338!16s%2Fg%2F11rmt8cdmd?entry=ttu&g_ep=EgoyMDI1MDcyNy4wIKXMDSoASAFQAw%3D%3D">
-               <p className="text-muted-foreground">Aamna Global<br />
-                    New Delhi, IN 110044
-              </p>
+               <p className="text-muted-foreground whitespace-pre-line">{t('contact.location.address')}</p>
             </a>
           </div>
 
           <div className="flex flex-col items-center">
             <Clock className="w-8 h-8 text-herb-green mb-3" />
-            <h3 className="font-semibold text-lg text-foreground mb-2">Business Hours</h3>
+            <h3 className="font-semibold text-lg text-foreground mb-2">{t('contact.businessHours.title')}</h3>
             <p className="text-muted-foreground">
-              Mon - Fri: 9:00 AM - 6:00 PM<br />
-              Sat - Sun: 10:00 AM - 4:00 PM
+              {t('contact.businessHours.weekdays')}<br />
+              {t('contact.businessHours.weekends')}
             </p>
           </div>
 
           <div className="flex flex-col items-center">
             <Leaf className="w-8 h-8 text-herb-green mb-3" />
-            <h3 className="font-semibold text-lg text-foreground mb-2">Consultation</h3>
-            <p className="text-muted-foreground">
-              Free herbal wellness<br />
-              consultations available
+            <h3 className="font-semibold text-lg text-foreground mb-2">{t('contact.consultation.title')}</h3>
+            <p className="text-muted-foreground whitespace-pre-line">
+              {t('contact.consultation.description')}
             </p>
           </div>
         </div>

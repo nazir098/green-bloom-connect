@@ -2,8 +2,10 @@ import { Home, Package, ShoppingCart, Phone } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const MobileBottomNav = () => {
+  const { t } = useTranslation();
   const { cartCount } = useCart();
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,7 +38,7 @@ const MobileBottomNav = () => {
           className="flex flex-col items-center justify-center gap-1 text-muted-foreground hover:text-herb-green transition-colors"
         >
           <Home className="w-5 h-5" />
-          <span className="text-xs font-medium">Home</span>
+          <span className="text-xs font-medium">{t('mobileNav.home')}</span>
         </button>
 
         <button
@@ -44,7 +46,7 @@ const MobileBottomNav = () => {
           className="flex flex-col items-center justify-center gap-1 text-muted-foreground hover:text-herb-green transition-colors"
         >
           <Package className="w-5 h-5" />
-          <span className="text-xs font-medium">Products</span>
+          <span className="text-xs font-medium">{t('mobileNav.products')}</span>
         </button>
 
         <button
@@ -52,7 +54,7 @@ const MobileBottomNav = () => {
           className="flex flex-col items-center justify-center gap-1 text-muted-foreground hover:text-herb-green transition-colors relative"
         >
           <ShoppingCart className="w-5 h-5" />
-          <span className="text-xs font-medium">Cart</span>
+          <span className="text-xs font-medium">{t('mobileNav.cart')}</span>
           {cartCount > 0 && (
             <Badge className="absolute top-1 right-6 h-5 w-5 p-0 text-xs bg-red-500 flex items-center justify-center">
               {cartCount}
@@ -65,7 +67,7 @@ const MobileBottomNav = () => {
           className="flex flex-col items-center justify-center gap-1 text-muted-foreground hover:text-herb-green transition-colors"
         >
           <Phone className="w-5 h-5" />
-          <span className="text-xs font-medium">Contact</span>
+          <span className="text-xs font-medium">{t('mobileNav.contact')}</span>
         </button>
       </div>
     </nav>

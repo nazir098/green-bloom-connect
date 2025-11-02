@@ -1,6 +1,7 @@
 import { X } from "lucide-react";
 import ProductCard from "./ProductCard";
 import { products } from "@/data/products";
+import { useTranslation } from 'react-i18next';
 
 interface AllProductsProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface AllProductsProps {
 }
 
 const AllProducts = ({ isOpen, onClose }: AllProductsProps) => {
+  const { t } = useTranslation();
 
   if (!isOpen) return null;
 
@@ -15,7 +17,7 @@ const AllProducts = ({ isOpen, onClose }: AllProductsProps) => {
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-background rounded-lg shadow-xl w-full max-w-6xl max-h-[90vh] overflow-hidden">
         <div className="flex items-center justify-between p-6 border-b border-border">
-          <h2 className="text-2xl font-bold text-foreground">All Products</h2>
+          <h2 className="text-2xl font-bold text-foreground">{t('products.all')}</h2>
           <button
             onClick={onClose}
             className="p-2 hover:bg-accent rounded-lg transition-colors"

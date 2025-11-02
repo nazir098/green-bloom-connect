@@ -12,6 +12,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useNavigate } from "react-router-dom";
 import { OptimizedImage } from "./OptimizedImage";
 import { SIZES } from "@/config/imageConfig";
+import { useTranslation } from 'react-i18next';
 
 interface ProductCardProps {
   id: string;
@@ -30,6 +31,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = (props: ProductCardProps) => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -149,7 +151,7 @@ const ProductCard = (props: ProductCardProps) => {
           {isOrganic && (
             <Badge className="absolute top-2 left-2 bg-herb-green text-cream text-xs z-10">
               <Leaf className="w-2.5 h-2.5 mr-1" />
-              Organic
+              {t('products.organic')}
             </Badge>
           )}
           {displayImages.length > 1 && (
@@ -216,7 +218,7 @@ const ProductCard = (props: ProductCardProps) => {
           className="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm h-8 sm:h-9"
         >
           <ShoppingCart className="w-3 h-3" />
-          Add to Cart
+          {t('products.addToCart')}
         </Button>
       </CardFooter>
       

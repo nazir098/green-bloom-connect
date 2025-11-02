@@ -1,6 +1,9 @@
 import { Leaf, Facebook, Instagram, Twitter, Mail, Phone } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+  
 return (
   <footer className="bg-herb-green text-cream">
     <div className="container mx-auto px-4 py-16">
@@ -14,8 +17,7 @@ return (
             </span>
           </div>
           <p className="text-cream/80 mb-6 max-w-md leading-relaxed">
-            Your trusted partner in <span className="text-herb-light font-semibold">natural wellness</span>.  
-            We bring you premium herbal products sourced from the finest organic farms worldwide.
+            {t('footer.description')}
           </p>
           <div className="flex gap-4">
             <Facebook className="w-6 h-6 hover:text-herb-light cursor-pointer transition-colors" />
@@ -26,28 +28,28 @@ return (
 
         {/* Quick Links */}
         <div>
-          <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+          <h3 className="font-semibold text-lg mb-4">{t('footer.quickLinks')}</h3>
           <ul className="space-y-2 text-cream/80">
-            <li><a href="#home" className="hover:text-herb-light transition-colors">Home</a></li>
-            <li><a href="#products" className="hover:text-herb-light transition-colors">Products</a></li>
-            <li><a href="#about" className="hover:text-herb-light transition-colors">About Us</a></li>
-            <li><a href="#contact" className="hover:text-herb-light transition-colors">Contact</a></li>
-            <li><a href="#" className="hover:text-herb-light transition-colors">Blog</a></li>
-            <li><a href="#" className="hover:text-herb-light transition-colors">FAQ</a></li>
+            <li><a href="#home" className="hover:text-herb-light transition-colors">{t('footer.home')}</a></li>
+            <li><a href="#products" className="hover:text-herb-light transition-colors">{t('footer.products')}</a></li>
+            <li><a href="#about" className="hover:text-herb-light transition-colors">{t('footer.about')}</a></li>
+            <li><a href="#contact" className="hover:text-herb-light transition-colors">{t('footer.contact')}</a></li>
+            <li><a href="#" className="hover:text-herb-light transition-colors">{t('footer.blog')}</a></li>
+            <li><a href="#" className="hover:text-herb-light transition-colors">{t('footer.faq')}</a></li>
           </ul>
         </div>
 
         {/* Contact Info */}
         <div>
-          <h3 className="font-semibold text-lg mb-4">Contact Info</h3>
+          <h3 className="font-semibold text-lg mb-4">{t('footer.contactInfo')}</h3>
           <ul className="space-y-3 text-cream/80">
             <li className="flex items-center gap-2">
               <Phone className="w-4 h-4" />
-              <span>+91 9667568842</span>
+              <span>{t('footer.phone')}</span>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
-              <span>aamnaglobal@gmail.com</span>
+              <span>{t('footer.email')}</span>
             </li>
             <li className="flex items-start gap-2">
               <a
@@ -55,7 +57,7 @@ return (
                 href="https://www.google.com/maps/place/Aamna+Global/@28.5201312,77.2663101,19.03z/data=!4m6!3m5!1s0x390ce1e1870e7f6b:0x8b8311b226a07495!8m2!3d28.5198534!4d77.2665338!16s%2Fg%2F11rmt8cdmd?entry=ttu"
               >
                 <span className="w-4 h-4 mt-1">📍</span>
-                <span>Aamna Global<br />New Delhi, IN 110044</span>
+                <span className="whitespace-pre-line">{t('footer.address')}</span>
               </a>
             </li>
           </ul>
@@ -66,12 +68,12 @@ return (
       <div className="border-t border-cream/20 mt-12 pt-8 text-center text-cream/60">
         <p>
           &copy; 2024 <span className="font-semibold text-herb-light">Minnat Herbal</span>.  
-          All rights reserved. |{" "}
-          <a href="/privacy-policy" className="hover:text-herb-light transition-colors">Privacy Policy</a> |{" "}
-          <a href="/terms-of-service" className="hover:text-herb-light transition-colors">Terms of Service</a>
+          {t('footer.rights')}. |{" "}
+          <a href="/privacy-policy" className="hover:text-herb-light transition-colors">{t('footer.privacy')}</a> |{" "}
+          <a href="/terms-of-service" className="hover:text-herb-light transition-colors">{t('footer.terms')}</a>
         </p>
         <p className="mt-2 text-xs">
-          Crafted with <span className="text-red-400">♥</span> by <span className="font-medium">Nazir</span>
+          {t('footer.crafted')} <span className="text-red-400">♥</span> by <span className="font-medium">Nazir</span>
         </p>
       </div>
     </div>

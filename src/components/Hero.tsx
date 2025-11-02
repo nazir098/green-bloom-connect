@@ -6,8 +6,11 @@ import heroImage from "@/assets/hero-herbs.jpg";
 import Autoplay from "embla-carousel-autoplay";
 import { OptimizedImage } from "./OptimizedImage";
 import { SIZES } from "@/config/imageConfig";
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -47,22 +50,21 @@ const Hero = () => {
             <div className="hidden sm:flex items-center justify-center lg:justify-start gap-3 mb-4 lg:mb-6 animate-fade-in">
               <Leaf className="h-5 w-5 lg:h-7 lg:w-7 text-herb-light animate-pulse" />
               <span className="text-herb-light font-semibold text-sm lg:text-xl italic tracking-widest">
-                Healing the World, Naturally
+                {t('hero.tagline')}
               </span>
             </div>
             
             {/* Responsive heading sizes */}
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-3 sm:mb-4 leading-tight animate-fade-in">
               <span className="bg-gradient-to-r from-cream to-herb-light bg-clip-text text-transparent">
-                Premium Herbal Tea & Ayurvedic Products
+                {t('hero.title')}
               </span>
-              <span className="block text-herb-light drop-shadow-lg">Retail & Bulk Import/Export</span>
+              <span className="block text-herb-light drop-shadow-lg">{t('hero.subtitle')}</span>
             </h1>
             
             {/* Shorter description on mobile */}
             <p className="text-sm sm:text-base lg:text-lg text-cream/95 mb-4 sm:mb-6 lg:mb-8 leading-relaxed animate-fade-in line-clamp-3 sm:line-clamp-none">
-              Shop 100% organic herbal tea, Ayurvedic medicines, and natural remedies at Minnat Herbal. 
-              Serving retail customers and bulk import/export orders. Trusted by thousands across India for authentic, lab-tested herbal products.
+              {t('hero.description')}
             </p>
             
             {/* Smaller CTA on mobile */}
@@ -73,7 +75,7 @@ const Hero = () => {
                 className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 bg-gradient-to-r from-cream to-herb-light text-herb-green hover:from-herb-light hover:to-cream font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
                 onClick={() => scrollToSection('products')}
               >
-                Shop Now
+                {t('hero.cta')}
               </Button>
             </div>
             
@@ -81,17 +83,17 @@ const Hero = () => {
             <div className="flex items-center justify-center lg:justify-start gap-3 sm:gap-6 lg:gap-8 text-cream/90 animate-fade-in">
               <div className="flex items-center gap-1.5 sm:gap-3 bg-white/10 px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm hover-scale">
                 <Star className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 fill-current text-herb-light" />
-                <span className="font-medium text-xs sm:text-sm lg:text-base">100% Organic</span>
+                <span className="font-medium text-xs sm:text-sm lg:text-base">{t('hero.organic')}</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-3 bg-white/10 px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm hover-scale">
                 <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-herb-light" />
-                <span className="font-medium text-xs sm:text-sm lg:text-base">Lab Tested</span>
+                <span className="font-medium text-xs sm:text-sm lg:text-base">{t('hero.labTested')}</span>
               </div>
             </div>
             
             {/* Hide on mobile */}
             <div className="hidden sm:block text-herb-light/80 text-xs sm:text-sm font-medium tracking-wider mt-4 sm:mt-6 animate-fade-in">
-              ✨ India's #1 Online Herbal Store - Free Shipping & Lab-Tested Quality ✨
+              ✨ {t('hero.trustBadge')} ✨
             </div>
           </div>
 

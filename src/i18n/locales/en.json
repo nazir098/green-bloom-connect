@@ -6,13 +6,40 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Natural Healing from Nature's Garden",
-    "subtitle": "Experience the power of pure, organic herbs and spices",
-    "cta": "Explore Products"
+    "tagline": "Healing the World, Naturally",
+    "title": "Premium Herbal Tea & Ayurvedic Products",
+    "subtitle": "Retail & Bulk Import/Export",
+    "description": "Shop 100% organic herbal tea, Ayurvedic medicines, and natural remedies at Minnat Herbal. Serving retail customers and bulk import/export orders. Trusted by thousands across India for authentic, lab-tested herbal products.",
+    "cta": "Shop Now",
+    "organic": "100% Organic",
+    "labTested": "Lab Tested",
+    "trustBadge": "India's #1 Online Herbal Store - Free Shipping & Lab-Tested Quality"
   },
   "about": {
-    "title": "About Minnat Herbal",
-    "content": "We are dedicated to bringing you the finest selection of organic herbs and spices, sourced directly from trusted farmers who practice sustainable agriculture."
+    "title": "Bringing Nature's",
+    "titleHighlight": "Wisdom to You",
+    "description1": "For over a decade, we've been passionate about connecting people with the healing power of herbs. Our mission is to provide the highest quality herbal products that support your natural wellness journey.",
+    "description2": "From ancient Ayurvedic traditions to modern scientific research, we bridge the gap between traditional wisdom and contemporary wellness needs.",
+    "ourStory": "Our Story",
+    "certifications": "Certifications",
+    "features": {
+      "organic": {
+        "title": "100% Organic",
+        "description": "All our products are certified organic and sourced from trusted farms worldwide."
+      },
+      "tested": {
+        "title": "Quality Tested",
+        "description": "Every batch undergoes rigorous testing for purity, potency, and safety standards."
+      },
+      "curated": {
+        "title": "Expert Curated",
+        "description": "Our team of herbalists and wellness experts carefully select each product."
+      },
+      "sustainable": {
+        "title": "Sustainably Sourced",
+        "description": "We work directly with growers who practice sustainable and ethical farming."
+      }
+    }
   },
   "products": {
     "title": "Our Premium Products",
@@ -28,28 +55,72 @@
   },
   "contact": {
     "title": "Get in Touch",
-    "subtitle": "We'd love to hear from you",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send Message",
-    "phone": "Phone",
-    "address": "Address"
+    "subtitle": "Have questions about our products? We're here to help you find the perfect herbal solution for your wellness needs.",
+    "whatsapp": {
+      "title": "WhatsApp Chat",
+      "description": "Quick responses for instant product questions and recommendations",
+      "response": "Usually replies instantly",
+      "button": "Start Chat"
+    },
+    "email": {
+      "title": "Email Support",
+      "description": "Detailed inquiries with comprehensive product information",
+      "address": "aamnaglobal@gmail.com",
+      "response": "Response within 24 hours",
+      "button": "Send Email"
+    },
+    "phone": {
+      "title": "Phone Consultation",
+      "description": "Direct consultation with our herbal wellness experts",
+      "number": "+91 9667568842",
+      "hours": "Mon-Fri 9AM-6PM",
+      "button": "Call Now"
+    },
+    "location": {
+      "title": "Location",
+      "address": "Aamna Global\nNew Delhi, IN 110044"
+    },
+    "businessHours": {
+      "title": "Business Hours",
+      "weekdays": "Mon - Fri: 9:00 AM - 6:00 PM",
+      "weekends": "Sat - Sun: 10:00 AM - 4:00 PM"
+    },
+    "consultation": {
+      "title": "Consultation",
+      "description": "Free herbal wellness\nconsultations available"
+    }
   },
   "cart": {
     "title": "Shopping Cart",
+    "yourCart": "Your Cart",
     "empty": "Your cart is empty",
     "quantity": "Quantity",
     "remove": "Remove",
     "total": "Total",
-    "checkout": "Checkout via WhatsApp",
+    "checkout": "Order via WhatsApp",
+    "email": "Order via Email",
+    "clear": "Clear Cart",
     "added": "Added to cart",
-    "addedDescription": "has been added to your cart"
+    "addedDescription": "has been added to your cart",
+    "items": "items"
   },
   "footer": {
-    "rights": "All rights reserved",
+    "description": "Your trusted partner in natural wellness. We bring you premium herbal products sourced from the finest organic farms worldwide.",
     "quickLinks": "Quick Links",
-    "followUs": "Follow Us"
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "contact": "Contact",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contactInfo": "Contact Info",
+    "phone": "+91 9667568842",
+    "email": "aamnaglobal@gmail.com",
+    "address": "Aamna Global\nNew Delhi, IN 110044",
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "crafted": "Crafted with"
   },
   "productDetail": {
     "benefits": "Key Benefits",
@@ -58,5 +129,11 @@
     "origin": "Origin",
     "save": "Save",
     "notFound": "Product Not Found"
+  },
+  "mobileNav": {
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "contact": "Contact"
   }
 }
