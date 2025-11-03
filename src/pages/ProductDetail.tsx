@@ -27,6 +27,29 @@ const ProductDetail = () => {
 
   const product = getProductById(id || "");
 
+  // Get translated product data
+  const getTranslatedProduct = () => {
+    if (!product) return null;
+    
+    const translationKey = `productData.${product.id}`;
+    const hasTranslation = t(`${translationKey}.name`, { defaultValue: '' });
+    
+    if (!hasTranslation) return product;
+    
+    return {
+      ...product,
+      name: t(`${translationKey}.name`),
+      description: t(`${translationKey}.description`),
+      fullDescription: t(`${translationKey}.fullDescription`),
+      benefits: t(`${translationKey}.benefits`, { returnObjects: true }) as string[],
+      ingredients: t(`${translationKey}.ingredients`, { returnObjects: true }) as string[],
+      usage: t(`${translationKey}.usage`),
+      origin: t(`${translationKey}.origin`)
+    };
+  };
+
+  const translatedProduct = getTranslatedProduct();
+
   // Scroll to top when product changes, without auto-scrolling during page interaction
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -46,19 +69,19 @@ const ProductDetail = () => {
     };
   }, [carouselApi]);
 
-  const displayImages = product?.images && product.images.length > 0 ? product.images : [product?.image || ""];
+  const displayImages = translatedProduct?.images && translatedProduct.images.length > 0 ? translatedProduct.images : [translatedProduct?.image || ""];
 
   const handleAddToCart = () => {
-    if (product) {
+    if (translatedProduct) {
       addToCart({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image
+        id: translatedProduct.id,
+        name: translatedProduct.name,
+        price: translatedProduct.price,
+        image: translatedProduct.image
       });
       toast({
         title: t('cart.added'),
-        description: `${product.name} ${t('cart.addedDescription')}`,
+        description: `${translatedProduct.name} ${t('cart.addedDescription')}`,
       });
       
       // Scroll to cart section after adding item
@@ -118,7 +141,7 @@ const ProductDetail = () => {
                       <div className="aspect-square bg-gradient-to-br from-cream/40 to-herb-green/5 flex items-center justify-center border border-border/30 shadow-inner rounded-lg">
                         <OptimizedImage
                           src={img} 
-                          alt={`${product.name} - View ${index + 1}`}
+                          alt={`${translatedProduct.name} - View ${index + 1}`}
                           className="w-full h-full object-contain p-8"
                           loading="eager"
                           priority={index === 0}
@@ -135,7 +158,7 @@ const ProductDetail = () => {
                   </>
                 )}
               </Carousel>
-              {product.isOrganic && (
+              {translatedProduct.isOrganic && (
                 <Badge className="absolute top-3 left-3 bg-herb-green text-cream z-10">
                   <Leaf className="w-3 h-3 mr-1" />
                   {t('products.organic')}
@@ -160,7 +183,7 @@ const ProductDetail = () => {
                     <div className="w-full h-full flex items-center justify-center p-2">
                       <OptimizedImage
                         src={img} 
-                        alt={`${product.name} thumbnail ${index + 1}`}
+                        alt={`${translatedProduct.name} thumbnail ${index + 1}`}
                         className="w-full h-full object-contain"
                         loading="lazy"
                         sizes={SIZES.thumbnail}
@@ -175,29 +198,29 @@ const ProductDetail = () => {
           {/* Product Info */}
           <div className="space-y-4 sm:space-y-6">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">{product.name}</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">{translatedProduct.name}</h1>
               <div className="flex items-center gap-2 mb-3 sm:mb-4">
                 <div className="flex items-center gap-1">
                   <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-herb-light" />
-                  <span className="font-medium text-sm sm:text-base">{product.rating}</span>
+                  <span className="font-medium text-sm sm:text-base">{translatedProduct.rating}</span>
                 </div>
-                <span className="text-muted-foreground text-sm sm:text-base">({product.reviews || 0} {t('productDetail.reviews')})</span>
+                <span className="text-muted-foreground text-sm sm:text-base">({translatedProduct.reviews || 0} {t('productDetail.reviews')})</span>
               </div>
             </div>
 
             <div className="flex items-center gap-2 sm:gap-3">
-              <span className="text-2xl sm:text-3xl font-bold text-herb-green">{product.price}</span>
-              {product.originalPrice && (
-                <span className="text-base sm:text-lg text-muted-foreground line-through">{product.originalPrice}</span>
+              <span className="text-2xl sm:text-3xl font-bold text-herb-green">{translatedProduct.price}</span>
+              {translatedProduct.originalPrice && (
+                <span className="text-base sm:text-lg text-muted-foreground line-through">{translatedProduct.originalPrice}</span>
               )}
             </div>
 
-            <p className="text-muted-foreground leading-relaxed">{product.fullDescription || product.description}</p>
+            <p className="text-muted-foreground leading-relaxed">{translatedProduct.fullDescription || translatedProduct.description}</p>
 
             <div>
               <h3 className="font-semibold text-foreground mb-3">{t('productDetail.benefits')}</h3>
               <div className="flex flex-wrap gap-2">
-                {product.benefits.map((benefit) => (
+                {translatedProduct.benefits.map((benefit) => (
                   <Badge key={benefit} variant="secondary">
                     {benefit}
                   </Badge>
@@ -233,7 +256,7 @@ const ProductDetail = () => {
             <CardContent className="p-6">
               <h3 className="font-semibold text-foreground mb-4">{t('productDetail.ingredients')}</h3>
               <ul className="space-y-2 text-muted-foreground">
-                {product.ingredients?.map((ingredient, index) => (
+                {translatedProduct.ingredients?.map((ingredient, index) => (
                   <li key={index} className="text-sm">• {ingredient}</li>
                 )) || <li className="text-sm">No ingredients listed</li>}
               </ul>
@@ -243,14 +266,14 @@ const ProductDetail = () => {
           <Card>
             <CardContent className="p-6">
               <h3 className="font-semibold text-foreground mb-4">{t('productDetail.usage')}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{product.usage}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{translatedProduct.usage}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-6">
               <h3 className="font-semibold text-foreground mb-4">{t('productDetail.origin')}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{product.origin}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{translatedProduct.origin}</p>
             </CardContent>
           </Card>
         </div>
@@ -269,7 +292,7 @@ const ProductDetail = () => {
           onClick={handleAddToCart}
         >
           <ShoppingCart className="w-4 h-4" />
-          {t('productDetail.addToCart')} - {product.price}
+          {t('productDetail.addToCart')} - {translatedProduct.price}
         </Button>
       </div>
     </div>

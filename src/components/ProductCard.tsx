@@ -40,6 +40,14 @@ const ProductCard = (props: ProductCardProps) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
   
+  // Get translated product data
+  const translationKey = `productData.${props.id}`;
+  const hasTranslation = t(`${translationKey}.name`, { defaultValue: '' });
+  
+  const displayName = hasTranslation ? t(`${translationKey}.name`) : props.name;
+  const displayDescription = hasTranslation ? t(`${translationKey}.description`) : props.description;
+  const displayBenefits = hasTranslation ? (t(`${translationKey}.benefits`, { returnObjects: true }) as string[]) : props.benefits;
+  
   const autoplayPlugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })
   );
@@ -78,8 +86,8 @@ const ProductCard = (props: ProductCardProps) => {
   const productStructuredData = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": name,
-    "description": description,
+    "name": displayName,
+    "description": displayDescription,
     "image": `https://minatherbal.com${image}`,
     "brand": {
       "@type": "Brand",
@@ -138,7 +146,7 @@ const ProductCard = (props: ProductCardProps) => {
                   <div className="aspect-square bg-gradient-to-br from-cream/40 to-herb-green/5 flex items-center justify-center p-4 border border-border/30 shadow-inner">
                     <OptimizedImage
                       src={img} 
-                      alt={`${name} - View ${index + 1}`}
+                      alt={`${displayName} - View ${index + 1}`}
                       className="w-full h-full object-contain transition-transform duration-300"
                       loading="lazy"
                       sizes={SIZES.productCard}
@@ -172,7 +180,7 @@ const ProductCard = (props: ProductCardProps) => {
       <CardContent className="p-2 sm:p-3 md:p-4">
         <div className="flex items-start justify-between mb-1 sm:mb-2">
           <h3 className="font-semibold text-xs sm:text-sm md:text-base text-foreground line-clamp-2 flex-1 hover:text-herb-green transition-colors">
-            {name}
+            {displayName}
           </h3>
           <div className="flex items-center gap-0.5 ml-1">
             <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-current text-herb-light flex-shrink-0" />
@@ -181,17 +189,17 @@ const ProductCard = (props: ProductCardProps) => {
         </div>
         
         {/* Hide description on mobile for compactness */}
-        <p className="hidden sm:block text-muted-foreground text-xs mb-2 md:mb-3 line-clamp-2">{description}</p>
+        <p className="hidden sm:block text-muted-foreground text-xs mb-2 md:mb-3 line-clamp-2">{displayDescription}</p>
         
         {/* Show only 1 benefit on mobile, 2 on larger screens */}
         <div className="flex flex-wrap gap-1 mb-2 sm:mb-3">
-          {benefits.slice(0, 1).map((benefit) => (
+          {displayBenefits.slice(0, 1).map((benefit) => (
             <Badge key={benefit} variant="secondary" className="text-xs">
               {benefit}
             </Badge>
           ))}
           <span className="hidden sm:inline">
-            {benefits.slice(1, 2).map((benefit) => (
+            {displayBenefits.slice(1, 2).map((benefit) => (
               <Badge key={benefit} variant="secondary" className="text-xs">
                 {benefit}
               </Badge>
@@ -236,7 +244,7 @@ const ProductCard = (props: ProductCardProps) => {
         isOpen={isCartPopupOpen}
         onClose={() => setIsCartPopupOpen(false)}
         addedItem={{
-          name,
+          name: displayName,
           image,
           price
         }}
