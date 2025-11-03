@@ -14,12 +14,14 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useState, useEffect } from "react";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { SIZES } from "@/config/imageConfig";
+import { useTranslation } from "react-i18next";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
   const { addToCart } = useCart();
+  const { t } = useTranslation();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
@@ -55,8 +57,8 @@ const ProductDetail = () => {
         image: product.image
       });
       toast({
-        title: "Added to cart",
-        description: `${product.name} has been added to your cart.`,
+        title: t('cart.added'),
+        description: `${product.name} ${t('cart.addedDescription')}`,
       });
       
       // Scroll to cart section after adding item
@@ -72,9 +74,9 @@ const ProductDetail = () => {
       <div className="min-h-screen bg-background">
         <Header />
         <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-4">Product Not Found</h1>
+          <h1 className="text-2xl font-bold text-foreground mb-4">{t('productDetail.notFound')}</h1>
           <Button onClick={() => navigate("/")} variant="herbal">
-            Back to Home
+            {t('productDetail.backToHome')}
           </Button>
         </div>
         <Footer />
@@ -101,7 +103,7 @@ const ProductDetail = () => {
           className="mb-8 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Products
+          {t('productDetail.backToProducts')}
         </Button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
@@ -136,7 +138,7 @@ const ProductDetail = () => {
               {product.isOrganic && (
                 <Badge className="absolute top-3 left-3 bg-herb-green text-cream z-10">
                   <Leaf className="w-3 h-3 mr-1" />
-                  Organic
+                  {t('products.organic')}
                 </Badge>
               )}
             </div>
@@ -179,7 +181,7 @@ const ProductDetail = () => {
                   <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-herb-light" />
                   <span className="font-medium text-sm sm:text-base">{product.rating}</span>
                 </div>
-                <span className="text-muted-foreground text-sm sm:text-base">({product.reviews || 0} reviews)</span>
+                <span className="text-muted-foreground text-sm sm:text-base">({product.reviews || 0} {t('productDetail.reviews')})</span>
               </div>
             </div>
 
@@ -193,7 +195,7 @@ const ProductDetail = () => {
             <p className="text-muted-foreground leading-relaxed">{product.fullDescription || product.description}</p>
 
             <div>
-              <h3 className="font-semibold text-foreground mb-3">Key Benefits</h3>
+              <h3 className="font-semibold text-foreground mb-3">{t('productDetail.benefits')}</h3>
               <div className="flex flex-wrap gap-2">
                 {product.benefits.map((benefit) => (
                   <Badge key={benefit} variant="secondary">
@@ -210,11 +212,11 @@ const ProductDetail = () => {
                 onClick={handleAddToCart}
               >
                 <ShoppingCart className="w-4 h-4" />
-                Add to Cart
+                {t('productDetail.addToCart')}
               </Button>
               <Button variant="outline" className="flex items-center gap-2">
                 <Heart className="w-4 h-4" />
-                Save
+                {t('productDetail.save')}
               </Button>
             </div>
           </div>
@@ -229,7 +231,7 @@ const ProductDetail = () => {
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card>
             <CardContent className="p-6">
-              <h3 className="font-semibold text-foreground mb-4">Ingredients</h3>
+              <h3 className="font-semibold text-foreground mb-4">{t('productDetail.ingredients')}</h3>
               <ul className="space-y-2 text-muted-foreground">
                 {product.ingredients?.map((ingredient, index) => (
                   <li key={index} className="text-sm">• {ingredient}</li>
@@ -240,14 +242,14 @@ const ProductDetail = () => {
 
           <Card>
             <CardContent className="p-6">
-              <h3 className="font-semibold text-foreground mb-4">Usage Instructions</h3>
+              <h3 className="font-semibold text-foreground mb-4">{t('productDetail.usage')}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{product.usage}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-6">
-              <h3 className="font-semibold text-foreground mb-4">Origin</h3>
+              <h3 className="font-semibold text-foreground mb-4">{t('productDetail.origin')}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{product.origin}</p>
             </CardContent>
           </Card>
@@ -267,7 +269,7 @@ const ProductDetail = () => {
           onClick={handleAddToCart}
         >
           <ShoppingCart className="w-4 h-4" />
-          Add to Cart - {product.price}
+          {t('productDetail.addToCart')} - {product.price}
         </Button>
       </div>
     </div>
