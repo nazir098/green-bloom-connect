@@ -3,7 +3,6 @@ import { Leaf, Star, Award, Sparkles } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { products } from "@/data/products";
 import heroImage from "@/assets/hero-herbs.jpg";
-import Autoplay from "embla-carousel-autoplay";
 import { OptimizedImage } from "./OptimizedImage";
 import { SIZES } from "@/config/imageConfig";
 import { useTranslation } from 'react-i18next';
@@ -110,11 +109,6 @@ const Hero = () => {
               <Carousel 
                 className="w-full"
                 opts={{ loop: true }}
-                plugins={[
-                  Autoplay({
-                    delay: 3000,
-                  }),
-                ]}
               >
                 <CarouselContent>
                   {herbalImages.map((image, index) => (
