@@ -97,8 +97,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Carousel Card Section - Hidden on mobile for compactness */}
-          <div className="hidden lg:flex justify-center animate-scale-in">
+          {/* Carousel Card Section - Now visible on all screens */}
+          <div className="flex justify-center animate-scale-in mt-6 lg:mt-0">
             <div className="relative w-full max-w-md">
               <div className="absolute -top-4 -left-4 opacity-20">
                 <Sparkles className="h-8 w-8 text-herb-light animate-pulse" />
