@@ -8,7 +8,6 @@ import { CartPopup } from "./CartPopup";
 import { useCart } from "@/contexts/CartContext";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import type { CarouselApi } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 import { useNavigate } from "react-router-dom";
 import { OptimizedImage } from "./OptimizedImage";
 import { SIZES } from "@/config/imageConfig";
@@ -47,10 +46,6 @@ const ProductCard = (props: ProductCardProps) => {
   const displayName = hasTranslation ? t(`${translationKey}.name`) : props.name;
   const displayDescription = hasTranslation ? t(`${translationKey}.description`) : props.description;
   const displayBenefits = hasTranslation ? (t(`${translationKey}.benefits`, { returnObjects: true }) as string[]) : props.benefits;
-  
-  const autoplayPlugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })
-  );
   
   React.useEffect(() => {
     if (!emblaApi) return;
@@ -137,7 +132,6 @@ const ProductCard = (props: ProductCardProps) => {
               dragFree: false,
               containScroll: "trimSnaps",
             }}
-            plugins={displayImages.length > 1 ? [autoplayPlugin.current] : []}
             setApi={setEmblaApi}
           >
             <CarouselContent>
