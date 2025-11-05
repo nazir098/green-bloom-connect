@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
@@ -29,7 +29,7 @@ interface ProductCardProps {
   images?: string[];
 }
 
-const ProductCard = (props: ProductCardProps) => {
+const ProductCard = memo((props: ProductCardProps) => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
@@ -245,6 +245,8 @@ const ProductCard = (props: ProductCardProps) => {
       />
     </Card>
   );
-};
+});
+
+ProductCard.displayName = 'ProductCard';
 
 export default ProductCard;

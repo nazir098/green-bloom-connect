@@ -1,12 +1,15 @@
+import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProductGrid from "@/components/ProductGrid";
-import About from "@/components/About";  
-import SEOContent from "@/components/SEOContent";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import Cart from "@/components/Cart";
 import MobileBottomNav from "@/components/MobileBottomNav";
+
+// Lazy load below-fold components
+const About = lazy(() => import("@/components/About"));
+const SEOContent = lazy(() => import("@/components/SEOContent"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Footer = lazy(() => import("@/components/Footer"));
+const Cart = lazy(() => import("@/components/Cart"));
 
 const Index = () => {
   return (
@@ -34,22 +37,26 @@ const Index = () => {
       <main role="main">
         <Hero />
         <ProductGrid />
-        <SEOContent />
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <About />
-            </div>
-            <div className="lg:col-span-1">
-              <div className="sticky top-4">
-                <Cart />
+        <Suspense fallback={<div className="h-20" />}>
+          <SEOContent />
+          <div className="container mx-auto px-4 py-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <About />
+              </div>
+              <div className="lg:col-span-1">
+                <div className="sticky top-4">
+                  <Cart />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <Contact />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={<div className="h-20" />}>
+        <Footer />
+      </Suspense>
       
       {/* Mobile Bottom Navigation */}
       <MobileBottomNav />

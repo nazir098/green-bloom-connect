@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useCallback, useMemo, ReactNode } from 'react';
 
 export interface CartItem {
   id: string;
@@ -77,19 +77,24 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     window.open(whatsappUrl, '_blank');
   }, [cartItems, getCartTotal]);
 
-  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const cartCount = useMemo(() => 
+    cartItems.reduce((sum, item) => sum + item.quantity, 0),
+    [cartItems]
+  );
+
+  const value = useMemo(() => ({
+    cartItems,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
+    getCartTotal,
+    sendToWhatsApp,
+    cartCount
+  }), [cartItems, addToCart, removeFromCart, updateQuantity, clearCart, getCartTotal, sendToWhatsApp, cartCount]);
 
   return (
-    <CartContext.Provider value={{
-      cartItems,
-      addToCart,
-      removeFromCart,
-      updateQuantity,
-      clearCart,
-      getCartTotal,
-      sendToWhatsApp,
-      cartCount
-    }}>
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import ProductCard from "./ProductCard";
-import AllProducts from "./AllProducts";
 import { products } from "@/data/products";
+
+// Lazy load AllProducts modal
+const AllProducts = lazy(() => import("./AllProducts"));
 
 const ProductGrid = () => {
   const [showAllProducts, setShowAllProducts] = useState(false);
@@ -55,10 +57,14 @@ const ProductGrid = () => {
           </button>
         </div>
         
-        <AllProducts 
-          isOpen={showAllProducts} 
-          onClose={() => setShowAllProducts(false)} 
-        />
+        <Suspense fallback={<div className="text-center py-4">Loading...</div>}>
+          {showAllProducts && (
+            <AllProducts 
+              isOpen={showAllProducts} 
+              onClose={() => setShowAllProducts(false)} 
+            />
+          )}
+        </Suspense>
       </div>
     </section>
   );
