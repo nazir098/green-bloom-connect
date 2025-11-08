@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Currency {
   code: string;
@@ -21,15 +22,36 @@ const currencies: Currency[] = [
   { code: 'EUR', symbol: '€', name: 'Euro', rate: 0.011 },
   { code: 'GBP', symbol: '£', name: 'British Pound', rate: 0.0095 },
   { code: 'AED', symbol: 'د.إ', name: 'UAE Dirham', rate: 0.044 },
+  { code: 'RUB', symbol: '₽', name: 'Russian Ruble', rate: 1.1 },
 ];
+
+// Map language codes to currency codes
+const languageToCurrency: Record<string, string> = {
+  'en': 'INR',
+  'ru': 'RUB',
+};
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined);
 
 export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { i18n } = useTranslation();
   const [currency, setCurrency] = useState<Currency>(() => {
     const savedCurrency = localStorage.getItem('selectedCurrency');
     return currencies.find(c => c.code === savedCurrency) || currencies[0];
   });
+
+  // Auto-change currency when language changes
+  useEffect(() => {
+    const currentLang = i18n.language;
+    const targetCurrencyCode = languageToCurrency[currentLang];
+    
+    if (targetCurrencyCode) {
+      const targetCurrency = currencies.find(c => c.code === targetCurrencyCode);
+      if (targetCurrency && targetCurrency.code !== currency.code) {
+        setCurrency(targetCurrency);
+      }
+    }
+  }, [i18n.language]);
 
   useEffect(() => {
     localStorage.setItem('selectedCurrency', currency.code);
