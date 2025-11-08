@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Minus, Plus, Trash2, MessageCircle, Mail, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useCurrency } from '@/contexts/CurrencyContext';
 import {
   Drawer,
   DrawerClose,
@@ -20,6 +21,7 @@ interface CartDrawerProps {
 }
 
 const CartDrawer = ({ open, onOpenChange, trigger }: CartDrawerProps) => {
+  const { formatPrice } = useCurrency();
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, sendToWhatsApp, clearCart } = useCart();
 
   const sendToEmail = () => {
@@ -69,7 +71,7 @@ Please let me know the next steps for placing this order. Thank you!`);
                   />
                   <div className="flex-1 min-w-0">
                     <h4 className="font-medium text-foreground text-sm line-clamp-2">{item.name}</h4>
-                    <p className="text-herb-green font-semibold text-sm">{item.price}</p>
+                    <p className="text-herb-green font-semibold text-sm">{formatPrice(item.price)}</p>
                   </div>
                   <div className="flex flex-col items-end gap-2 flex-shrink-0">
                     <div className="flex items-center gap-1">
@@ -110,7 +112,7 @@ Please let me know the next steps for placing this order. Thank you!`);
           <DrawerFooter className="border-t">
             <div className="flex justify-between items-center mb-4">
               <span className="text-lg font-semibold">Total:</span>
-              <span className="text-2xl font-bold text-herb-green">${getCartTotal().toFixed(2)}</span>
+              <span className="text-2xl font-bold text-herb-green">{formatPrice(getCartTotal().toString())}</span>
             </div>
             
             <div className="space-y-2">

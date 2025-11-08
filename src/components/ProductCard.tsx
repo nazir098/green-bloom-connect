@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { OptimizedImage } from "./OptimizedImage";
 import { SIZES } from "@/config/imageConfig";
 import { useTranslation } from 'react-i18next';
+import { useCurrency } from '@/contexts/CurrencyContext';
 
 interface ProductCardProps {
   id: string;
@@ -31,6 +32,7 @@ interface ProductCardProps {
 
 const ProductCard = memo((props: ProductCardProps) => {
   const { t } = useTranslation();
+  const { formatPrice } = useCurrency();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -124,8 +126,7 @@ const ProductCard = memo((props: ProductCardProps) => {
         >
           {/* Image Carousel for multiple product images */}
           <Carousel 
-            className="w-full" 
-            onClick={(e) => e.stopPropagation()}
+            className="w-full"
             opts={{
               loop: true,
               align: "start",
@@ -202,9 +203,9 @@ const ProductCard = memo((props: ProductCardProps) => {
         </div>
         
         <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
-          <span className="text-base sm:text-lg md:text-xl font-bold text-herb-green">{price}</span>
+          <span className="text-base sm:text-lg md:text-xl font-bold text-herb-green">{formatPrice(price)}</span>
           {originalPrice && (
-            <span className="text-xs text-muted-foreground line-through">{originalPrice}</span>
+            <span className="text-xs text-muted-foreground line-through">{formatPrice(originalPrice)}</span>
           )}
         </div>
       </CardContent>

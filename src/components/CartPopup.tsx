@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, X } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import { useCurrency } from '@/contexts/CurrencyContext';
 
 interface CartPopupProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ interface CartPopupProps {
 
 export const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose, addedItem }) => {
   const { cartItems, getCartTotal, cartCount } = useCart();
+  const { formatPrice } = useCurrency();
 
   const handleViewCart = () => {
     onClose();
@@ -53,7 +55,7 @@ export const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose, addedItem
             />
             <div className="flex-1">
               <h3 className="font-medium">{addedItem.name}</h3>
-              <p className="text-sm text-muted-foreground">{addedItem.price}</p>
+              <p className="text-sm text-muted-foreground">{formatPrice(addedItem.price)}</p>
             </div>
           </div>
         )}
@@ -68,7 +70,7 @@ export const CartPopup: React.FC<CartPopupProps> = ({ isOpen, onClose, addedItem
           
           <div className="flex justify-between items-center font-medium">
             <span>Total:</span>
-            <span>${getCartTotal().toFixed(2)}</span>
+            <span>{formatPrice(getCartTotal().toString())}</span>
           </div>
         </div>
 

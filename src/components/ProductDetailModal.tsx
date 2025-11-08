@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Star, ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useCurrency } from '@/contexts/CurrencyContext';
 import { CartPopup } from "./CartPopup";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
@@ -34,6 +35,7 @@ interface ProductDetailModalProps {
 
 const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen, onClose }) => {
   const { addToCart } = useCart();
+  const { formatPrice } = useCurrency();
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
   const [addedItem, setAddedItem] = useState<{ name: string; image: string; price: string } | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -133,10 +135,10 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, isOpen
 
             <div className="space-y-2">
               <div className="flex items-center gap-4">
-                <span className="text-3xl font-bold text-primary">{product.price}</span>
+                <span className="text-3xl font-bold text-primary">{formatPrice(product.price)}</span>
                 {product.originalPrice && (
                   <span className="text-xl text-muted-foreground line-through">
-                    {product.originalPrice}
+                    {formatPrice(product.originalPrice)}
                   </span>
                 )}
               </div>
