@@ -7,7 +7,6 @@ import ProductSearch from "./ProductSearch";
 import { useCart } from "@/contexts/CartContext";
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from "./LanguageSwitcher";
-import CurrencySelector from "./CurrencySelector";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,9 +69,6 @@ const Header = () => {
 
       {/* Buttons - Compact on mobile */}
       <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3">
-        {/* Currency Selector */}
-        <CurrencySelector />
-        
         {/* Language Switcher */}
         <LanguageSwitcher />
         
