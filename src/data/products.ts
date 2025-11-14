@@ -20,7 +20,15 @@ import mockupPage3Image from "@/assets/blackTea/MOCKOUP_Page_3.jpg";
 import mockupPage4Image from "@/assets/blackTea/MOCKOUP_Page_4.jpg";
 import mockupPage6Image from "@/assets/blackTea/MOCKOUP_Page_6.jpg";
 import mockupPage7Image from "@/assets/blackTea/MOCKOUP_Page_7.jpg";
-import mockupMainImage from "@/assets/blackTea/MOCKOUP.jpg";
+import gingerTeaPage1Image from "@/assets/gingerTea/GINGER TEA_Page_1.jpg";
+import gingerTeaPage2Image from "@/assets/gingerTea/GINGER TEA_Page_2.jpg";
+import gingerTeaPage3Image from "@/assets/gingerTea/GINGER TEA_Page_3.jpg";
+import gingerTeaPage4Image from "@/assets/gingerTea/GINGER TEA_Page_4.jpg";
+import gingerTeaPage5Image from "@/assets/gingerTea/GINGER TEA_Page_5.jpg";
+import gingerTeaPage6Image from "@/assets/gingerTea/GINGER TEA_Page_6.jpg";
+import gingerTeaPage7Image from "@/assets/gingerTea/GINGER TEA_Page_7.jpg";
+import gingerTeaPage8Image from "@/assets/gingerTea/GINGER TEA_Page_8.jpg";
+
 
 
 
@@ -61,7 +69,6 @@ export const products: Product[] = [
     mockupPage4Image,
     mockupPage6Image,
     mockupPage7Image,
-    mockupMainImage, 
     blackTeaPosterImage
   ],
   price: "$19.99",
@@ -79,7 +86,40 @@ export const products: Product[] = [
   usage: "Add one teaspoon of black tea to 200ml hot water, steep for 3–5 minutes, strain, and enjoy plain or with milk.",
   origin: "Sourced from premium tea estates in Assam, India"
 }
-,
+,{
+  id: "16",
+  name: "Premium Ginger Tea",
+  description:
+    "A soothing and flavorful blend infused with natural ginger for warmth, digestion support, and refreshing energy.",
+  fullDescription:
+    "Our Premium Ginger Tea is crafted using pure ginger extracts and high-quality tea leaves. Known for its warming properties, ginger helps support digestion, boosts immunity, and provides comforting relief. Perfect for cold mornings, relaxation, or wellness routines, this tea offers a refreshing and revitalizing experience in every sip.",
+  image: gingerTeaPage1Image,
+  images: [
+    gingerTeaPage1Image,
+    gingerTeaPage2Image,
+    gingerTeaPage3Image,
+    gingerTeaPage4Image,
+    gingerTeaPage5Image,
+    gingerTeaPage6Image,
+    gingerTeaPage7Image,
+    gingerTeaPage8Image
+  ],
+  price: "$18.99",
+  originalPrice: "$22.99",
+  rating: 4.7,
+  reviews: 142,
+  isOrganic: true,
+  benefits: [
+    "Supports digestion and gut health",
+    "Boosts immunity naturally",
+    "Provides warming and soothing effects",
+    "Helps relieve nausea and fatigue"
+  ],
+  ingredients: ["Organic Ginger Extract", "Premium Tea Leaves"],
+  usage:
+    "Add one teaspoon of ginger tea mix to 200ml hot water, steep for 3–4 minutes, strain, and enjoy for warmth and wellness.",
+  origin: "Crafted from organically grown ginger sourced from Kerala, India"
+},
   {
     id: "14",
     name: "Premium Turmeric Root in Glass Jar",
