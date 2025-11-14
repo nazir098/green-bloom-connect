@@ -64,6 +64,28 @@ return (
         </div>
       </div>
 
+      {/* FSSAI License Badge */}
+      <div className="mt-12 flex justify-center">
+        <div className="bg-herb-light/20 border-2 border-herb-light rounded-lg px-8 py-4 text-center">
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <div className="w-10 h-10 bg-cream rounded-full flex items-center justify-center">
+              <span className="text-2xl">✓</span>
+            </div>
+            <div className="text-left">
+              <p className="text-sm font-semibold text-herb-light uppercase tracking-wide">
+                {t('footer.fssaiLicensed')}
+              </p>
+              <p className="text-lg font-bold text-cream">
+                FSSAI Lic. No. 23322010000067
+              </p>
+            </div>
+          </div>
+          <p className="text-xs text-cream/70 mt-2">
+            {t('footer.fssaiDescription')}
+          </p>
+        </div>
+      </div>
+
       {/* Footer Bottom */}
       <div className="border-t border-cream/20 mt-12 pt-8 text-center text-cream/60">
         <p>
