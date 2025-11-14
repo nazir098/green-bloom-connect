@@ -28,6 +28,15 @@ import gingerTeaPage5Image from "@/assets/gingerTea/GINGER TEA_Page_5.jpg";
 import gingerTeaPage6Image from "@/assets/gingerTea/GINGER TEA_Page_6.jpg";
 import gingerTeaPage7Image from "@/assets/gingerTea/GINGER TEA_Page_7.jpg";
 import gingerTeaPage8Image from "@/assets/gingerTea/GINGER TEA_Page_8.jpg";
+import greenMintTeaPage1Image from "@/assets/greenMintTea/GREEN MINT TEA_Page_1.jpg";
+import greenMintTeaPage2Image from "@/assets/greenMintTea/GREEN MINT TEA_Page_2.jpg";
+import greenMintTeaPage3Image from "@/assets/greenMintTea/GREEN MINT TEA_Page_3.jpg";
+import greenMintTeaPage4Image from "@/assets/greenMintTea/GREEN MINT TEA_Page_4.jpg";
+import greenMintTeaPage5Image from "@/assets/greenMintTea/GREEN MINT TEA_Page_5.jpg";
+import greenMintTeaPage6Image from "@/assets/greenMintTea/GREEN MINT TEA_Page_6.jpg";
+import greenMintTeaPage7Image from "@/assets/greenMintTea/GREEN MINT TEA_Page_7.jpg";
+import greenMintTeaPage8Image from "@/assets/greenMintTea/GREEN MINT TEA_Page_8.jpg";
+
 
 
 
@@ -119,7 +128,41 @@ export const products: Product[] = [
   usage:
     "Add one teaspoon of ginger tea mix to 200ml hot water, steep for 3–4 minutes, strain, and enjoy for warmth and wellness.",
   origin: "Crafted from organically grown ginger sourced from Kerala, India"
-},
+},{
+  id: "17",
+  name: "Premium Green Mint Tea",
+  description:
+    "A refreshing fusion of green tea and natural mint leaves, offering a cool, soothing, and revitalizing experience.",
+  fullDescription:
+    "Our Premium Green Mint Tea blends high-quality green tea with naturally dried mint leaves to deliver a crisp, cooling flavor. This refreshing tea supports digestion, boosts metabolism, and calms the senses. Perfect for any time of day, it can be enjoyed hot or iced for a revitalizing, guilt-free treat.",
+  image: greenMintTeaPage1Image,
+  images: [
+    greenMintTeaPage1Image,
+    greenMintTeaPage2Image,
+    greenMintTeaPage3Image,
+    greenMintTeaPage4Image,
+    greenMintTeaPage5Image,
+    greenMintTeaPage6Image,
+    greenMintTeaPage7Image,
+    greenMintTeaPage8Image
+  ],
+  price: "$17.99",
+  originalPrice: "$21.99",
+  rating: 4.6,
+  reviews: 123,
+  isOrganic: true,
+  benefits: [
+    "Boosts metabolism and energy levels",
+    "Supports digestion and gut health",
+    "Provides a refreshing and calming effect",
+    "Rich in natural antioxidants"
+  ],
+  ingredients: ["Organic Green Tea Leaves", "Natural Mint Leaves"],
+  usage:
+    "Add one teaspoon of green mint tea to 200ml hot water, steep for 2–3 minutes, strain, and enjoy a refreshing cup.",
+  origin: "Sourced from premium green tea estates and mint farms in India"
+}
+,
   {
     id: "14",
     name: "Premium Turmeric Root in Glass Jar",
