@@ -65,26 +65,60 @@ return (
       </div>
 
       {/* FSSAI License Badge */}
-      <div className="mt-12 flex justify-center">
-        <div className="bg-herb-light/20 border-2 border-herb-light rounded-lg px-8 py-4 text-center">
-          <div className="flex items-center justify-center gap-3 mb-2">
-            <div className="w-10 h-10 bg-cream rounded-full flex items-center justify-center">
-              <span className="text-2xl">✓</span>
-            </div>
-            <div className="text-left">
-              <p className="text-sm font-semibold text-herb-light uppercase tracking-wide">
-                {t('footer.fssaiLicensed')}
-              </p>
-              <p className="text-lg font-bold text-cream">
-                FSSAI Lic. No. 23322010000067
-              </p>
-            </div>
-          </div>
-          <p className="text-xs text-cream/70 mt-2">
-            {t('footer.fssaiDescription')}
-          </p>
-        </div>
+<div className="flex justify-center mt-10 px-4">
+  <div className="
+      relative w-full max-w-4xl 
+      rounded-3xl 
+      bg-[rgba(255,255,255,0.08)]
+      border border-[rgba(255,255,255,0.18)]
+      backdrop-blur-xl
+      shadow-[0_20px_50px_rgba(0,0,0,0.25)]
+      p-6 sm:p-10
+  ">
+
+    {/* Gold Accent Line */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 sm:w-36 h-[2px] bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 rounded-full"></div>
+
+    <div className="flex items-center gap-4 sm:gap-8 flex-wrap sm:flex-nowrap">
+
+      {/* Icon */}
+      <div className="
+          w-16 h-16 sm:w-20 sm:h-20 
+          bg-white 
+          rounded-2xl 
+          shadow-[0_10px_25px_rgba(0,0,0,0.15)]
+          border border-gray-200
+          flex items-center justify-center
+      ">
+        <img 
+          src="src/assets/image.png"
+          alt="FSSAI Logo"
+          className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
+        />
       </div>
+
+      {/* Text Section */}
+      <div className="flex-1">
+        <p className="text-xs sm:text-sm text-gray-200 tracking-[0.18em] uppercase font-semibold">
+          FSSAI Licensed
+        </p>
+
+        <p className="text-xl sm:text-3xl font-bold text-white mt-1 leading-tight">
+          FSSAI Lic. No. 23322010000067
+        </p>
+
+        <p className="text-gray-300 text-xs sm:text-sm mt-3 tracking-wide">
+          Certified by Food Safety and Standards Authority of India
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
 
       {/* Footer Bottom */}
       <div className="border-t border-cream/20 mt-12 pt-8 text-center text-cream/60">
