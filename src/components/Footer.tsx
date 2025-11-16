@@ -1,5 +1,6 @@
 import { Leaf, Facebook, Instagram, Twitter, Mail, Phone } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import fssaiLogo from '../assets/image.png';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -91,7 +92,7 @@ return (
           flex items-center justify-center
       ">
         <img 
-          src="src/assets/image.png"
+          src={fssaiLogo}
           alt="FSSAI Logo"
           className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
         />
