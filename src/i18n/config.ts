@@ -4,6 +4,11 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import en from './locales/en.json';
 import ru from './locales/ru.json';
 
+// Update HTML lang attribute for browser translation prompts
+const updateHtmlLang = (lng: string) => {
+  document.documentElement.lang = lng;
+};
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -21,5 +26,9 @@ i18n
       caches: ['localStorage'],
     },
   });
+
+// Set initial lang attribute and listen for changes
+updateHtmlLang(i18n.language);
+i18n.on('languageChanged', updateHtmlLang);
 
 export default i18n;
